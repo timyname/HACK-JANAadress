@@ -12,6 +12,16 @@ const CITY_NAMES = [
 const REPUBLIC_CITIES = new Set(['Астана', 'Алматы', 'Шымкент']);
 const LETTERS = 'A-Za-zА-Яа-яӘәҒғҚқҢңӨөҰұҮүҺһІі';
 
+const PREVIEW_STREETS = [
+  {
+    city: 'Астана',
+    aliases: ['мангилик ел', 'мәңгілік ел', 'мангылик ел'],
+    street_type: 'проспект',
+    street_name: 'Мангилик Ел',
+    districts_by_house: { '47': 'Есиль' }
+  }
+];
+
 const STREET_TYPES = [
   { pattern: /(?:^|[\s,;])(?:ул(?:ица)?\.?)[\s]+/iu, value: 'улица' },
   { pattern: /(?:^|[\s,;])(?:пр(?:оспект)?\.?)[\s]+/iu, value: 'проспект' },
@@ -80,6 +90,53 @@ function extractLandmark(raw) {
   return match?.[1]?.trim() || null;
 }
 
+function normalizePreviewText(value) {
+  return value.toLocaleLowerCase('ru-RU')
+    .replace(/ё/gu, 'е')
+    .replace(/[^0-9a-zа-яәғқңөұүһі]+/giu, ' ')
+    .trim();
+}
+
+function editDistance(left, right) {
+  const row = Array.from({ length: right.length + 1 }, (_, index) => index);
+  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+    let diagonal = row[0];
+    row[0] = leftIndex;
+    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+      const above = row[rightIndex];
+      const cost = left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1;
+      row[rightIndex] = Math.min(row[rightIndex] + 1, row[rightIndex - 1] + 1, diagonal + cost);
+      diagonal = above;
+    }
+  }
+  return row[right.length];
+}
+
+function similarity(left, right) {
+  const longest = Math.max(left.length, right.length);
+  return longest === 0 ? 1 : 1 - editDistance(left, right) / longest;
+}
+
+function enrichPreviewStreet(raw, parsed) {
+  if (!parsed.city || parsed.street_name) return;
+  const normalized = normalizePreviewText(raw);
+  const cityPrefix = normalizePreviewText(parsed.city);
+  const match = normalized.match(new RegExp(`^${escapeRegExp(cityPrefix)}\\s+(.+?)\\s+(\\d+[a-zа-я]?)\\s+(?:квартира|кв)(?=\\s|$)`, 'iu'));
+  if (!match) return;
+
+  const [, candidate, house] = match;
+  const street = PREVIEW_STREETS.find((item) =>
+    item.city === parsed.city
+    && Math.max(...item.aliases.map((alias) => similarity(candidate, alias))) >= 0.8
+  );
+  if (!street) return;
+
+  parsed.street_type = street.street_type;
+  parsed.street_name = street.street_name;
+  parsed.house = house;
+  parsed.district = street.districts_by_house[house] ?? null;
+}
+
 function scoreRecord(record) {
   const weighted = ['province', 'city', 'street_name', 'house', 'apartment', 'entrance', 'floor'];
   const found = weighted.filter((field) => record[field] != null).length;
@@ -115,6 +172,7 @@ function parseRecord(input) {
   for (const field of NULLABLE_FIELDS) {
     if (parsed[field] === '') parsed[field] = null;
   }
+  enrichPreviewStreet(raw, parsed);
   parsed.confidence = scoreRecord(parsed);
   return parsed;
 }

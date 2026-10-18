@@ -71,6 +71,21 @@ test('parser extracts apartment, entrance and floor markers', async () => {
   assert.equal(record.floor, '6');
 });
 
+test('browser preview corrects the Mangilik typo and adds the district', async () => {
+  const parser = await loadParser();
+  assert.ok(parser);
+  const [record] = parser.parseBatch([
+    { id: 'fuzzy-preview', raw_address: 'Астана манглик ел 47 квартира 57' }
+  ]);
+
+  assert.equal(record.city, 'Астана');
+  assert.equal(record.street_type, 'проспект');
+  assert.equal(record.street_name, 'Мангилик Ел');
+  assert.equal(record.house, '47');
+  assert.equal(record.apartment, '57');
+  assert.equal(record.district, 'Есиль');
+});
+
 test('province adjectives do not create substring city false positives', async () => {
   const parser = await loadParser();
   assert.ok(parser);
