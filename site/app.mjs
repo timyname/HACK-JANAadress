@@ -187,6 +187,7 @@ function renderInspector() {
       gazetteer: 'Найдено по справочнику',
       kato: 'Определено по КАТО',
       osm: 'Найдено в OpenStreetMap',
+      structure: 'Определено по структуре адреса',
       manual: 'Изменено вручную',
       heuristic: 'Распознано автоматически',
       unknown: 'Не определено'

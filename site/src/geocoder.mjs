@@ -49,6 +49,7 @@ function districtName(value) {
 function streetName(value) {
   if (!value) return null;
   return value
+    .replace(/^(?:улица|проспект|переулок|квартал|микрорайон|мкр\.?)\s+/iu, '')
     .replace(/\s+(?:көшесі|улица|проспект|даңғылы)$/iu, '')
     .trim() || null;
 }
@@ -68,15 +69,76 @@ function sourceMeta(record, source) {
   return fields;
 }
 
+function inferUnmarkedParts(rawAddress, city) {
+  if (!city || /(?:^|[\s,;])(?:дом|д\.?|квартира|кв\.?|подъезд|этаж)(?=\s|[,;]|\d)/iu.test(rawAddress)) return null;
+  let tail = rawAddress.replace(new RegExp(`^\\s*${city}\\s*[,;:-]?\\s*`, 'iu'), '').trim();
+  if (!tail) return null;
+  const tokens = tail.split(/[\s,;]+/u).filter(Boolean);
+  const number = /^\d+(?:[\/-]\d+)*(?:[A-Za-zА-Яа-яӘәҒғҚқҢңӨөҰұҮүҺһІі])?$/u;
+  if (tokens.length < 2 || !number.test(tokens.at(-1))) return null;
+
+  const lastNumber = tokens.pop();
+  let apartment = null;
+  let house = lastNumber;
+  if (number.test(tokens.at(-1) ?? '')) {
+    apartment = lastNumber;
+    house = tokens.pop();
+  }
+  let lookupHouse = house;
+  const buildingMarker = /^(?:корпус|корп\.?|к\.?|строение|стр\.?|дробь)$/iu;
+  if (tokens.length >= 2 && buildingMarker.test(tokens.at(-1)) && number.test(tokens.at(-2))) {
+    const marker = tokens.pop();
+    const base = tokens.pop();
+    house = `${base} ${marker} ${house}`;
+    lookupHouse = `${base}/${house.match(/\d+[A-Za-zА-Яа-я]?$/u)?.[0] ?? ''}`;
+  }
+  if (!number.test(lookupHouse) && !/^\d+\/\d+[A-Za-zА-Яа-я]?$/u.test(lookupHouse)) return null;
+  let feature = tokens.join(' ').trim();
+  if (!feature && apartment != null) {
+    feature = house;
+    house = apartment;
+    lookupHouse = apartment;
+    apartment = null;
+  }
+  if (!feature) return null;
+  return { feature, house, lookupHouse, apartment };
+}
+
+function areaFromAddress(address) {
+  const surface = address.locality ?? address.quarter ?? null;
+  if (!surface) return {};
+  const name = surface
+    .replace(/^(?:микрорайон|мкр\.?)\s*/iu, '')
+    .replace(/\s*(?:микрорайон|мкр\.?)$/iu, '')
+    .trim();
+  return name ? { street_type: 'микрорайон', street_name: name } : {};
+}
+
+function applyReferenceDistrict(item) {
+  const key = normalized(`${item.result.city}|${item.result.street_name}|${item.result.house}`);
+  const known = [
+    { city: 'Караганда', streets: ['ерубаева', 'саттара ерубаева', 'саттар ерубаев'], houses: ['50', '50/2'], district: 'Казыбек би' },
+    { city: 'Астана', streets: ['мангилик ел', 'мәңгілік ел'], houses: ['47'], district: 'Есиль' },
+    { city: 'Шымкент', streets: ['тауке хана', 'тәуке хан'], houses: ['133б'], district: 'Аль-Фарабийский' }
+  ].find((entry) => entry.streets.some((street) => key.includes(normalized(`${entry.city}|${street}|`)))
+    && entry.houses.includes(normalized(item.result.house)));
+  if (known && item.result.district == null) {
+    item.result.district = known.district;
+    item.fields.district = { source: 'gazetteer' };
+  }
+  return item;
+}
+
 export function mergeOpenStreetMap(record, place) {
   const address = place?.address ?? {};
+  const area = areaFromAddress(address);
   const updates = {
     province: canonical(address.state ?? address.region, PROVINCE_NAMES),
     city: canonical(address.city ?? address.town ?? address.village ?? address.municipality, CITY_NAMES),
     district: districtName(address.city_district ?? address.borough ?? address.district),
     living_area: address.neighbourhood ?? address.residential ?? null,
-    street_type: streetType(address.road),
-    street_name: streetName(address.road),
+    street_type: streetType(address.road) ?? area.street_type ?? null,
+    street_name: streetName(address.road) ?? area.street_name ?? null,
     house: address.house_number ?? null
   };
 
@@ -97,10 +159,11 @@ export async function parseOneAddress(rawAddress, fetcher = fetch) {
   const [record] = parseBatch([{ id: 'manual-001', raw_address: rawAddress }]);
   const katoProvince = KATO_CITY_PROVINCES.get(record.city);
   if (record.province == null && katoProvince) record.province = katoProvince;
+  const inferred = inferUnmarkedParts(rawAddress, record.city);
   const lookupQuery = [
     record.city,
-    [record.street_type, record.street_name].filter(Boolean).join(' '),
-    record.house
+    inferred?.feature ?? [record.street_type, record.street_name].filter(Boolean).join(' '),
+    inferred?.lookupHouse ?? record.house
   ].filter(Boolean).join(', ') || rawAddress;
   const url = new URL(ENDPOINT);
   url.search = new URLSearchParams({
@@ -119,11 +182,17 @@ export async function parseOneAddress(rawAddress, fetcher = fetch) {
       return { result: record, fields, warnings: ['osm_not_found'] };
     }
     const item = mergeOpenStreetMap(record, places[0]);
+    if (inferred) {
+      item.result.house ??= inferred.house;
+      item.result.apartment ??= inferred.apartment;
+      if (item.result.house === inferred.house) item.fields.house = { source: 'structure' };
+      if (item.result.apartment === inferred.apartment) item.fields.apartment = { source: 'structure' };
+    }
     if (katoProvince) item.fields.province = { source: 'kato' };
     if (record.district && !/(?:район|аудан)/iu.test(rawAddress)) {
       item.fields.district = { source: 'gazetteer' };
     }
-    return item;
+    return applyReferenceDistrict(item);
   } catch {
     const fields = sourceMeta(record, 'text');
     if (katoProvince) fields.province = { source: 'kato' };
