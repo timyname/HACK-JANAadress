@@ -20,6 +20,7 @@ test('single address lookup returns the canonical 14 fields and keeps apartment'
     'floor', 'landmark', 'confidence'
   ]);
   assert.equal(item.result.province, 'Карагандинская область');
+  assert.equal(item.fields.province.source, 'kato');
   assert.equal(item.result.city, 'Караганда');
   assert.equal(item.result.district, 'Казыбек би');
   assert.equal(item.result.street_name, 'Саттара Ерубаева');

@@ -18,6 +18,17 @@ const PROVINCE_NAMES = new Map([
   ['түркістан облысы', 'Туркестанская область']
 ]);
 
+const KATO_CITY_PROVINCES = new Map([
+  ['Астана', 'Астана'], ['Алматы', 'Алматы'], ['Шымкент', 'Шымкент'],
+  ['Караганда', 'Карагандинская область'], ['Костанай', 'Костанайская область'],
+  ['Актобе', 'Актюбинская область'], ['Атырау', 'Атырауская область'],
+  ['Актау', 'Мангистауская область'], ['Павлодар', 'Павлодарская область'],
+  ['Семей', 'Абайская область'], ['Тараз', 'Жамбылская область'],
+  ['Кокшетау', 'Акмолинская область'], ['Петропавловск', 'Северо-Казахстанская область'],
+  ['Талдыкорган', 'Жетысуская область'], ['Туркестан', 'Туркестанская область'],
+  ['Уральск', 'Западно-Казахстанская область'], ['Усть-Каменогорск', 'Восточно-Казахстанская область']
+]);
+
 function normalized(value) {
   return value?.toLocaleLowerCase('ru-RU').trim() ?? '';
 }
@@ -84,6 +95,8 @@ export function mergeOpenStreetMap(record, place) {
 
 export async function parseOneAddress(rawAddress, fetcher = fetch) {
   const [record] = parseBatch([{ id: 'manual-001', raw_address: rawAddress }]);
+  const katoProvince = KATO_CITY_PROVINCES.get(record.city);
+  if (record.province == null && katoProvince) record.province = katoProvince;
   const lookupQuery = [
     record.city,
     [record.street_type, record.street_name].filter(Boolean).join(' '),
@@ -101,16 +114,19 @@ export async function parseOneAddress(rawAddress, fetcher = fetch) {
     const places = await response.json();
     if (!Array.isArray(places) || !places[0]) {
       const fields = sourceMeta(record, 'text');
+      if (katoProvince) fields.province = { source: 'kato' };
       if (record.district && !/(?:район|аудан)/iu.test(rawAddress)) fields.district = { source: 'gazetteer' };
       return { result: record, fields, warnings: ['osm_not_found'] };
     }
     const item = mergeOpenStreetMap(record, places[0]);
+    if (katoProvince) item.fields.province = { source: 'kato' };
     if (record.district && !/(?:район|аудан)/iu.test(rawAddress)) {
       item.fields.district = { source: 'gazetteer' };
     }
     return item;
   } catch {
     const fields = sourceMeta(record, 'text');
+    if (katoProvince) fields.province = { source: 'kato' };
     if (record.district && !/(?:район|аудан)/iu.test(rawAddress)) fields.district = { source: 'gazetteer' };
     return { result: record, fields, warnings: ['osm_unavailable'] };
   }

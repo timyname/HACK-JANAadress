@@ -185,6 +185,7 @@ function renderInspector() {
     badge.textContent = ({
       text: 'Распознано из текста',
       gazetteer: 'Найдено по справочнику',
+      kato: 'Определено по КАТО',
       osm: 'Найдено в OpenStreetMap',
       manual: 'Изменено вручную',
       heuristic: 'Распознано автоматически',
