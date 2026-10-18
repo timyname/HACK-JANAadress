@@ -37,7 +37,8 @@ test('browser rendering never injects uploaded values through innerHTML', async 
 
 test('preview copy cannot be mistaken for the final submission runtime', async () => {
   const html = await readFile(new URL('index.html', root), 'utf8');
-  assert.match(html, /UI \/ architecture demo · not final submission runtime/i);
+  assert.match(html, /BROWSER DEMO \/ FULL RUNTIME IN GITHUB/i);
+  assert.match(html, /PUBLIC DEMO \/ SYNTHETIC DATA ONLY/i);
   assert.doesNotMatch(html, /system ready|jury shape|05 \/ 05/i);
 });
 
