@@ -152,7 +152,7 @@ async function addDistrictFromReverse(item, place, fetcher) {
       format: 'jsonv2', addressdetails: '1', zoom: '14', 'accept-language': 'ru,kk', lat: place.lat, lon: place.lon
     });
     const value = districtName(reverse?.address?.city_district ?? reverse?.address?.borough ?? reverse?.address?.district);
-    if (value) {
+    if (value && normalized(value) !== normalized(item.result.city)) {
       item.result.district = value;
       item.fields.district = { source: 'osm' };
     }
