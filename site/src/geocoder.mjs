@@ -114,11 +114,13 @@ function osmCity(address) {
 export function mergeOpenStreetMap(record, place) {
   const address = place?.address ?? {};
   const area = areaFromAddress(address);
+  const cityValue = osmCity(address);
+  const districtValue = districtName(address.city_district ?? address.borough ?? address.district);
   const updates = {
     province: address.state ?? address.region ?? null,
-    city: osmCity(address),
-    district: districtName(address.city_district ?? address.borough ?? address.district),
-    living_area: address.neighbourhood ?? address.residential ?? address.suburb ?? null,
+    city: cityValue,
+    district: normalized(districtValue) === normalized(cityValue ?? record.city) ? null : districtValue,
+    living_area: address.neighbourhood ?? address.residential ?? null,
     street_type: streetType(address.road) ?? area.street_type ?? null,
     street_name: streetName(address.road) ?? area.street_name ?? null,
     house: address.house_number ?? null

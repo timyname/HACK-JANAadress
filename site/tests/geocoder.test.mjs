@@ -93,11 +93,12 @@ test('two unmarked numbers are not forced into house plus apartment when lookup 
 
 test('a settlement absent from the old demo list is resolved through KATO', async () => {
   const fakeFetch = async () => ({ ok: true, json: async () => [{ address: {
-    house_number: '10', road: 'улица Ленина', town: 'Балхаш', state: 'Карагандинская область'
+    house_number: '10', road: 'улица Ленина', town: 'Балхаш', district: 'Балхаш', state: 'Карагандинская область'
   } }] });
   const item = await parseOneAddress('Балхаш Ленина 10 25', fakeFetch, kato);
   assert.equal(item.result.city, 'Балхаш');
   assert.equal(item.result.province, 'Карагандинская область');
   assert.equal(item.result.house, '10');
   assert.equal(item.result.apartment, '25');
+  assert.equal(item.result.district, null);
 });
