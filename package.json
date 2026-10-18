@@ -1,0 +1,10 @@
+{
+  "name": "jana-address-command-center",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test site/tests/*.test.mjs",
+    "build": "node scripts/build-site.mjs"
+  }
+}

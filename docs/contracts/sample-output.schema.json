@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jana-address.local/schemas/sample-output.schema.json",
+  "title": "Jana Address sample output",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "raw_address",
+      "province",
+      "city",
+      "district",
+      "living_area",
+      "street_type",
+      "street_name",
+      "house",
+      "apartment",
+      "entrance",
+      "floor",
+      "landmark",
+      "confidence"
+    ],
+    "$comment": "additionalProperties=false is a team canonical serializer choice, not proven evaluator behavior; recheck against runner clarification.",
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string" },
+      "raw_address": { "type": "string" },
+      "province": { "type": ["string", "null"] },
+      "city": { "type": ["string", "null"] },
+      "district": { "type": ["string", "null"] },
+      "living_area": { "type": ["string", "null"] },
+      "street_type": { "type": ["string", "null"] },
+      "street_name": { "type": ["string", "null"] },
+      "house": { "type": ["string", "null"] },
+      "apartment": { "type": ["string", "null"] },
+      "entrance": { "type": ["string", "null"] },
+      "floor": { "type": ["string", "null"] },
+      "landmark": { "type": ["string", "null"] },
+      "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "schema_version": "jana-synthetic-config/v1",
+  "oracle_policy_version": "jana-oracle/v1.2",
+  "privacy_profile": "public_demo_v1",
+  "synthetic_notice": "All lower-level address combinations are invented. Known Kazakhstan city names are public geographic facts. No organizer row was used.",
+  "administrative_source": {
+    "source_id": "kato-nk-rk-11-2025",
+    "filename": "KATO_18.09.2026.xlsx",
+    "version": "2026-09-18",
+    "sha256": "7b87e0a8a72818ca5adcc7b4a7792dd0afd1a3165ed163197012c7c154d4e990",
+    "sheet": "katonew1",
+    "audit_date": "2026-10-16",
+    "policy": "Only exact type-stripped bilingual KATO names are canonicalized. Other explicit district surfaces are preserved without inferred alias equivalence."
+  },
+  "city_profiles": [
+    {
+      "key": "almaty",
+      "province": {"ru": "Алматы", "kk": "Алматы"},
+      "city": {"ru": "Алматы", "kk": "Алматы"},
+      "district": {
+        "ru": "Ауэзовский", "kk": "Әуезов",
+        "raw_ru": "Ауэзовский", "raw_kk": "Әуезов",
+        "canonical_locales": ["ru", "kk"],
+        "kato": {"code": "751310000", "row": 15576, "city_code": "750000000", "rus_name": "Ауэзовский район", "kaz_name": "Әуезов ауданы"}
+      }
+    },
+    {
+      "key": "astana",
+      "province": {"ru": "Астана", "kk": "Астана"},
+      "city": {"ru": "Астана", "kk": "Астана"},
+      "district": {
+        "ru": "Есиль", "kk": "Есіл",
+        "raw_ru": "Есильский", "raw_kk": "Есіл",
+        "canonical_locales": ["kk"],
+        "unverified_reason": "alias_not_in_snapshot",
+        "kato": {"code": "711210000", "row": 15568, "city_code": "710000000", "rus_name": "район Есиль", "kaz_name": "Есіл ауданы"}
+      }
+    },
+    {
+      "key": "shymkent",
+      "province": {"ru": "Шымкент", "kk": "Шымкент"},
+      "city": {"ru": "Шымкент", "kk": "Шымкент"},
+      "district": {
+        "ru": "Абайский", "kk": "Абай",
+        "raw_ru": "Абайский", "raw_kk": "Абай",
+        "canonical_locales": ["ru", "kk"],
+        "kato": {"code": "791110000", "row": 15583, "city_code": "790000000", "rus_name": "Абайский район", "kaz_name": "Абай ауданы"}
+      }
+    },
+    {
+      "key": "karaganda",
+      "province": {"canonical_ru": "Карагандинская область", "ru": "Карагандинская", "kk": "Қарағанды"},
+      "city": {"ru": "Караганда", "kk": "Қарағанды"},
+      "district": {
+        "ru": "им.Казыбек би", "kk": "Қазыбек би атын.",
+        "raw_ru": "Казыбекбийский", "raw_kk": "Қазыбек би",
+        "canonical_locales": [],
+        "unverified_reason": "alias_not_in_snapshot",
+        "kato": {"code": "351013100", "row": 7788, "city_code": "351010000", "rus_name": "район им.Казыбек би", "kaz_name": "Қазыбек би атын.ауданы"}
+      }
+    },
+    {
+      "key": "aktobe",
+      "province": {"canonical_ru": "Актюбинская область", "ru": "Актюбинская", "kk": "Ақтөбе"},
+      "city": {"ru": "Актобе", "kk": "Ақтөбе"},
+      "district": {
+        "ru": "Алматы", "kk": "Алматы",
+        "raw_ru": "Алматинский", "raw_kk": "Алматы",
+        "canonical_locales": ["kk"],
+        "unverified_reason": "alias_not_in_snapshot",
+        "kato": {"code": "151013100", "row": 2615, "city_code": "151010000", "rus_name": "район Алматы", "kaz_name": "Алматы ауданы"}
+      }
+    },
+    {
+      "key": "oskemen",
+      "province": {"canonical_ru": "Восточно-Казахстанская область", "ru": "Восточно-Казахстанская", "kk": "Шығыс Қазақстан"},
+      "city": {"ru": "Усть-Каменогорск", "kk": "Өскемен"},
+      "district": {
+        "ru": "Ульбинский", "kk": "Үлбі",
+        "raw_ru": "Ульбинский", "raw_kk": "Үлбі",
+        "canonical_locales": [],
+        "unverified_reason": "district_absent_from_snapshot",
+        "kato": null
+      }
+    }
+  ],
+  "street_names": [
+    {"key": "postal_line", "ru": "Почтовая Линия", "kk": "Пошта Желісі"},
+    {"key": "new_vector", "ru": "Новый Вектор", "kk": "Жаңа Бағыт"},
+    {"key": "quiet_route", "ru": "Тихий Маршрут", "kk": "Тыныш Бағдар"},
+    {"key": "north_node", "ru": "Северный Узел", "kk": "Солтүстік Түйін"},
+    {"key": "south_contour", "ru": "Южный Контур", "kk": "Оңтүстік Сұлба"},
+    {"key": "golden_direction", "ru": "Золотое Направление", "kk": "Алтын Бағыт"},
+    {"key": "white_sail", "ru": "Белый Парус", "kk": "Ақ Желкен"},
+    {"key": "horizon", "ru": "Горизонт Доставки", "kk": "Жеткізу Көкжиегі"},
+    {"key": "swift_step", "ru": "Верный Шаг", "kk": "Құтты Қадам"},
+    {"key": "blue_trace", "ru": "Синий След", "kk": "Көк Із"},
+    {"key": "bright_bridge", "ru": "Светлый Мост", "kk": "Жарық Көпір"},
+    {"key": "sample_way", "ru": "Пробный Путь", "kk": "Үлгі Жолы"}
+  ],
+  "microdistricts": [
+    {"key": "sample_bank", "ru": "Пробный Берег", "kk": "Сынақ Жағалау"},
+    {"key": "new_frontier", "ru": "Новый Рубеж", "kk": "Жаңа Белес"},
+    {"key": "postal_quarter", "ru": "Почтовый Квартал", "kk": "Пошта Орамы"},
+    {"key": "bright_contour", "ru": "Светлый Контур", "kk": "Жарық Сұлба"}
+  ],
+  "landmarks": [
+    {"ru": "напротив синей арки", "kk": "көк аркаға қарама-қарсы"},
+    {"ru": "рядом с макетом башни", "kk": "мұнара макетінің жанында"},
+    {"ru": "за учебным павильоном", "kk": "оқу павильонының артында"},
+    {"ru": "у стенда маршрутов", "kk": "бағыттар стендінің қасында"}
+  ],
+  "number_values": {
+    "house": ["7", "12А", "18/2", "003", "41Б", "56-1"],
+    "apartment": ["4", "19", "070", "112А", "3/1"],
+    "entrance": ["1", "2", "04"],
+    "floor": ["1", "3", "07", "-1"]
+  }
+}

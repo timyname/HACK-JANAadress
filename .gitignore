@@ -1,0 +1,15 @@
+# Large runtime data is included in the offline ZIP only.
+data/public/gazetteer.sqlite
+
+# Local and generated files.
+.env
+.env.*
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+dist/
+coverage/
+.DS_Store
+output/

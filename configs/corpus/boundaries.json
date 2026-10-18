@@ -1,0 +1,8 @@
+{
+  "profiles": [
+    {"name": "smoke-32", "count": 32, "split": "dev", "master_seed": "jana-boundary-32-v1"},
+    {"name": "boundary-999", "count": 999, "split": "dev", "master_seed": "jana-boundary-999-v1"},
+    {"name": "boundary-1001", "count": 1001, "split": "dev", "master_seed": "jana-boundary-1001-v1"},
+    {"name": "stress-5000", "count": 5000, "split": "dev", "master_seed": "jana-stress-5000-v1"}
+  ]
+}

@@ -1,0 +1,25 @@
+services:
+  jana-address:
+    image: jana-address:local
+    build: .
+    pull_policy: never
+    environment:
+      JANA_OFFLINE: "1"
+    ports:
+      - "127.0.0.1:8080:8080"
+    read_only: true
+    mem_limit: 768m
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+      - offline
+    restart: unless-stopped
+networks:
+  offline:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: "false"

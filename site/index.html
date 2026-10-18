@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d0c" />
+    <meta name="description" content="Jana Address — локальная система структурирования адресов для Jana Post." />
+    <title>Jana Address — Route Intelligence</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="route-field" aria-hidden="true">
+      <svg viewBox="0 0 1440 960" preserveAspectRatio="none">
+        <path class="route route-a" d="M-80 740 C 240 550, 250 780, 520 560 S 870 260, 1110 410 S 1330 420, 1510 160" />
+        <path class="route route-b" d="M-20 180 C 250 300, 350 170, 580 300 S 890 690, 1110 610 S 1300 430, 1490 580" />
+        <circle cx="520" cy="560" r="7" />
+        <circle cx="1110" cy="410" r="7" />
+        <circle cx="580" cy="300" r="5" />
+      </svg>
+    </div>
+
+    <header class="command-bar">
+      <a class="brand" href="#workspace" aria-label="Jana Address — к рабочей области">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>
+          <strong>JANA ADDRESS</strong>
+          <small>route intelligence / 01</small>
+        </span>
+      </a>
+
+      <div class="system-state" aria-label="Состояние системы">
+        <span id="runtime-chip" class="status-chip status-chip--safe"><i></i> browser-local</span>
+        <span id="catalog-chip" class="status-chip"><i></i> synthetic preview</span>
+        <span id="ready-chip" class="status-chip status-chip--online"><i></i> проверка сервиса</span>
+      </div>
+    </header>
+
+    <main id="workspace" class="workspace">
+      <aside class="process-rail" aria-label="Этапы обработки">
+        <div class="rail-heading">
+          <span>PIPELINE</span>
+          <b id="rail-progress">DEMO</b>
+        </div>
+        <ol>
+          <li class="is-done"><span>01</span><div><b>Import</b><small>JSON array</small></div></li>
+          <li class="is-done"><span>02</span><div><b>Validate</b><small>schema + order</small></div></li>
+          <li class="is-live"><span>03</span><div><b>Parse</b><small>deterministic</small></div></li>
+          <li class="is-live"><span>04</span><div><b>Review</b><small>human-in-loop</small></div></li>
+          <li><span>05</span><div><b>Export</b><small>local schema</small></div></li>
+        </ol>
+        <div class="rail-proof">
+          <span>NO EGRESS</span>
+          <strong id="data-boundary">Данные остаются в вашем браузере</strong>
+          <p id="runtime-description">Демонстрационный режим. Адреса не сохраняются после закрытия страницы.</p>
+        </div>
+      </aside>
+
+      <section class="dashboard" aria-label="Jana Address dashboard">
+        <section class="hero-strip">
+          <div>
+            <p class="eyebrow"><span></span> КАЗАХСТАН · АДРЕСНЫЙ КОНТУР</p>
+            <h1>Из строки —<br /><em>в точный маршрут.</em></h1>
+          </div>
+          <p class="hero-copy">Разбираем шумные RU/KZ адреса, сохраняем исходник без изменений и выводим спорные записи на ручную проверку.</p>
+        </section>
+
+        <section class="metric-grid" aria-label="Сводка пакета">
+          <article class="metric metric--primary">
+            <span>RECORDS</span>
+            <strong id="metric-total">0</strong>
+            <small>в текущем пакете</small>
+          </article>
+          <article class="metric">
+            <span>HIGH SIGNAL</span>
+            <strong id="metric-high">0</strong>
+            <small>confidence ≥ 0.75</small>
+          </article>
+          <article class="metric metric--attention">
+            <span>REVIEW</span>
+            <strong id="metric-review">0</strong>
+            <small>нужна проверка</small>
+          </article>
+          <article class="metric">
+            <span>MODE</span>
+            <strong id="runtime-mode" class="metric-word">LOCAL</strong>
+            <small id="runtime-caption">без отправки на сервер</small>
+          </article>
+        </section>
+
+        <section class="workbench">
+          <div class="workbench-head">
+            <div>
+              <p class="section-index">01 — NORMALIZATION DESK</p>
+              <h2>Очередь адресов</h2>
+            </div>
+            <div class="actions">
+              <button id="demo-button" class="button button--ghost" type="button">
+                <span aria-hidden="true">↺</span> Демо-пакет
+              </button>
+              <span class="file-action">
+                <input id="file-input" class="visually-hidden" type="file" accept="application/json,.json" />
+                <label class="button button--accent" for="file-input">
+                  <span aria-hidden="true">＋</span> Загрузить JSON
+                </label>
+              </span>
+            </div>
+          </div>
+
+          <div id="notice" class="notice" role="status" aria-live="polite">
+            <span>LOCAL MODE</span>
+            Файл читается в памяти браузера. Для публичного preview используйте только synthetic/redacted данные.
+          </div>
+
+          <div class="queue-toolbar">
+            <div class="filter-tabs" role="group" aria-label="Фильтр записей">
+              <button class="filter-tab is-active" data-filter="all" type="button">Все <b id="filter-all">0</b></button>
+              <button class="filter-tab" data-filter="review" type="button">На проверку <b id="filter-review">0</b></button>
+            </div>
+            <div class="export-actions">
+              <button id="export-original-button" class="export-button" type="button" disabled>Результат API</button>
+              <button id="export-button" class="export-button" type="button" disabled>С правками <span aria-hidden="true">↗</span></button>
+            </div>
+          </div>
+
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Signal</th>
+                  <th>Исходная строка</th>
+                  <th>Город</th>
+                  <th>Улица</th>
+                  <th>Дом</th>
+                  <th>Кв.</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="records-body"></tbody>
+            </table>
+            <div id="empty-state" class="empty-state" hidden>
+              <span aria-hidden="true">⌁</span>
+              <strong>В этой очереди пусто</strong>
+              <p>Переключите фильтр или загрузите новый synthetic JSON.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside id="inspector" class="inspector" aria-label="Инспектор записи" aria-labelledby="record-id">
+        <div class="inspector-head">
+          <div>
+            <p>RECORD INSPECTOR</p>
+            <h2 id="record-id">Нет записи</h2>
+          </div>
+          <div class="inspector-actions">
+            <span id="record-confidence" class="confidence-badge">—</span>
+            <button id="close-inspector" class="close-inspector" type="button" aria-label="Закрыть инспектор">×</button>
+          </div>
+        </div>
+
+        <section class="raw-panel">
+          <div><span>IMMUTABLE SOURCE</span><b>RAW</b></div>
+          <p id="raw-address">Выберите запись в очереди</p>
+        </section>
+
+        <form id="editor-form" class="editor-form">
+          <div class="field-grid">
+            <label><span>Область</span><input name="province" autocomplete="off" /></label>
+            <label><span>Город</span><input name="city" autocomplete="off" /></label>
+            <label><span>Район</span><input name="district" autocomplete="off" /></label>
+            <label><span>Жилой массив</span><input name="living_area" autocomplete="off" /></label>
+            <label><span>Тип улицы</span><input name="street_type" autocomplete="off" /></label>
+            <label><span>Название улицы</span><input name="street_name" autocomplete="off" /></label>
+            <label><span>Дом</span><input name="house" autocomplete="off" /></label>
+            <label><span>Квартира</span><input name="apartment" autocomplete="off" /></label>
+            <label><span>Подъезд</span><input name="entrance" autocomplete="off" /></label>
+            <label><span>Этаж</span><input name="floor" autocomplete="off" /></label>
+            <label class="field-wide"><span>Ориентир</span><input name="landmark" autocomplete="off" /></label>
+          </div>
+          <button id="save-button" class="save-button" type="submit" disabled>
+            Сохранить корректировку <span aria-hidden="true">⌘ S</span>
+          </button>
+        </form>
+
+        <div class="inspector-foot">
+          <span>Heuristic review score</span>
+          <p>Confidence помогает выстроить очередь, но не является официальной точностью.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>JANA POST · TERRICON HACKATHON 2026</span>
+      <span id="runtime-footer">UI / architecture demo · not final submission runtime</span>
+      <span id="data-attribution">PRIVATE PREVIEW / SYNTHETIC DATA ONLY</span>
+    </footer>
+
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>

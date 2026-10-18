@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jana-address.local/schemas/sample-input.schema.json",
+  "title": "Jana Address sample input",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "raw_address"],
+    "properties": {
+      "id": { "type": "string" },
+      "raw_address": { "type": "string" }
+    }
+  }
+}
