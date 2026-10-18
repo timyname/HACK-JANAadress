@@ -3,7 +3,7 @@ import { applyRecordEdit, assertUploadSize, createEditOverlay, parseUpload, reco
 
 const demoInput = Object.freeze([
   { id: 'demo-001', raw_address: 'Астана манглик ел 47 квартира 57' },
-  { id: 'demo-002', raw_address: 'Шымкент, улица Арман, 14Б дом, 2 подъезд, 5 этаж' },
+  { id: 'demo-002', raw_address: 'Шымкент, проспект Тауке хана, дом 133Б, квартира 8' },
   { id: 'demo-003', raw_address: 'Караганда, мкр Восток 3, дом 9, квартира 27' },
   { id: 'demo-004', raw_address: 'Алматы, улица Самал, дом 19, магазин Орбита' },
   { id: 'demo-005', raw_address: 'район Сарыарка, неизвестный адресный фрагмент' }

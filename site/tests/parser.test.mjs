@@ -86,6 +86,20 @@ test('browser preview corrects the Mangilik typo and adds the district', async (
   assert.equal(record.district, 'Есиль');
 });
 
+test('browser preview adds a verified Shymkent district by street and house', async () => {
+  const parser = await loadParser();
+  assert.ok(parser);
+  const [record] = parser.parseBatch([
+    { id: 'shymkent-preview', raw_address: 'Шымкент, проспект Тауке хана, дом 133Б, квартира 8' }
+  ]);
+
+  assert.equal(record.city, 'Шымкент');
+  assert.equal(record.street_name, 'Тауке хана');
+  assert.equal(record.house, '133б');
+  assert.equal(record.apartment, '8');
+  assert.equal(record.district, 'Аль-Фарабийский');
+});
+
 test('province adjectives do not create substring city false positives', async () => {
   const parser = await loadParser();
   assert.ok(parser);

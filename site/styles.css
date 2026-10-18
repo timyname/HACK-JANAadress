@@ -1,18 +1,18 @@
 :root {
   color-scheme: dark;
-  --ink: #0b0d0c;
-  --ink-2: #111511;
-  --panel: rgba(18, 23, 19, 0.88);
-  --panel-solid: #151a16;
-  --paper: #eceadf;
-  --muted: #979f94;
-  --line: rgba(236, 234, 223, 0.13);
-  --line-strong: rgba(236, 234, 223, 0.25);
-  --acid: #d9ff63;
-  --acid-soft: rgba(217, 255, 99, 0.12);
-  --signal: #ff5f48;
-  --signal-soft: rgba(255, 95, 72, 0.12);
-  --cyan: #74e4d5;
+  --ink: #07100b;
+  --ink-2: #0c1710;
+  --panel: rgba(13, 27, 18, 0.9);
+  --panel-solid: #102016;
+  --paper: #f7f6f3;
+  --muted: #9caaa1;
+  --line: rgba(247, 246, 243, 0.13);
+  --line-strong: rgba(247, 246, 243, 0.25);
+  --acid: #18a957;
+  --acid-soft: rgba(24, 169, 87, 0.14);
+  --signal: #f04e23;
+  --signal-soft: rgba(240, 78, 35, 0.13);
+  --cyan: #55d98e;
   --shadow: 0 22px 80px rgba(0, 0, 0, 0.34);
   --radius-sm: 10px;
   --radius-md: 18px;
@@ -30,8 +30,8 @@ body {
   margin: 0;
   color: var(--paper);
   background:
-    radial-gradient(circle at 75% -15%, rgba(94, 133, 69, 0.22), transparent 36%),
-    radial-gradient(circle at 18% 45%, rgba(77, 112, 104, 0.12), transparent 27%),
+    radial-gradient(circle at 75% -15%, rgba(24, 169, 87, 0.28), transparent 36%),
+    radial-gradient(circle at 18% 45%, rgba(24, 169, 87, 0.11), transparent 27%),
     var(--ink);
   font-family: var(--sans);
   font-size: 14px;
@@ -56,8 +56,8 @@ button { color: inherit; }
 
 .route-field svg { width: 100%; height: 100%; }
 .route-field path { fill: none; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
-.route-a { stroke: rgba(217, 255, 99, 0.32); stroke-dasharray: 8 12; animation: route-flow 18s linear infinite; }
-.route-b { stroke: rgba(116, 228, 213, 0.18); stroke-dasharray: 2 16; animation: route-flow 28s linear infinite reverse; }
+.route-a { stroke: rgba(24, 169, 87, 0.44); stroke-dasharray: 8 12; animation: route-flow 18s linear infinite; }
+.route-b { stroke: rgba(85, 217, 142, 0.2); stroke-dasharray: 2 16; animation: route-flow 28s linear infinite reverse; }
 .route-field circle { fill: var(--acid); filter: drop-shadow(0 0 9px var(--acid)); }
 
 @keyframes route-flow { to { stroke-dashoffset: -240; } }
@@ -146,7 +146,7 @@ button { color: inherit; }
 .button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; cursor: pointer; font-size: 10px; font-weight: 750; letter-spacing: 0.05em; text-transform: uppercase; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
 .button:hover { transform: translateY(-1px); border-color: var(--paper); }
 .button--accent { color: var(--ink); background: var(--acid); border-color: var(--acid); }
-.button--accent:hover { background: #e5ff8f; border-color: #e5ff8f; }
+.button--accent:hover { background: #25c76b; border-color: #25c76b; }
 .file-action { display: inline-flex; }
 .visually-hidden:focus-visible + .button--accent { outline: 3px solid var(--cyan); outline-offset: 3px; }
 .notice { margin: 0 26px 18px; padding: 11px 13px; display: flex; align-items: center; gap: 11px; border: 1px solid rgba(116,228,213,0.17); border-radius: var(--radius-sm); color: var(--muted); background: rgba(116,228,213,0.045); font-size: 10px; line-height: 1.45; }
@@ -172,7 +172,7 @@ th:first-child, td:first-child { padding-left: 26px; }
 th:last-child, td:last-child { padding-right: 26px; }
 td { padding: 16px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; font-size: 11px; }
 tbody tr { cursor: pointer; transition: background .18s ease; }
-tbody tr:hover, tbody tr.is-selected { background: rgba(217,255,99,0.055); }
+tbody tr:hover, tbody tr.is-selected { background: rgba(24,169,87,0.09); }
 tbody tr.is-selected { box-shadow: inset 2px 0 0 var(--acid); }
 .raw-cell { max-width: 280px; color: #d3d6cf; line-height: 1.45; }
 .muted-cell { color: var(--muted); }
@@ -278,7 +278,7 @@ tbody tr.is-selected { box-shadow: inset 2px 0 0 var(--acid); }
   thead { display: none; }
   tbody { display: grid; gap: 8px; }
   tbody tr { display: grid; grid-template-columns: 65px 1fr 34px; grid-template-areas: "signal raw open" "city city open" "street street open"; gap: 7px 10px; padding: 14px; border: 1px solid var(--line); border-radius: 13px; }
-  tbody tr.is-selected { box-shadow: inset 2px 0 0 var(--acid); border-color: rgba(217,255,99,.24); }
+  tbody tr.is-selected { box-shadow: inset 2px 0 0 var(--acid); border-color: rgba(24,169,87,.32); }
   td { display: block; padding: 0 !important; border: 0; }
   td:nth-child(1) { grid-area: signal; }
   td:nth-child(2) { grid-area: raw; max-width: none; }

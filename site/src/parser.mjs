@@ -19,6 +19,13 @@ const PREVIEW_STREETS = [
     street_type: 'проспект',
     street_name: 'Мангилик Ел',
     districts_by_house: { '47': 'Есиль' }
+  },
+  {
+    city: 'Шымкент',
+    aliases: ['тауке хана', 'тәуке хан', 'тауке хан'],
+    street_type: 'проспект',
+    street_name: 'Тауке хана',
+    districts_by_house: { '133б': 'Аль-Фарабийский' }
   }
 ];
 
@@ -118,13 +125,14 @@ function similarity(left, right) {
 }
 
 function enrichPreviewStreet(raw, parsed) {
-  if (!parsed.city || parsed.street_name) return;
+  if (!parsed.city) return;
   const normalized = normalizePreviewText(raw);
   const cityPrefix = normalizePreviewText(parsed.city);
-  const match = normalized.match(new RegExp(`^${escapeRegExp(cityPrefix)}\\s+(.+?)\\s+(\\d+[a-zа-я]?)\\s+(?:квартира|кв)(?=\\s|$)`, 'iu'));
-  if (!match) return;
+  const bareMatch = normalized.match(new RegExp(`^${escapeRegExp(cityPrefix)}\\s+(.+?)\\s+(\\d+[a-zа-я]?)\\s+(?:квартира|кв)(?=\\s|$)`, 'iu'));
+  const candidate = parsed.street_name ? normalizePreviewText(parsed.street_name) : bareMatch?.[1];
+  const house = normalizePreviewText(parsed.house ?? bareMatch?.[2] ?? '');
+  if (!candidate || !house) return;
 
-  const [, candidate, house] = match;
   const street = PREVIEW_STREETS.find((item) =>
     item.city === parsed.city
     && Math.max(...item.aliases.map((alias) => similarity(candidate, alias))) >= 0.8
