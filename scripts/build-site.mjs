@@ -8,6 +8,7 @@ const output = resolve(root, 'dist');
 
 await rm(output, { recursive: true, force: true });
 await mkdir(resolve(output, 'src'), { recursive: true });
+await mkdir(resolve(output, 'data'), { recursive: true });
 
 await Promise.all([
   cp(resolve(source, 'index.html'), resolve(output, 'index.html')),
@@ -16,7 +17,8 @@ await Promise.all([
   cp(resolve(source, 'src', 'parser.mjs'), resolve(output, 'src', 'parser.mjs')),
   cp(resolve(source, 'src', 'geocoder.mjs'), resolve(output, 'src', 'geocoder.mjs')),
   cp(resolve(source, 'src', 'api.mjs'), resolve(output, 'src', 'api.mjs')),
-  cp(resolve(source, 'src', 'ui-state.mjs'), resolve(output, 'src', 'ui-state.mjs'))
+  cp(resolve(source, 'src', 'ui-state.mjs'), resolve(output, 'src', 'ui-state.mjs')),
+  cp(resolve(source, 'data', 'kato-cities.json'), resolve(output, 'data', 'kato-cities.json'))
 ]);
 
 console.log('Built static Site into dist/');
