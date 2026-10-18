@@ -26,6 +26,13 @@ const PREVIEW_STREETS = [
     street_type: 'проспект',
     street_name: 'Тауке хана',
     districts_by_house: { '133б': 'Аль-Фарабийский' }
+  },
+  {
+    city: 'Караганда',
+    aliases: ['ерубаева', 'саттара ерубаева', 'ерубаев'],
+    street_type: 'улица',
+    street_name: 'Саттара Ерубаева',
+    districts_by_house: { '50': 'Казыбек би' }
   }
 ];
 
@@ -128,7 +135,7 @@ function enrichPreviewStreet(raw, parsed) {
   if (!parsed.city) return;
   const normalized = normalizePreviewText(raw);
   const cityPrefix = normalizePreviewText(parsed.city);
-  const bareMatch = normalized.match(new RegExp(`^${escapeRegExp(cityPrefix)}\\s+(.+?)\\s+(\\d+[a-zа-я]?)\\s+(?:квартира|кв)(?=\\s|$)`, 'iu'));
+  const bareMatch = normalized.match(new RegExp(`^${escapeRegExp(cityPrefix)}\\s+(.+?)\\s+(\\d+[a-zа-я]?)\\s+(?:квартира|кв)(?:\\s*\\d+)?(?=\\s|$)`, 'iu'));
   const candidate = parsed.street_name ? normalizePreviewText(parsed.street_name) : bareMatch?.[1];
   const house = normalizePreviewText(parsed.house ?? bareMatch?.[2] ?? '');
   if (!candidate || !house) return;

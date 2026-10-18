@@ -106,6 +106,25 @@
             </div>
           </div>
 
+          <form id="single-address-form" class="single-address-form">
+            <div class="single-address-copy">
+              <span>ПРОВЕРИТЬ ОДИН АДРЕС</span>
+              <strong>Введите адрес в свободной форме</strong>
+              <small>Например: Караганда, Ерубаева 50 квартира 80</small>
+            </div>
+            <div class="single-address-control">
+              <label class="visually-hidden" for="single-address-input">Адрес для проверки</label>
+              <input id="single-address-input" type="text" autocomplete="street-address" placeholder="Город, улица, дом, квартира" required />
+              <button id="single-address-button" class="button button--accent" type="submit">Разобрать адрес <span aria-hidden="true">→</span></button>
+            </div>
+            <p>Текст разбирается локально. Для уточнения улицы и дома выполняется один справочный запрос к OpenStreetMap.</p>
+          </form>
+
+          <section id="single-result" class="single-result" hidden aria-live="polite">
+            <div><span>РЕЗУЛЬТАТ · 14 ПОЛЕЙ JSON</span><button id="copy-json-button" type="button">Копировать</button></div>
+            <pre id="single-json"></pre>
+          </section>
+
           <div id="notice" class="notice" role="status" aria-live="polite">
             <span>LOCAL MODE</span>
             Файл читается в памяти браузера. Для публичного preview используйте только synthetic/redacted данные.
@@ -183,8 +202,8 @@
         </form>
 
         <div class="inspector-foot">
-          <span>Heuristic review score</span>
-          <p>Confidence помогает выстроить очередь, но не является официальной точностью.</p>
+          <span>Оценка полноты разбора</span>
+          <p>Показывает, сколько элементов адреса удалось определить. Это не юридическая гарантия точности.</p>
         </div>
       </aside>
     </main>

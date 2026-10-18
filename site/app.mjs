@@ -1,5 +1,6 @@
 import { detectRuntime, parseViaRuntime } from './src/api.mjs';
 import { applyRecordEdit, assertUploadSize, createEditOverlay, parseUpload, reconcileSelectedIndex, toDownloadJson } from './src/ui-state.mjs';
+import { parseOneAddress } from './src/geocoder.mjs';
 
 const demoInput = Object.freeze([
   { id: 'demo-001', raw_address: 'Астана манглик ел 47 квартира 57' },
@@ -43,7 +44,13 @@ const elements = {
   rawAddress: document.querySelector('#raw-address'),
   confidence: document.querySelector('#record-confidence'),
   editor: document.querySelector('#editor-form'),
-  saveButton: document.querySelector('#save-button')
+  saveButton: document.querySelector('#save-button'),
+  singleForm: document.querySelector('#single-address-form'),
+  singleInput: document.querySelector('#single-address-input'),
+  singleButton: document.querySelector('#single-address-button'),
+  singleResult: document.querySelector('#single-result'),
+  singleJson: document.querySelector('#single-json'),
+  copyJsonButton: document.querySelector('#copy-json-button')
 };
 
 const backgroundElements = [
@@ -175,7 +182,14 @@ function renderInspector() {
     const manual = Object.hasOwn(state.edits.get(state.selected) ?? {}, field);
     const source = manual ? 'manual' : (detail?.source ?? (record?.[field] == null ? 'unknown' : 'heuristic'));
     badge.dataset.source = source;
-    badge.textContent = ({ text: 'Из текста', gazetteer: 'По справочнику', manual: 'Правка оператора', heuristic: 'Эвристика', unknown: 'Не определено' })[source] ?? 'Не определено';
+    badge.textContent = ({
+      text: 'Распознано из текста',
+      gazetteer: 'Найдено по справочнику',
+      osm: 'Найдено в OpenStreetMap',
+      manual: 'Изменено вручную',
+      heuristic: 'Распознано автоматически',
+      unknown: 'Не определено'
+    })[source] ?? 'Не определено';
     badge.title = detail?.span ? `Позиции в исходной строке: ${detail.span[0]}–${detail.span[1]}` : '';
   }
   if (!record) {
@@ -276,8 +290,43 @@ function setBusy(busy) {
   state.busy = busy;
   elements.demoButton.disabled = busy;
   elements.fileInput.disabled = busy;
+  elements.singleButton.disabled = busy;
   document.querySelector('.workbench').setAttribute('aria-busy', String(busy));
 }
+
+elements.singleForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const rawAddress = elements.singleInput.value.trim();
+  if (!rawAddress || state.busy) return;
+  setBusy(true);
+  setNotice('Разбираем адрес и проверяем его по OpenStreetMap…');
+  try {
+    const item = await parseOneAddress(rawAddress);
+    state.records = [Object.freeze(item.result)];
+    state.explanations = [item];
+    state.edits.clear();
+    state.selected = 0;
+    state.filter = 'all';
+    elements.singleJson.textContent = JSON.stringify(item.result, null, 2);
+    elements.singleResult.hidden = false;
+    setNotice(item.warnings.includes('osm_unavailable')
+      ? 'Адрес разобран локально. OpenStreetMap временно недоступен — результат может быть неполным.'
+      : item.warnings.includes('osm_not_found')
+        ? 'Адрес разобран, но точное совпадение в OpenStreetMap не найдено.'
+        : 'Адрес разобран и дополнен справочными данными OpenStreetMap.');
+    render();
+    selectRecord(0, true);
+    elements.singleResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } finally {
+    setBusy(false);
+  }
+});
+
+elements.copyJsonButton.addEventListener('click', async () => {
+  await navigator.clipboard.writeText(elements.singleJson.textContent);
+  elements.copyJsonButton.textContent = 'Скопировано';
+  window.setTimeout(() => { elements.copyJsonButton.textContent = 'Копировать'; }, 1600);
+});
 
 elements.demoButton.addEventListener('click', () => {
   loadBatch(demoInput, 'Загружен демонстрационный пакет синтетических адресов.');
@@ -384,6 +433,13 @@ if (state.runtime.mode === 'api') {
 } else {
   document.querySelector('#ready-chip').textContent = 'демо готово';
   elements.exportOriginalButton.textContent = 'Без правок';
+  document.querySelector('#data-boundary').textContent = 'JSON-пакеты остаются в браузере';
+  document.querySelector('#runtime-description').textContent = 'При одиночной проверке только введённый адрес отправляется в OpenStreetMap для справочного поиска.';
+  const attribution = document.querySelector('#data-attribution');
+  const link = document.createElement('a');
+  link.href = 'https://www.openstreetmap.org/copyright';
+  link.textContent = '© OpenStreetMap contributors · ODbL';
+  attribution.replaceChildren(link);
 }
 await loadBatch(demoInput, state.runtime.mode === 'api'
   ? 'Сервис подключён. Синтетический демо-пакет обработан сервером.'

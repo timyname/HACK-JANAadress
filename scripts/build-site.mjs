@@ -14,6 +14,7 @@ await Promise.all([
   cp(resolve(source, 'styles.css'), resolve(output, 'styles.css')),
   cp(resolve(source, 'app.mjs'), resolve(output, 'app.mjs')),
   cp(resolve(source, 'src', 'parser.mjs'), resolve(output, 'src', 'parser.mjs')),
+  cp(resolve(source, 'src', 'geocoder.mjs'), resolve(output, 'src', 'geocoder.mjs')),
   cp(resolve(source, 'src', 'api.mjs'), resolve(output, 'src', 'api.mjs')),
   cp(resolve(source, 'src', 'ui-state.mjs'), resolve(output, 'src', 'ui-state.mjs'))
 ]);
