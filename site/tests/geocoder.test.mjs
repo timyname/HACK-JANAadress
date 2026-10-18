@@ -95,7 +95,7 @@ test('a settlement absent from the old demo list is resolved through KATO', asyn
   const fakeFetch = async (url) => url.pathname.includes('/reverse')
     ? { ok: true, json: async () => ({ address: { district: 'Балхаш' } }) }
     : { ok: true, json: async () => [{ lat: '46.8', lon: '74.9', address: {
-      house_number: '10', road: 'улица Ленина', town: 'Балхаш', district: 'Балхаш', state: 'Карагандинская область'
+      house_number: '10', road: 'улица Ленина', town: 'Балхаш Г.А.', district: 'Балхаш', state: 'Карагандинская область'
     } }] };
   const item = await parseOneAddress('Балхаш Ленина 10 25', fakeFetch, kato);
   assert.equal(item.result.city, 'Балхаш');

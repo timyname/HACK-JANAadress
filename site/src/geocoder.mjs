@@ -119,7 +119,7 @@ export function mergeOpenStreetMap(record, place) {
   const updates = {
     province: address.state ?? address.region ?? null,
     city: cityValue,
-    district: normalized(districtValue) === normalized(cityValue ?? record.city) ? null : districtValue,
+    district: [cityValue, record.city].some((value) => normalized(districtValue) === normalized(value)) ? null : districtValue,
     living_area: address.neighbourhood ?? address.residential ?? null,
     street_type: streetType(address.road) ?? area.street_type ?? null,
     street_name: streetName(address.road) ?? area.street_name ?? null,
