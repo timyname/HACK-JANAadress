@@ -93,8 +93,12 @@ function visibleRecords() {
 function setNotice(message, error = false) {
   elements.notice.classList.toggle('is-error', error);
   const label = document.createElement('span');
+  label.className = 'notice-label';
   label.textContent = error ? 'CHECK INPUT' : (state.runtime.mode === 'api' ? 'SERVER MODE' : 'LOCAL MODE');
-  elements.notice.replaceChildren(label, document.createTextNode(message));
+  const messageText = document.createElement('span');
+  messageText.className = 'notice-message';
+  messageText.textContent = message;
+  elements.notice.replaceChildren(label, messageText);
 }
 
 function renderMetrics() {

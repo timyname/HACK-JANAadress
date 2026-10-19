@@ -3,6 +3,10 @@ import { canonicalFields, parseBatch } from './parser.mjs';
 const SEARCH_ENDPOINT = 'https://nominatim.openstreetmap.org/search';
 const REVERSE_ENDPOINT = 'https://nominatim.openstreetmap.org/reverse';
 let katoRowsPromise;
+let verifiedContextsPromise;
+let districtManifestPromise;
+const districtIndexPromises = new Map();
+const katoAliasIndexes = new WeakMap();
 
 function normalized(value) {
   return String(value ?? '').normalize('NFKC').toLocaleLowerCase('ru-RU')
@@ -19,17 +23,107 @@ async function loadKatoCities(fetcher = fetch) {
   return katoRowsPromise;
 }
 
+async function loadVerifiedContexts(fetcher = fetch) {
+  verifiedContextsPromise ??= fetcher(new URL('../data/verified-address-contexts.json', import.meta.url))
+    .then((response) => {
+      if (!response.ok) throw new Error(`Verified contexts HTTP ${response.status}`);
+      return response.json();
+    })
+    .then((payload) => Array.isArray(payload?.contexts) ? payload.contexts : [])
+    .catch(() => []);
+  return verifiedContextsPromise;
+}
+
+async function loadDistrictIndex(city, fetcher = fetch) {
+  if (!city) return null;
+  districtManifestPromise ??= fetcher(new URL('../data/district-index/manifest.json', import.meta.url))
+    .then((response) => {
+      if (!response.ok) throw new Error(`District manifest HTTP ${response.status}`);
+      return response.json();
+    })
+    .catch(() => ({ cities: {} }));
+  const manifest = await districtManifestPromise;
+  const entry = manifest?.cities?.[normalized(city)];
+  if (!entry?.file) return null;
+  if (!districtIndexPromises.has(entry.file)) {
+    districtIndexPromises.set(entry.file, fetcher(new URL(`../data/district-index/${entry.file}`, import.meta.url))
+      .then((response) => {
+        if (!response.ok) throw new Error(`District index HTTP ${response.status}`);
+        return response.json();
+      })
+      .catch(() => null));
+  }
+  return districtIndexPromises.get(entry.file);
+}
+
+function stripPlaceMarker(value) {
+  return normalized(value)
+    .replace(/^(?:г|город|қ|қала|с|село|а|ауыл|п|поселок|посёлок)\s+/u, '')
+    .replace(/\s+(?:қ|қала|а|ауыл)$/u, '')
+    .trim();
+}
+
+function katoAliasIndex(rows) {
+  if (katoAliasIndexes.has(rows)) return katoAliasIndexes.get(rows);
+  const aliases = new Map();
+  for (const row of rows) {
+    for (const alias of new Set([
+      normalized(row.normalized),
+      stripPlaceMarker(row.normalized),
+      normalized(row.canonical),
+      stripPlaceMarker(row.canonical)
+    ])) {
+      if (!alias) continue;
+      if (!aliases.has(alias)) aliases.set(alias, []);
+      aliases.get(alias).push(row);
+    }
+  }
+  katoAliasIndexes.set(rows, aliases);
+  return aliases;
+}
+
 function findKatoPlace(rawAddress, rows) {
   const words = normalized(rawAddress).split(' ').filter(Boolean);
   if (!words.length || !Array.isArray(rows)) return null;
-  const aliases = new Map(rows.map((row) => [row.normalized, row]));
+  const aliases = katoAliasIndex(rows);
+
+  // Full addresses are commonly comma-separated as country, province,
+  // settlement, district, street, house. Resolve the settlement segment
+  // against KATO and use the province already present in the same string to
+  // distinguish repeated names such as Абай or Айтей.
+  const segments = rawAddress.split(/[,;]/u).map((part) => part.trim()).filter(Boolean);
+  const provinceIndex = segments.findIndex((part) => /(?:область|облысы)/iu.test(part));
+  const structured = provinceIndex >= 0 ? segments.slice(provinceIndex + 1) : segments;
+  for (const segment of structured) {
+    if (/(?:район|ауданы|улица|көшесі|проспект|переулок|дом|үй|квартира)/iu.test(segment)) continue;
+    const candidates = new Set();
+    for (const key of [normalized(segment), stripPlaceMarker(segment)]) {
+      for (const row of aliases.get(key) ?? []) candidates.add(row);
+    }
+    if (!candidates.size) continue;
+    const provinceScoped = [...candidates].filter((row) =>
+      row.province && containsNormalizedPhrase(rawAddress, row.province)
+    );
+    const scoped = provinceScoped.length ? provinceScoped : [...candidates];
+    const identities = new Map();
+    for (const row of scoped) {
+      identities.set(`${normalized(row.canonical)}\u0000${normalized(row.province)}`, row);
+    }
+    if (identities.size === 1) return identities.values().next().value;
+  }
+
+  // Preserve the compact manual-input path ("Караганда Ерубаева 50") where
+  // the locality is a prefix rather than its own comma-separated component.
   const starts = [0];
   if (['казахстан', 'қазақстан', 'рк', 'г', 'город', 'қала'].includes(words[0])) starts.push(1);
   if (starts.includes(1) && ['г', 'город', 'қала'].includes(words[1])) starts.push(2);
   for (const start of [...new Set(starts)]) {
     for (let length = Math.min(9, words.length - start); length > 0; length -= 1) {
-      const row = aliases.get(words.slice(start, start + length).join(' '));
-      if (row) return row;
+      const matches = aliases.get(words.slice(start, start + length).join(' ')) ?? [];
+      const identities = new Map(matches.map((row) => [
+        `${normalized(row.canonical)}\u0000${normalized(row.province)}`, row
+      ]));
+      if (identities.size === 1) return identities.values().next().value;
     }
   }
   return null;
@@ -37,7 +131,7 @@ function findKatoPlace(rawAddress, rows) {
 
 function districtName(value) {
   if (!value) return null;
-  return value.replace(/^район\s+(?:имени\s+)?/iu, '').replace(/\s+(?:район|ауданы)$/iu, '').trim() || null;
+  return value.replace(/^район\s+(?:(?:имени)\s+|им\.?\s*)?/iu, '').replace(/\s+(?:район|ауданы)$/iu, '').trim() || null;
 }
 
 function streetName(value) {
@@ -63,12 +157,75 @@ function sourceMeta(record, source) {
   return fields;
 }
 
+function referenceConfidence(record) {
+  const weights = {
+    province: 0.08, city: 0.16, district: 0.04, living_area: 0.05,
+    street_type: 0.08, street_name: 0.22, house: 0.19,
+    apartment: 0.06, entrance: 0.03, floor: 0.03, landmark: 0.03
+  };
+  let score = 0.08;
+  for (const [field, weight] of Object.entries(weights)) {
+    if (record[field] != null) score += weight;
+  }
+  return Number(Math.min(0.96, score).toFixed(4));
+}
+
 function numberKey(value) {
   return normalized(value).replace(/\s*(?:корпус|корп|к|строение|стр|дробь)\s*/gu, '/');
 }
 
 function houseMatches(expected, actual) {
   return Boolean(expected && actual && numberKey(expected) === numberKey(actual));
+}
+
+function containsNormalizedPhrase(text, phrase) {
+  return ` ${normalized(text)} `.includes(` ${normalized(phrase)} `);
+}
+
+function findVerifiedContext(rawAddress, record, candidates, contexts) {
+  if (!record.city || !Array.isArray(contexts)) return null;
+  for (const context of contexts) {
+    if (normalized(context.city) !== normalized(record.city)) continue;
+    const aliases = [context.street_name, ...(context.aliases ?? [])].filter(Boolean);
+    if (!aliases.some((alias) => containsNormalizedPhrase(rawAddress, alias))) continue;
+    for (const candidate of candidates) {
+      const house = (context.houses ?? []).find((item) => houseMatches(candidate.house, item.house));
+      if (house) return { context, house, candidate };
+    }
+  }
+  return null;
+}
+
+function applyVerifiedContext(item, match) {
+  if (!match) return item;
+  const { context, candidate } = match;
+  const updates = {
+    province: context.province ?? null,
+    city: context.city,
+    district: districtName(context.district),
+    street_type: context.street_type,
+    street_name: context.street_name,
+    house: candidate.house,
+    apartment: candidate.apartment
+  };
+  for (const [field, value] of Object.entries(updates)) {
+    if (value == null) continue;
+    item.result[field] = value;
+    item.fields[field] = { source: 'official_reference' };
+  }
+  item.result.confidence = Math.max(item.result.confidence, 0.94);
+  return item;
+}
+
+function applyDistrictIndex(item, index) {
+  if (!index || item.result.district || !item.result.street_name || !item.result.house) return item;
+  const houses = index.addresses?.[normalized(item.result.street_name)];
+  const district = houses?.[numberKey(item.result.house)];
+  if (!district) return item;
+  item.result.district = districtName(district);
+  item.fields.district = { source: 'offline_gazetteer' };
+  item.result.confidence = Math.max(item.result.confidence, 0.94);
+  return item;
 }
 
 function cleanExplicitQuery(rawAddress) {
@@ -162,7 +319,13 @@ async function addDistrictFromReverse(item, place, fetcher) {
   return item;
 }
 
-export async function parseOneAddress(rawAddress, fetcher = fetch, katoLoader = loadKatoCities) {
+export async function parseOneAddress(
+  rawAddress,
+  fetcher = fetch,
+  katoLoader = loadKatoCities,
+  verifiedLoader = loadVerifiedContexts,
+  districtLoader = loadDistrictIndex
+) {
   const [record] = parseBatch([{ id: 'manual-001', raw_address: rawAddress }]);
   const katoPlace = findKatoPlace(rawAddress, await katoLoader(fetcher));
   if (katoPlace) {
@@ -174,13 +337,25 @@ export async function parseOneAddress(rawAddress, fetcher = fetch, katoLoader = 
     record.street_type = null;
     record.street_name = null;
   }
+  const candidates = buildCandidates(rawAddress, record);
+  const verified = findVerifiedContext(
+    rawAddress,
+    record,
+    candidates,
+    await verifiedLoader(fetcher)
+  );
+  const districtIndex = await districtLoader(record.city, fetcher);
   const baseFields = sourceMeta(record, 'text');
   if (katoPlace) {
     baseFields.city = { source: 'kato' };
     if (record.province) baseFields.province = { source: 'kato' };
   }
+  const baseItem = applyVerifiedContext(
+    { result: record, fields: baseFields, warnings: [] },
+    verified
+  );
   try {
-    for (const candidate of buildCandidates(rawAddress, record)) {
+    for (const candidate of candidates) {
       const places = await requestJson(fetcher, SEARCH_ENDPOINT, {
         format: 'jsonv2', addressdetails: '1', limit: '1', countrycodes: 'kz', 'accept-language': 'ru,kk', q: candidate.query
       });
@@ -199,10 +374,54 @@ export async function parseOneAddress(rawAddress, fetcher = fetch, katoLoader = 
         item.result.apartment = candidate.apartment;
         item.fields.apartment = { source: 'structure' };
       }
-      return addDistrictFromReverse(item, place, fetcher);
+      return applyVerifiedContext(
+        applyDistrictIndex(await addDistrictFromReverse(item, place, fetcher), districtIndex),
+        verified
+      );
     }
-    return { result: record, fields: baseFields, warnings: ['osm_not_found'] };
+    baseItem.warnings.push('osm_not_found');
+    return baseItem;
   } catch {
-    return { result: record, fields: baseFields, warnings: ['osm_unavailable'] };
+    baseItem.warnings.push('osm_unavailable');
+    return baseItem;
   }
+}
+
+export async function parseBatchWithReferences(
+  input,
+  fetcher = fetch,
+  katoLoader = loadKatoCities,
+  verifiedLoader = loadVerifiedContexts,
+  districtLoader = loadDistrictIndex
+) {
+  const started = performance.now();
+  const [katoRows, contexts] = await Promise.all([
+    katoLoader(fetcher),
+    verifiedLoader(fetcher)
+  ]);
+  const records = parseBatch(input);
+  const enriched = await Promise.all(records.map(async (record) => {
+    const katoPlace = findKatoPlace(record.raw_address, katoRows);
+    if (katoPlace) {
+      record.city = katoPlace.canonical;
+      record.province = katoPlace.province || record.province;
+    }
+    const fields = sourceMeta(record, 'text');
+    if (katoPlace) {
+      fields.city = { source: 'kato' };
+      if (record.province) fields.province = { source: 'kato' };
+    }
+    record.confidence = referenceConfidence(record);
+    const candidates = buildCandidates(record.raw_address, record);
+    const verified = findVerifiedContext(record.raw_address, record, candidates, contexts);
+    const districtIndex = await districtLoader(record.city, fetcher);
+    const item = applyVerifiedContext({ result: record, fields, warnings: [] }, verified);
+    applyDistrictIndex(item, districtIndex);
+    item.result.confidence = Math.max(item.result.confidence, referenceConfidence(item.result));
+    return item;
+  }));
+  return {
+    records: enriched,
+    meta: { count: enriched.length, seconds: Number(((performance.now() - started) / 1000).toFixed(4)) }
+  };
 }

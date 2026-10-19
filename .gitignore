@@ -1,15 +1,50 @@
-# Large runtime data is included in the offline ZIP only.
-data/public/gazetteer.sqlite
+# Local brainstorming/browser companion state
+.superpowers/
 
-# Local and generated files.
+# Generated renders and temporary extraction artifacts
+output/
+tmp/
+
+# Official/private hackathon datasets and derived sensitive artifacts
+data/private/
+data/uploads/
+data/temp/
+data/public/raw/
+data/public/*.sqlite
+*.private.json
+
+# Organizer source documents stay local-controlled until redistribution is approved
+docs/source/*.docx
+docs/source/*.pdf
+docs/source/sample_input.json
+docs/source/sample_output.json
+
+# Secrets and local configuration
 .env
 .env.*
-.venv/
+!.env.example
+
+# Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node/frontend
 node_modules/
 dist/
 coverage/
+playwright-report/
+test-results/
+.playwright-cli/
+.sites-deploy/
+
+# Editors and OS
+.idea/
+.vscode/
 .DS_Store
-output/
+Thumbs.db
+desktop.ini

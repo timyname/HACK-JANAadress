@@ -1159,14 +1159,91 @@ def parse_record(
         if metadata["district"].get("source") == "text" and explicit_district_span:
             protected_spans.append(tuple(explicit_district_span))
         admin_text = _mask_spans(raw, protected_spans)
-        admin = gazetteer.find_admin(admin_text) or {}
+        city_resolver = getattr(gazetteer, "resolve_city", None)
+        if callable(city_resolver):
+            for segment_match in re.finditer(r"[^,;]+", raw):
+                surface = segment_match.group(0).strip()
+                if not surface:
+                    continue
+                leading = len(segment_match.group(0)) - len(segment_match.group(0).lstrip())
+                span = (
+                    segment_match.start() + leading,
+                    segment_match.start() + leading + len(surface),
+                )
+                if any(
+                    protected is not None
+                    and span[0] < protected[1]
+                    and span[1] > protected[0]
+                    for protected in protected_spans
+                ):
+                    continue
+                normalized_surface = normalize_for_match(surface)
+                if normalized_surface in {"казахстан", "қазақстан", "рк"}:
+                    continue
+                if re.search(
+                    r"(?:область|обл\.?|облысы|район|р-?н\.?|аудан|ауданы)",
+                    surface,
+                    _FLAGS,
+                ):
+                    continue
+                if re.match(
+                    r"(?:дом|д\.?|үй|квартира|кв\.?|пәтер|подъезд|этаж)\b",
+                    surface,
+                    _FLAGS,
+                ):
+                    continue
+                resolved_city = city_resolver(
+                    surface,
+                    province=values["province"],
+                    district=values["district"],
+                ) or {}
+                if resolved_city.get("matched") and not resolved_city.get("ambiguous"):
+                    resolved_value, resolved_meta = _coerce_gazetteer_field(
+                        resolved_city["value"],
+                        str(resolved_city.get("source") or "gazetteer"),
+                    )
+                    resolved_meta.pop("span", None)
+                    extra = {
+                        key: resolved_city[key]
+                        for key in (
+                            "score", "matched", "ambiguous", "parent_match",
+                            "language", "kato_code",
+                        )
+                        if key in resolved_city
+                    }
+                    set_value(
+                        "city", resolved_value, resolved_meta.pop("source"), span,
+                        overwrite=True, **extra, **resolved_meta,
+                    )
+                    break
+        contextual_admin = getattr(gazetteer, "find_admin_contextual", None)
+        admin = (
+            contextual_admin(
+                admin_text,
+                province=values["province"],
+                district=values["district"],
+            )
+            if callable(contextual_admin)
+            else gazetteer.find_admin(admin_text)
+        ) or {}
         for field in ("province", "city", "living_area"):
             if field == "living_area" and ambiguous_complex:
+                continue
+            if values[field] is not None:
+                if (
+                    field in admin.get("ambiguous_fields", ())
+                    and not (
+                        metadata[field].get("source") == "gazetteer"
+                        and metadata[field].get("matched") is True
+                        and metadata[field].get("ambiguous") is False
+                    )
+                ):
+                    warnings.append(f"gazetteer_{field}_ambiguous")
                 continue
             if field in admin.get("ambiguous_fields", ()):
                 warnings.append(f"gazetteer_{field}_ambiguous")
                 continue
-            if values[field] is not None or field not in admin:
+            if field not in admin:
                 continue
             field_value, field_meta = _coerce_gazetteer_field(
                 admin[field], "gazetteer"
@@ -1248,6 +1325,21 @@ def parse_record(
                 city=values["city"],
                 province=values["province"],
             ) or {}
+            # A rural district is the parent of a settlement, not a child of
+            # it. If both parents over-constrain an otherwise unique district,
+            # retry inside the already confirmed province only. Urban district
+            # names that are not unique in that province remain ambiguous.
+            if (
+                resolved.get("parent_conflict")
+                and values["city"] is not None
+                and values["province"] is not None
+            ):
+                province_resolved = resolver(
+                    district_fragment,
+                    province=values["province"],
+                ) or {}
+                if province_resolved.get("matched") and not province_resolved.get("ambiguous"):
+                    resolved = province_resolved
             if resolved.get("ambiguous"):
                 warning = (
                     "gazetteer_district_parent_conflict"
@@ -1366,6 +1458,21 @@ def parse_record(
                     **shared_extra,
                     **field_meta,
                 )
+
+        # A broad admin-name scan may initially see several same-named
+        # settlements.  A later street/house lookup can resolve one of them
+        # inside the confirmed parent context.  Do not keep the stale warning
+        # once that contextual gazetteer result is explicit and unambiguous.
+        city_meta = metadata["city"]
+        if (
+            city_meta.get("source") == "gazetteer"
+            and city_meta.get("matched") is True
+            and city_meta.get("ambiguous") is False
+        ):
+            warnings = [
+                warning for warning in warnings
+                if warning != "gazetteer_city_ambiguous"
+            ]
 
     score = _confidence(values, metadata, warnings)
     result = {

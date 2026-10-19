@@ -7,6 +7,7 @@ COPY backend /app/backend
 COPY tools/parse_stream.py /app/tools/parse_stream.py
 COPY site/index.html site/styles.css site/app.mjs /app/site/
 COPY site/src /app/site/src
+COPY site/data /app/site/data
 COPY data/public /app/data/public
 RUN chmod 0444 /app/data/public/gazetteer.sqlite && test -r /app/data/public/gazetteer.sqlite
 USER jana

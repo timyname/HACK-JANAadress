@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-18",
+  "contexts": [
+    {
+      "source_id": "qarobl/geonim/213381",
+      "province": "Карагандинская область",
+      "city": "Караганда",
+      "district": "район им.Казыбек би",
+      "street_type": "улица",
+      "street_name": "Саттара Ерубаева",
+      "aliases": [
+        "Ерубаева",
+        "Ерубаев",
+        "Саттар Ерубаев",
+        "Саттара Ерубаева"
+      ],
+      "evidence": [
+        "https://geo.qarobl.kz/",
+        "https://www.karaganda-region.kz/rus/vibory_1_1_1/"
+      ],
+      "houses": [
+        {
+          "source_id": "qarobl/addreg/0201300205273606",
+          "house": "50",
+          "longitude": 73.09408845791916,
+          "latitude": 49.80596553548537
+        },
+        {
+          "source_id": "qarobl/addreg/0201300205273708",
+          "house": "50/2",
+          "longitude": 73.0953370539813,
+          "latitude": 49.80637169135588
+        },
+        {
+          "source_id": "qarobl/addreg/0201300205273804",
+          "house": "50/3",
+          "longitude": 73.0949242117351,
+          "latitude": 49.80598503104517
+        },
+        {
+          "source_id": "qarobl/addreg/0201300209538909",
+          "house": "50/5",
+          "longitude": 73.09360513041136,
+          "latitude": 49.80675509937174
+        },
+        {
+          "source_id": "qarobl/addreg/0201300209633402",
+          "house": "50/6",
+          "longitude": 73.09475725265054,
+          "latitude": 49.80646422780484
+        }
+      ]
+    }
+  ]
+}

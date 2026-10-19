@@ -175,6 +175,65 @@ class GazetteerTests(unittest.TestCase):
             self.assertIn("district", result["ambiguous_fields"])
             gazetteer.close()
 
+    def test_contextual_admin_and_parser_resolve_same_named_settlement(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "gazetteer.sqlite3"
+            create_database(
+                path,
+                [
+                    AdminRecord(
+                        "province", "Северная", aliases=("Северная область",),
+                        province="Северная",
+                    ),
+                    AdminRecord(
+                        "province", "Южная", aliases=("Южная область",),
+                        province="Южная",
+                    ),
+                    AdminRecord(
+                        "city", "Абай", kato_code="111111111",
+                        province="Северная", city="Абай", district="Северный район",
+                    ),
+                    AdminRecord(
+                        "city", "Абай", kato_code="222222222",
+                        province="Южная", city="Абай", district="Карасайский район",
+                    ),
+                    AdminRecord(
+                        "district", "Карасайский район", aliases=("Карасайский",),
+                        kato_code="222220000", province="Южная",
+                        city="Каскелен", district="Карасайский район",
+                    ),
+                ],
+                [StreetRecord(
+                    "way/1", "Абая", street_type="улица", city="Абай",
+                    province="Южная", districts=("Карасайский район",),
+                )],
+                [AddressPointRecord("node/11", "way/1", "11", district="Карасайский район")],
+                [],
+            )
+            with Gazetteer(path) as gazetteer:
+                contextual = gazetteer.find_admin_contextual(
+                    "Южная область, Абай", province="Южная",
+                    district="Карасайский район",
+                )
+                parsed = parse_record({
+                    "id": "contextual",
+                    "raw_address": (
+                        "Казахстан, Южная область, Абай, Карасайский район, "
+                        "улица Абая, дом 11"
+                    ),
+                }, gazetteer=gazetteer, explain=True)
+
+        self.assertEqual(contextual["city"]["value"], "Абай")
+        self.assertEqual(contextual["city"]["kato_code"], "222222222")
+        self.assertEqual(parsed["result"]["province"], "Южная")
+        self.assertEqual(parsed["result"]["city"], "Абай")
+        self.assertEqual(parsed["result"]["district"], "Карасайский")
+        self.assertEqual(parsed["result"]["street_name"], "Абая")
+        self.assertEqual(parsed["result"]["house"], "11")
+        self.assertGreaterEqual(parsed["result"]["confidence"], 0.75)
+        self.assertNotIn("gazetteer_city_ambiguous", parsed["warnings"])
+        self.assertNotIn("gazetteer_district_parent_conflict", parsed["warnings"])
+
     def test_resolve_district_requires_matching_parent_and_keeps_catalog_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "gazetteer.sqlite3"

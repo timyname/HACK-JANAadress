@@ -284,6 +284,80 @@ class Gazetteer:
         self.close()
 
     def find_admin(self, text: str) -> dict[str, Any]:
+        return self._find_admin(text)
+
+    def find_admin_contextual(
+        self,
+        text: str,
+        *,
+        province: str | None = None,
+        district: str | None = None,
+    ) -> dict[str, Any]:
+        """Resolve administrative names with already parsed parent context.
+
+        Kazakhstan contains many same-named settlements.  A province and an
+        explicit district can safely narrow those candidates without turning
+        a successful contextual match into a permanent ambiguity warning.
+        """
+
+        return self._find_admin(text, province=province, district=district)
+
+    def resolve_city(
+        self,
+        fragment: str,
+        *,
+        province: str | None = None,
+        district: str | None = None,
+    ) -> dict[str, Any]:
+        """Resolve one explicit settlement component inside known parents."""
+
+        rows = tuple(
+            row for row in self._admin_by_alias.get(normalize(fragment), ())
+            if row["field"] == "city"
+        )
+        if not rows:
+            return {"source": "gazetteer", "matched": False, "ambiguous": False, "score": 0.0}
+
+        matches = rows
+        for field, value, key in (
+            ("province", province, normalize),
+            ("district", district, _district_name_key),
+        ):
+            if not value:
+                continue
+            expected = key(value)
+            scoped = tuple(
+                row for row in matches
+                if row[field] and key(str(row[field])) == expected
+            )
+            if not scoped:
+                return {
+                    "source": "gazetteer", "matched": True, "ambiguous": True,
+                    "parent_conflict": True, "score": 1.0,
+                    "candidate_count": len(matches),
+                }
+            matches = scoped
+
+        identities = {_admin_identity(row): row for row in matches}
+        if len(identities) != 1:
+            return {
+                "source": "gazetteer", "matched": True, "ambiguous": True,
+                "score": 1.0, "candidate_count": len(identities),
+            }
+        row = next(iter(identities.values()))
+        return {
+            "value": row["canonical"], "source": "gazetteer", "span": None,
+            "matched": True, "ambiguous": False, "parent_match": bool(province or district),
+            "score": 1.0, "language": row["language"], "kato_code": row["kato_code"],
+        }
+
+    def _find_admin(
+        self,
+        text: str,
+        *,
+        province: str | None = None,
+        district: str | None = None,
+    ) -> dict[str, Any]:
         normalized_text, offsets = _normalize_with_offsets(text)
         candidates: dict[str, list[dict[str, Any]]] = {}
         tokens = tuple(_TOKEN.finditer(normalized_text))
@@ -307,6 +381,8 @@ class Gazetteer:
                         "language": row["language"],
                         "kato_code": row["kato_code"],
                         "_identity": _admin_identity(row),
+                        "_province": row["province"],
+                        "_district": row["district"],
                     }
                     candidates.setdefault(row["field"], []).append(item)
 
@@ -315,12 +391,34 @@ class Gazetteer:
         for field, matches in candidates.items():
             longest = max(len(item["matched"]) for item in matches)
             best = [item for item in matches if len(item["matched"]) == longest]
+            if field == "city":
+                contextual = best
+                if province:
+                    province_key = normalize(province)
+                    scoped = [
+                        item for item in contextual
+                        if item["_province"]
+                        and normalize(str(item["_province"])) == province_key
+                    ]
+                    if scoped:
+                        contextual = scoped
+                if district:
+                    district_key = _district_name_key(district)
+                    scoped = [
+                        item for item in contextual
+                        if item["_district"]
+                        and _district_name_key(str(item["_district"])) == district_key
+                    ]
+                    if scoped:
+                        contextual = scoped
+                best = contextual
             identities = {item["_identity"] for item in best}
             if len(identities) != 1:
                 ambiguous_fields.append(field)
                 continue
             result[field] = best[0]
-            result[field].pop("_identity")
+            for private_key in ("_identity", "_province", "_district"):
+                result[field].pop(private_key)
         if ambiguous_fields:
             result["ambiguous_fields"] = sorted(ambiguous_fields)
         return result
@@ -514,6 +612,7 @@ class Gazetteer:
             street_ids,
             house=house,
             include_source_id=include_source_id,
+            parent_scoped=province_scoped,
         )
 
     def fuzzy_lookup_street(
@@ -609,6 +708,7 @@ class Gazetteer:
         *,
         house: str | None = None,
         include_source_id: bool = True,
+        parent_scoped: bool = False,
     ) -> dict[str, Any]:
         """Build one conservative result from an already scoped candidate set."""
 
@@ -619,7 +719,7 @@ class Gazetteer:
         }
         if (
             (not normalized_city and len(normalized_cities) > 1)
-            or normalized_cities & self._ambiguous_city_names
+            or (not parent_scoped and normalized_cities & self._ambiguous_city_names)
         ):
             return {
                 "source": "gazetteer",

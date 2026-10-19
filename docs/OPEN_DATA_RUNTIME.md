@@ -10,6 +10,7 @@ Git and the runtime image.
 |---|---|---|---|---|
 | [KATO NK RK 11-2025](https://stat.gov.kz/ru/classifiers/statistical/21/) | Bureau of National Statistics of Kazakhstan; workbook updated 2026-09-18 | `province`, `city`, `district`, `living_area`; Russian canonical labels, Kazakh aliases, KATO code and hierarchy | [BNS reuse terms](https://stat.gov.kz/ru/description/) allow free reuse, modification and combination with attribution | Primary administrative catalogue. It has no streets, house numbers or geometries. Administrative containers are not emitted as cities. |
 | [Kazakhstan Geofabrik extract](https://download.geofabrik.de/asia/kazakhstan.html) | OpenStreetMap regional extract; snapshot through 2026-10-15T20:21:00Z | named roads, aliases, road geometry, administrative/place geometry, explicit `addr:*` nodes and building ways | [ODbL 1.0 and attribution](https://www.openstreetmap.org/copyright); Geofabrik updates daily | Primary geometry/street layer. Any distributed OSM-derived database needs OpenStreetMap attribution; ODbL share-alike obligations can apply to a public derivative database. OSM completeness and tagging are community supplied, not an official address register. Kazakhstan admin-level tagging is not treated as canonical: shapes are joined to KATO names/aliases. |
+| [Karaganda Region geoportal](https://geo.qarobl.kz/) plus [official Kazybek Bi boundary list](https://www.karaganda-region.kz/rus/vibory_1_1_1/) | Regional official address register and akimat publication; facts verified 2026-10-18 | exact city + street + house membership, street type, coordinates and district | Public official pages; bulk redistribution terms are not stated | A small source-attributed fact file is included, not a bulk scrape. It may fill a district only for an exact listed house. It must never infer the district for every house on the same street. |
 | [State Address Register description](https://www.gov.kz/org/adilet-akt/press/article/details/76721) and [public RKA lookup](https://data.egov.kz/services/rka) | Ministry/eGov; described as the official source of addresses and 16-digit RKA identifiers | Potential validation of settlements, geonyms, buildings and rooms | Public interactive/API lookup; no verified bulk download, bulk licence or update contract found | Do not scrape or ship. Reconsider only after obtaining documented bulk access and redistribution terms. |
 | [QazPost address API](https://open.post.kz/services/details/26) | QazPost | postcode/address/RKA lookup | Bearer token, rate limits, no verified bulk export/open redistribution licence | Not suitable for an offline redistributable snapshot. Optional online validation would be a separate product mode. |
 | [Postal index dataset](https://data.egov.kz/datasets/view?index=kazakstan_respublikasynyn_posh1) | Kazakhstan open-data portal | postcodes | Portal marks the dataset not current; annual cadence/API-key access and historic completeness complaints | Excluded from the core gazetteer. It cannot safely establish current address membership. |
@@ -35,6 +36,7 @@ $env:PYTHONIOENCODING = "utf-8"
 .\.venv\Scripts\python.exe tools\build_gazetteer.py `
   --kato data\public\raw\KATO_18.09.2026.xlsx `
   --osm data\public\raw\kazakhstan-2026-10-15.osm.pbf `
+  --verified-contexts data\public\verified-address-contexts.json `
   --manifest data\public\source-manifest.json `
   --output data\public\gazetteer.sqlite `
   --report data\public\build-report.json
@@ -57,6 +59,40 @@ intersecting multiple district polygons retains every district and remains
 ambiguous at runtime. Only an explicit OSM address point/building with the
 requested house number may resolve that ambiguity. No address ranges or house
 numbers are generated.
+
+`verified-address-contexts.json` is a deliberately small supplement for facts
+that the regional authority publishes but OSM does not model. Each context is
+converted into a street alias row and one or more exact address points. The
+district is stored on the exact house point only; it is not copied to the
+whole street. The browser preview applies the same exact city/street/house
+rule from its static copy. Add other cities only from attributable official
+sources using the same schema.
+
+### Nationwide district audit and browser index
+
+`tools/export_district_index.py` scans every address point in the SQLite
+artifact. It derives the set of cities that actually have child urban
+districts from KATO, verifies every candidate district against that city
+parent, rejects conflicts, and exports per-city browser files under
+`site/data/district-index/`. The browser loads only the selected city's file.
+It does not download the nationwide index on page load.
+
+Reproduce the current audit and index:
+
+```powershell
+.\.venv\Scripts\python.exe tools\export_district_index.py `
+  --db data\public\gazetteer.sqlite `
+  --output site\data\district-index `
+  --report output\district-coverage-audit.json `
+  --unresolved output\district-unresolved.csv
+```
+
+`district = null` is correct for cities without a KATO urban-district level.
+For cities with urban districts, the export accepts an exact point district or
+a unique street district only when it belongs to that city's KATO district
+set. Missing evidence, multi-district streets, conflicting aliases, and a
+district whose KATO parent is not the city remain unresolved and are listed in
+the CSV instead of being guessed.
 
 The second offline stage imports only named, non-administrative OSM polygons
 tagged `place=suburb`, `place=quarter`, or `place=neighbourhood`. A mapping is

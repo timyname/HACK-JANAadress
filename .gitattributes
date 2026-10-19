@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.docx -text
+*.pdf -text
+*.sqlite -text
+*.pbf -text
+*.png -text

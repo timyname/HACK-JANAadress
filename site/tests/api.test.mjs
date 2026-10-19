@@ -10,7 +10,17 @@ test('runtime discovery only trusts Jana readiness', async () => {
 
 test('static preview parses without sending addresses to a server', async () => {
   const input = [{ id: 'x', raw_address: 'тест' }];
-  const response = await parseViaRuntime(input, { mode: 'browser' }, () => { throw new Error('unexpected request'); });
+  const response = await parseViaRuntime(input, { mode: 'browser' }, async (url) => {
+    const path = String(url);
+    if (path.includes('kato-cities.json')) return { ok: true, json: async () => [] };
+    if (path.includes('verified-address-contexts.json')) {
+      return { ok: true, json: async () => ({ contexts: [] }) };
+    }
+    if (path.includes('district-index/manifest.json')) {
+      return { ok: true, json: async () => ({ cities: {} }) };
+    }
+    throw new Error(`unexpected request: ${path}`);
+  });
   assert.deepEqual(response.records.map(item => item.result), parseBatch(input));
 });
 

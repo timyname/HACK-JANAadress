@@ -73,6 +73,13 @@ function extractCity(raw) {
   return null;
 }
 
+function extractProvince(raw) {
+  const segment = raw.split(/[,;]/u).map((part) => part.trim()).find((part) =>
+    /(?:^|\s)(?:область|обл\.?|облысы)(?:\s|$)/iu.test(part)
+  );
+  return segment || null;
+}
+
 function extractDistrict(raw) {
   return firstMatch(raw, [
     new RegExp(`(?:^|[\\s,;])(?:район|ауданы)\\s+([${LETTERS}-]+)(?=\\s|[,;]|$)`, 'iu'),
@@ -170,7 +177,7 @@ function parseRecord(input) {
   const parsed = {
     id: input.id,
     raw_address: raw,
-    province: city && REPUBLIC_CITIES.has(city) ? city : null,
+    province: extractProvince(raw) ?? (city && REPUBLIC_CITIES.has(city) ? city : null),
     city,
     district: extractDistrict(raw),
     living_area: extractLivingArea(raw),

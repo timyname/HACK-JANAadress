@@ -19,6 +19,16 @@
       "version": "2026-10-15T20:21:00Z",
       "license_name": "Open Database License 1.0",
       "license_url": "https://www.openstreetmap.org/copyright"
+    },
+    {
+      "source_name": "karaganda-official-verified-address-contexts",
+      "url": "https://geo.qarobl.kz/",
+      "filename": "verified-address-contexts.json",
+      "sha256": "128cb8d1ef66719f3356b3eb82494e2d7f4065066066c1bef32a1df8b9906b8f",
+      "fetched_at": "2026-10-18T13:09:38Z",
+      "version": "2026-10-18",
+      "license_name": "Official public information; bulk redistribution terms not stated",
+      "license_url": "https://geo.qarobl.kz/"
     }
   ]
 }

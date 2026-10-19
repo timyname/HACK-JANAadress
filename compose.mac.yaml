@@ -1,0 +1,6 @@
+# Docker Desktop for macOS 29.8.2 does not publish host ports from an
+# internal-only bridge. This demo-only override keeps the immutable image and
+# loopback-only host binding while allowing the Mac browser to reach the UI.
+networks:
+  offline:
+    internal: false

@@ -11,6 +11,13 @@ The Jana Address gazetteer combines these dated public-data snapshots:
   2026-10-15T20:21:00Z. Source:
   <https://download.geofabrik.de/asia/kazakhstan.html>.
   Open Database License 1.0: <https://www.openstreetmap.org/copyright>.
+- Exact, source-attributed Karaganda address contexts: the official
+  [Karaganda Region geoportal](https://geo.qarobl.kz/) address register,
+  cross-checked against the regional akimat's published
+  [Kazybek Bi electoral boundaries](https://www.karaganda-region.kz/rus/vibory_1_1_1/).
+  The shipped JSON contains only the listed verified facts and source IDs, not
+  a copy of the regional register. The portal does not state bulk
+  redistribution terms, so no bulk scrape is included.
 
 The exact source URLs, versions, fetch timestamps, and SHA-256 checksums are in
 `source-manifest.json`. Rebuild instructions and data limitations are in

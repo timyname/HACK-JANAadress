@@ -1,4 +1,5 @@
-import { canonicalFields, parseBatch } from './parser.mjs';
+import { canonicalFields } from './parser.mjs';
+import { parseBatchWithReferences } from './geocoder.mjs';
 
 export async function detectRuntime(fetcher = fetch) {
   try {
@@ -13,7 +14,7 @@ export async function detectRuntime(fetcher = fetch) {
 
 export async function parseViaRuntime(input, runtime, fetcher = fetch) {
   if (runtime.mode === 'browser') {
-    return { records: parseBatch(input).map(result => ({ result, fields: {}, warnings: [] })) };
+    return parseBatchWithReferences(input, fetcher);
   }
   const response = await fetcher('/internal/parse', {
     method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },

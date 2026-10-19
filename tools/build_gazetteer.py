@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -305,9 +306,23 @@ def _canonical_admin_index(admins: Sequence[AdminRecord]) -> dict[str, tuple[Adm
     grouped: dict[str, dict[tuple[str | None, ...], AdminRecord]] = defaultdict(dict)
     for record in admins:
         for alias in dict.fromkeys((record.canonical, *record.aliases)):
-            normalized = normalize(alias)
-            if normalized:
-                grouped[normalized][_admin_identity(record)] = record
+            forms = [normalize(alias)]
+            if record.field == "district":
+                stripped = re.sub(
+                    r"^(?:район|р\s*н|аудан|ауданы|ауд)\s+(?:(?:им|имени)\s+)?",
+                    "",
+                    forms[0],
+                )
+                stripped = re.sub(
+                    r"\s+(?:(?:атын|атындағы)\s+)?(?:район|аудан|ауданы|ауд)$",
+                    "",
+                    stripped,
+                )
+                if stripped:
+                    forms.append(stripped)
+            for normalized in dict.fromkeys(forms):
+                if normalized:
+                    grouped[normalized][_admin_identity(record)] = record
     return {alias: tuple(records.values()) for alias, records in grouped.items()}
 
 
@@ -375,16 +390,63 @@ def extract_osm_records(
 
     progress = BuildProgress()
     admin_index = _canonical_admin_index(admins)
+    code_groups: dict[str, dict[tuple[str | None, ...], AdminRecord]] = defaultdict(dict)
+    for record in admins:
+        if record.kato_code:
+            code_groups[record.kato_code][_admin_identity(record)] = record
+    admin_codes = {
+        code: tuple(records.values()) for code, records in code_groups.items()
+    }
     shapes: dict[str, list[tuple[Any, AdminRecord]]] = defaultdict(list)
     place_nodes: list[tuple[Point, AdminRecord]] = []
     factory = osmium.geom.WKBFactory()
 
     def resolve_admin(tags: Any, allowed_fields: set[str]) -> tuple[AdminRecord, ...]:
+        source_code = next(
+            (
+                tags.get(key)
+                for key in ("kato", "ref:kato", "KATO")
+                if tags.get(key) and re.fullmatch(r"[0-9]{9}", tags.get(key))
+            ),
+            None,
+        )
+        if source_code:
+            code_matches = tuple(
+                item for item in admin_codes.get(source_code, ())
+                if item.field in allowed_fields
+            )
+            if len(code_matches) == 1 or _is_coextensive_province_city(code_matches):
+                return code_matches
+
+        parent_provinces: dict[tuple[str | None, ...], AdminRecord] = {}
+        for key in ("addr:region", "addr:province", "is_in:state", "is_in:province"):
+            value = tags.get(key)
+            if not value:
+                continue
+            for item in admin_index.get(normalize(value), ()):
+                if item.field == "province":
+                    parent_provinces[_admin_identity(item)] = item
+
         for key in ("name:ru", "official_name:ru", "name", "name:kk", "official_name"):
             value = tags.get(key)
             if not value:
                 continue
             matches = tuple(item for item in admin_index.get(normalize(value), ()) if item.field in allowed_fields)
+            if len(matches) > 1 and len(parent_provinces) == 1:
+                parent = next(iter(parent_provinces.values())).canonical
+                matches = tuple(item for item in matches if item.province == parent)
+            if len(matches) > 1 and source_code:
+                prefix_lengths = {
+                    item: len(os.path.commonprefix((source_code, item.kato_code or "")))
+                    for item in matches
+                }
+                best = max(prefix_lengths.values(), default=0)
+                if best >= 3:
+                    scoped = tuple(
+                        item for item in matches if prefix_lengths[item] == best
+                    )
+                    if len(scoped) == 1:
+                        matches = scoped
             if len(matches) == 1 or _is_coextensive_province_city(matches):
                 return matches
         return ()
@@ -588,6 +650,50 @@ def extract_osm_records(
     unresolved_points = 0
     road_cities: dict[int, set[str]] = defaultdict(set)
     road_provinces: dict[int, dict[tuple[str | None, ...], AdminRecord]] = defaultdict(dict)
+    derived_roads: dict[tuple[tuple[str | None, ...], str], dict[str, Any]] = {}
+
+    def add_derived_address_street(
+        raw: dict[str, Any],
+        city: AdminRecord,
+        provinces: tuple[AdminRecord, ...],
+        districts: tuple[AdminRecord, ...],
+        living_areas: tuple[AdminRecord, ...],
+    ) -> None:
+        """Keep an explicit addr:street even when OSM has no matching highway."""
+
+        canonical, street_type = split_street_surface(raw["street"])
+        normalized_name = normalize(canonical)
+        key = (_admin_identity(city), normalized_name)
+        if key not in derived_roads:
+            digest = hashlib.sha256(
+                "\0".join(str(value or "") for value in (*_admin_identity(city), normalized_name)).encode("utf-8")
+            ).hexdigest()[:24]
+            derived_roads[key] = {
+                "source_id": f"derived/addr-street/{digest}",
+                "name": canonical,
+                "aliases": set(street_alias_forms(raw["street"])),
+                "street_type": street_type,
+                "city": city.canonical,
+                "province": provinces[0].canonical if len(provinces) == 1 else city.province,
+                "districts": set(),
+                "living_areas": set(),
+            }
+        road = derived_roads[key]
+        road["aliases"].update(street_alias_forms(raw["street"]))
+        if len(districts) == 1:
+            road["districts"].add(districts[0].canonical)
+        if len(living_areas) == 1:
+            road["living_areas"].add(living_areas[0].canonical)
+        point_records.append(AddressPointRecord(
+            source_id=raw["source_id"],
+            street_source_id=road["source_id"],
+            house=raw["house"],
+            district=districts[0].canonical if len(districts) == 1 else None,
+            living_area=living_areas[0].canonical if len(living_areas) == 1 else None,
+            longitude=raw["point"].x,
+            latitude=raw["point"].y,
+        ))
+
     for point_number, raw in enumerate(raw_points, 1):
         if point_number % 10000 == 0:
             progress.emit("point_join", "progress", points_processed=point_number - 1,
@@ -619,12 +725,27 @@ def extract_osm_records(
             and (not provinces or not raw_roads[index]["province_records"]
                  or _admin_identity(provinces[0]) == _admin_identity(raw_roads[index]["province_records"][0]))
         }
+        spatial_city_ids = {_admin_identity(item) for item in spatial_cities}
+        can_derive_street = (
+            len(spatial_city_ids) == 1
+            and _admin_identity(cities[0]) in spatial_city_ids
+        )
         if not candidates:
-            unresolved_points += 1
+            if can_derive_street:
+                add_derived_address_street(
+                    raw, cities[0], provinces, districts, living_areas
+                )
+            else:
+                unresolved_points += 1
             continue
         road_index = min(candidates, key=lambda index: raw_roads[index]["geometry"].distance(point))
         if raw_roads[road_index]["geometry"].distance(point) > 0.05:
-            unresolved_points += 1
+            if can_derive_street:
+                add_derived_address_street(
+                    raw, cities[0], provinces, districts, living_areas
+                )
+            else:
+                unresolved_points += 1
             continue
         if len(cities) == 1:
             road_cities[road_index].add(cities[0].canonical)
@@ -664,10 +785,24 @@ def extract_osm_records(
             districts=tuple(sorted(road["districts"])),
             geometry_wkb=road["geometry"].wkb,
         ))
+    for road in derived_roads.values():
+        living_areas = tuple(sorted(road["living_areas"]))
+        street_records.append(StreetRecord(
+            source_id=road["source_id"],
+            name=road["name"],
+            aliases=tuple(sorted(road["aliases"])),
+            street_type=road["street_type"],
+            city=road["city"],
+            province=road["province"],
+            living_area=living_areas[0] if len(living_areas) == 1 else None,
+            districts=tuple(sorted(road["districts"])),
+            geometry_wkb=None,
+        ))
     report = {
         "admin_shapes": sum(len(entries) for entries in shapes.values()),
         "place_nodes": len(place_nodes),
-        "named_street_ways": len(street_records),
+        "named_street_ways": len(raw_roads),
+        "derived_address_streets": len(derived_roads),
         "address_points_seen": len(raw_points),
         "address_points_joined": len(point_records),
         "unresolved_address_points": unresolved_points,
@@ -919,12 +1054,54 @@ def _load_json_records(path: Path) -> tuple[list[AdminRecord], list[StreetRecord
     )
 
 
+def load_verified_contexts(path: str | Path) -> tuple[list[StreetRecord], list[AddressPointRecord]]:
+    """Convert source-attributed exact address contexts into gazetteer rows.
+
+    A district is attached to an exact house point, never to the whole street.
+    This prevents a verified building from making up district membership for
+    other houses on a street that may cross an administrative boundary.
+    """
+
+    payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    if payload.get("schema_version") != 1 or not isinstance(payload.get("contexts"), list):
+        raise ValueError("verified address contexts must use schema_version 1")
+    streets: list[StreetRecord] = []
+    points: list[AddressPointRecord] = []
+    for row in payload["contexts"]:
+        required = ("source_id", "city", "district", "street_name", "street_type", "houses")
+        missing = [field for field in required if not row.get(field)]
+        if missing:
+            raise ValueError(f"verified address context is missing fields: {missing}")
+        source_id = str(row["source_id"])
+        streets.append(StreetRecord(
+            source_id=source_id,
+            name=str(row["street_name"]),
+            aliases=tuple(str(value) for value in row.get("aliases", ())),
+            street_type=str(row["street_type"]),
+            city=str(row["city"]),
+            province=str(row["province"]) if row.get("province") else None,
+        ))
+        for house in row["houses"]:
+            if not house.get("source_id") or not house.get("house"):
+                raise ValueError("verified house requires source_id and house")
+            points.append(AddressPointRecord(
+                source_id=str(house["source_id"]),
+                street_source_id=source_id,
+                house=str(house["house"]),
+                district=str(row["district"]),
+                longitude=float(house["longitude"]) if house.get("longitude") is not None else None,
+                latitude=float(house["latitude"]) if house.get("latitude") is not None else None,
+            ))
+    return streets, points
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     inputs = parser.add_mutually_exclusive_group(required=True)
     inputs.add_argument("--fixture-json", type=Path)
     inputs.add_argument("--kato", type=Path)
     parser.add_argument("--osm", type=Path)
+    parser.add_argument("--verified-contexts", type=Path)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--report", type=Path)
@@ -942,6 +1119,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         admins = parse_kato_workbook(args.kato)
         progress.emit("input", "done", admin_records=len(admins))
         streets, points, osm_report = extract_osm_records(args.osm, admins)
+    if args.verified_contexts:
+        verified_streets, verified_points = load_verified_contexts(args.verified_contexts)
+        streets.extend(verified_streets)
+        points.extend(verified_points)
+        osm_report["verified_context_streets"] = len(verified_streets)
+        osm_report["verified_context_points"] = len(verified_points)
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
     sources = [SourceRecord(**row) for row in manifest["sources"]]
     progress.emit("database", "start", admin_records=len(admins), streets=len(streets),
