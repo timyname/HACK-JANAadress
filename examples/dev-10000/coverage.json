@@ -1,0 +1,49 @@
+{
+  "record_count": 10000,
+  "tiers": {
+    "clean": 1000,
+    "easy": 2500,
+    "hard": 2500,
+    "irrecoverable": 500,
+    "medium": 3500
+  },
+  "locales": {
+    "kk": 3408,
+    "mixed": 1968,
+    "ru": 4624
+  },
+  "shapes": {
+    "microdistrict_only": 2024,
+    "microdistrict_street": 1938,
+    "street": 6038
+  },
+  "operations": {
+    "ambiguous_house": 500,
+    "city_repeat": 2453,
+    "kk_letter": 2455,
+    "landmark_noise": 2454,
+    "marker_glue": 2456,
+    "marker_suffix": 2455,
+    "mixed_script": 2455,
+    "number_noise": 2454,
+    "punctuation": 2455,
+    "reorder": 2455,
+    "spacing": 2454,
+    "street_typo": 2454
+  },
+  "families": 303,
+  "duplicate_id_records": 400,
+  "expected_nulls": {
+    "province": 0,
+    "city": 0,
+    "district": 2500,
+    "living_area": 8062,
+    "street_type": 0,
+    "street_name": 0,
+    "house": 500,
+    "apartment": 3334,
+    "entrance": 6000,
+    "floor": 8000,
+    "landmark": 6288
+  }
+}

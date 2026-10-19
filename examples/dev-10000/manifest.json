@@ -1,0 +1,41 @@
+{
+  "manifest_version": "jana-corpus-manifest/v1",
+  "generator_version": "jana-synthetic-corpus/1.0",
+  "generator_source_sha256": "a7f69d35a64390bb9fbd7148091ea9b47aeceef8b6999987a277a814b5661883",
+  "schema_version": "jana-synthetic-config/v1",
+  "oracle_policy_version": "jana-oracle/v1",
+  "master_seed": "jana-address-dev-v1-2026-10-16",
+  "split": "dev",
+  "record_count": 10000,
+  "config_sha256": "806ca752f383290f6b713c6b56bbce6cb912f30a2353f45c9059671cd5363a8b",
+  "artifacts": {
+    "input.json": {
+      "sha256": "345956e28281319708c8335738f38c814caa7f4a0c3c151ae51ab16d48d50817",
+      "bytes": 2302567
+    },
+    "expected.json": {
+      "sha256": "410e0784167c31e2885b8df52a9ee592b15a4500539ea2750e35a146f4a23819",
+      "bytes": 5966339
+    },
+    "oracle.jsonl": {
+      "sha256": "94fd1de1cb17f375eff77eeaf16638b198317676473dc5d8f76d645d7f495cb8",
+      "bytes": 12693195
+    },
+    "coverage.json": {
+      "sha256": "cef966d6bf48f8c03f37a15a78cf80e7a37b526cd24542ab98abca6df6b78687",
+      "bytes": 947
+    },
+    "manual-review.json": {
+      "sha256": "8c813355b5eee89371b5fea7c6ab286c2ae5cb424019d87c4cc2c569a73ec73e",
+      "bytes": 227980
+    }
+  },
+  "decision_algorithm": "sha256(seed + NUL-separated decision coordinates), first 64 bits modulo N",
+  "split_algorithm": "rendered lower-entity family v2, then sha256('split-v1' + NUL + family_id) modulo 10; buckets 0-1=test",
+  "privacy": {
+    "profile": "public_demo_v1",
+    "official_rows_used": false,
+    "synthetic_combinations": true
+  },
+  "corpus_fingerprint": "6fd1d9358a6b99b0b052d1bd4120026e65da2c826ef48992d110e10aaff9c750"
+}

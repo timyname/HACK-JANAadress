@@ -1,0 +1,6709 @@
+[
+  {
+    "case_uid": "case_7874b6743e8ed329",
+    "input": {
+      "id": "synthetic-dev-001657",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; ш-а Пота Орамы; үй 56-1; пәт. 19; кіреберіс 1; қабат 3; бағдар мұнара макетінің жанында; участок 757; қ. Ақтөбе"
+    },
+    "expected": {
+      "id": "synthetic-dev-001657",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; ш-а Пота Орамы; үй 56-1; пәт. 19; кіреберіс 1; қабат 3; бағдар мұнара макетінің жанында; участок 757; қ. Ақтөбе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пота Орамы",
+      "house": "56-1",
+      "apartment": "19",
+      "entrance": "1",
+      "floor": "3",
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0253382af8d30e0a",
+    "input": {
+      "id": "synthetic-dev-009155",
+      "raw_address": "р-н Ауэзовский; yл. Ноый Вектор; обл. Алматы; г. Алматы; д. 41Б; 3/1 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-009155",
+      "raw_address": "р-н Ауэзовский; yл. Ноый Вектор; обл. Алматы; г. Алматы; д. 41Б; 3/1 кв.",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Ноый Вектор",
+      "house": "41Б",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_90e5f6f19d72f43c",
+    "input": {
+      "id": "synthetic-dev-002629",
+      "raw_address": "обл. Шымкент   қ. Шымкент   ауд. Абай   к-сі Ақ Жекен   үй41Б   пәт. 112А"
+    },
+    "expected": {
+      "id": "synthetic-dev-002629",
+      "raw_address": "обл. Шымкент   қ. Шымкент   ауд. Абай   к-сі Ақ Жекен   үй41Б   пәт. 112А",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Ақ Жекен",
+      "house": "41Б",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_3c80efd958faa6ce",
+    "input": {
+      "id": "synthetic-dev-009447",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, ул. Северный Уел, д. 56-1, подъезд 04, этаж 1, участок 747, г. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-009447",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, ул. Северный Уел, д. 56-1, подъезд 04, этаж 1, участок 747, г. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Северный Уел",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": "04",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_bb9ddd6c1084a134",
+    "input": {
+      "id": "synthetic-dev-000408",
+      "raw_address": "обл. Алматы   г. Алматы   пр-т Тыныш Бағдар   41Б д.   ориентир оқу павильонының артында"
+    },
+    "expected": {
+      "id": "synthetic-dev-000408",
+      "raw_address": "обл. Алматы   г. Алматы   пр-т Тыныш Бағдар   41Б д.   ориентир оқу павильонының артында",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Тыныш Бағдар",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "spacing",
+        "marker_glue",
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6c65aa3e82263265",
+    "input": {
+      "id": "synthetic-dev-005083",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Ауэзовский   мкр. Пробный Берег   пр-т Новый Вектор   д. 41Б   кв. 3/1"
+    },
+    "expected": {
+      "id": "synthetic-dev-005083",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Ауэзовский   мкр. Пробный Берег   пр-т Новый Вектор   д. 41Б   кв. 3/1",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": "Пробный Берег",
+      "street_type": "проспект",
+      "street_name": "Новый Вектор",
+      "house": "41Б",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_1b04f7fefaf3d39d",
+    "input": {
+      "id": "synthetic-dev-001476",
+      "raw_address": "мkр. Ноый Рубеж, 41Б д., обл. Актюбинская, г. Актобе, подъезд 2, ориентир за учебным павильоном"
+    },
+    "expected": {
+      "id": "synthetic-dev-001476",
+      "raw_address": "мkр. Ноый Рубеж, 41Б д., обл. Актюбинская, г. Актобе, подъезд 2, ориентир за учебным павильоном",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Ноый Рубеж",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": "2",
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_c5d21807def115b5",
+    "input": {
+      "id": "synthetic-dev-008751",
+      "raw_address": "обл. Шымкент; қ. Шымкент; ауд. Абай; к-сі Алтын Багыт; үй 003; кіреберіс 04; бағдар бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-008751",
+      "raw_address": "обл. Шымкент; қ. Шымкент; ауд. Абай; к-сі Алтын Багыт; үй 003; кіреберіс 04; бағдар бағыттар стендінің қасында",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Алтын Багыт",
+      "house": "003",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_dd6ac6dc1de1e10e",
+    "input": {
+      "id": "synthetic-dev-008970",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; yл. Сеерный Узел; д. 7; ориентир у стенда маршрутов"
+    },
+    "expected": {
+      "id": "synthetic-dev-008970",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; yл. Сеерный Узел; д. 7; ориентир у стенда маршрутов",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Сеерный Узел",
+      "house": "7",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_de69d327d6c5c25b",
+    "input": {
+      "id": "synthetic-dev-000766",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ауд. Үлбі; ш-а Жаңа Белес; к-сі Солтүстік Түйін; үй 41Б; пәт. 070; кіреберіс 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-000766",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ауд. Үлбі; ш-а Жаңа Белес; к-сі Солтүстік Түйін; үй 41Б; пәт. 070; кіреберіс 04",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": "Жаңа Белес",
+      "street_type": "улица",
+      "street_name": "Солтүстік Түйін",
+      "house": "41Б",
+      "apartment": "070",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_7e25b6561d310c68",
+    "input": {
+      "id": "synthetic-dev-004748",
+      "raw_address": "обл. Актюбинская; г. Актобе; пр-т Тихий Маршрут; д. 56-1; кв. 3/1; ориентир напротив синей арки; участок 848"
+    },
+    "expected": {
+      "id": "synthetic-dev-004748",
+      "raw_address": "обл. Актюбинская; г. Актобе; пр-т Тихий Маршрут; д. 56-1; кв. 3/1; ориентир напротив синей арки; участок 848",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Тихий Маршрут",
+      "house": "56-1",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": "напротив синей арки",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_bb242dd1f5a219c5",
+    "input": {
+      "id": "synthetic-dev-002471",
+      "raw_address": "обл. Алматы; қ. Алматы; ауд. Әуезов; к-сі Көк Із; үй 56-1; пәт. 3/1; кіреберіс 2; бағдар бағыттар стендінің қасында; участок 771"
+    },
+    "expected": {
+      "id": "synthetic-dev-002471",
+      "raw_address": "обл. Алматы; қ. Алматы; ауд. Әуезов; к-сі Көк Із; үй 56-1; пәт. 3/1; кіреберіс 2; бағдар бағыттар стендінің қасында; участок 771",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Көк Із",
+      "house": "56-1",
+      "apartment": "3/1",
+      "entrance": "2",
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6656f64d70ad2d4c",
+    "input": {
+      "id": "synthetic-dev-007592",
+      "raw_address": "ш-а Жарық Сұлба, үй41Б, обл. Шымкент, қ. Шымкент, 112А пәт., кіреберіс 04, қабат 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-007592",
+      "raw_address": "ш-а Жарық Сұлба, үй41Б, обл. Шымкент, қ. Шымкент, 112А пәт., кіреберіс 04, қабат 1",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарық Сұлба",
+      "house": "41Б",
+      "apartment": "112А",
+      "entrance": "04",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_5cb29b61391a789c",
+    "input": {
+      "id": "synthetic-dev-000676",
+      "raw_address": "обл. Шымкент; г. Шымкент; пр-т Улгі Жолы; д. 18/2; кв. 19; подъезд 2; ориентир көк аркаға қарама-қарсы; участок 776"
+    },
+    "expected": {
+      "id": "synthetic-dev-000676",
+      "raw_address": "обл. Шымкент; г. Шымкент; пр-т Улгі Жолы; д. 18/2; кв. 19; подъезд 2; ориентир көк аркаға қарама-қарсы; участок 776",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Улгі Жолы",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": "2",
+      "floor": null,
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0dd20125c93ae92f",
+    "input": {
+      "id": "synthetic-dev-007808",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, мкр. Светлый Контур, ул. Тихий Маршурт, д. 41Б, кв. 070, участок 708, г. Усть-Каменогорск"
+    },
+    "expected": {
+      "id": "synthetic-dev-007808",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, мкр. Светлый Контур, ул. Тихий Маршурт, д. 41Б, кв. 070, участок 708, г. Усть-Каменогорск",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": null,
+      "living_area": "Светлый Контур",
+      "street_type": "улица",
+      "street_name": "Тихий Маршурт",
+      "house": "41Б",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_27f4c1f408970bb2",
+    "input": {
+      "id": "synthetic-dev-003328",
+      "raw_address": "обл. Қарағанды; қ. Қарағанды; д-лы Ак Желкен; үй 18/2; пәт. 070; бағдар көк аркаға қарама-қарсы"
+    },
+    "expected": {
+      "id": "synthetic-dev-003328",
+      "raw_address": "обл. Қарағанды; қ. Қарағанды; д-лы Ак Желкен; үй 18/2; пәт. 070; бағдар көк аркаға қарама-қарсы",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Ак Желкен",
+      "house": "18/2",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8eee2526f3dc1ace",
+    "input": {
+      "id": "synthetic-dev-002297",
+      "raw_address": "обл. Шығыс Қазақстан   г. Өскемен   р-н Үлбі   мкр. Сынақ Жағаау   д.12А   кв. 4   подъезд 04   этаж 07   участок 797   г. Өскемен"
+    },
+    "expected": {
+      "id": "synthetic-dev-002297",
+      "raw_address": "обл. Шығыс Қазақстан   г. Өскемен   р-н Үлбі   мкр. Сынақ Жағаау   д.12А   кв. 4   подъезд 04   этаж 07   участок 797   г. Өскемен",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағаау",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": "04",
+      "floor": "07",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_34440288621ffae9",
+    "input": {
+      "id": "synthetic-dev-007266",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, к-сі Жеткізу Кокжиегі, үй 18/2, кіреберіс 1, бағдар мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-007266",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, к-сі Жеткізу Кокжиегі, үй 18/2, кіреберіс 1, бағдар мұнара макетінің жанында",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жеткізу Кокжиегі",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0c31e5301e7aa035",
+    "input": {
+      "id": "synthetic-dev-000861",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Әуезов, мкр. Сынақ Жағалау, д. 41Б, подъезд 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-000861",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Әуезов, мкр. Сынақ Жағалау, д. 41Б, подъезд 04",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағалау",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_548acaa8db9d2327",
+    "input": {
+      "id": "synthetic-dev-009712",
+      "raw_address": "обл. Алматы   г. Алматы   мкр. Ноывй Рубеж   д. 18/2   кв. 070   подъезд 1   этаж 07   г. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-009712",
+      "raw_address": "обл. Алматы   г. Алматы   мкр. Ноывй Рубеж   д. 18/2   кв. 070   подъезд 1   этаж 07   г. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Ноывй Рубеж",
+      "house": "18/2",
+      "apartment": "070",
+      "entrance": "1",
+      "floor": "07",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_54099e7a8d5eda74",
+    "input": {
+      "id": "synthetic-dev-003690",
+      "raw_address": "обл. Қарағанды; қ. Қарағанды; ауд. Қазыбек би; k-сі Кұтты Қадам; үй 41Б; бағдар көк аркаға қарама-қарсы"
+    },
+    "expected": {
+      "id": "synthetic-dev-003690",
+      "raw_address": "обл. Қарағанды; қ. Қарағанды; ауд. Қазыбек би; k-сі Кұтты Қадам; үй 41Б; бағдар көк аркаға қарама-қарсы",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Кұтты Қадам",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8fff6d8bf88b4eb9",
+    "input": {
+      "id": "synthetic-dev-000951",
+      "raw_address": "обл. Астана; г. Астана; р-н Есильский; мкр. Новый Рубеж; yл. Прбный Путь; д. 56-1; подъезд 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-000951",
+      "raw_address": "обл. Астана; г. Астана; р-н Есильский; мкр. Новый Рубеж; yл. Прбный Путь; д. 56-1; подъезд 1",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": "Новый Рубеж",
+      "street_type": "улица",
+      "street_name": "Прбный Путь",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_41c82cfd84c35921",
+    "input": {
+      "id": "synthetic-dev-005347",
+      "raw_address": "обл. Шымкент   қ. Шымкент   ауд. Абай   ш-а Жаңа Белес   үй41Б   112А пәт.   кіреберіс 2   қабат 3"
+    },
+    "expected": {
+      "id": "synthetic-dev-005347",
+      "raw_address": "обл. Шымкент   қ. Шымкент   ауд. Абай   ш-а Жаңа Белес   үй41Б   112А пәт.   кіреберіс 2   қабат 3",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жаңа Белес",
+      "house": "41Б",
+      "apartment": "112А",
+      "entrance": "2",
+      "floor": "3",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "spacing",
+        "marker_glue",
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_822d4765773f1cf3",
+    "input": {
+      "id": "synthetic-dev-003310",
+      "raw_address": "обл. Шымкент   г. Шымкент   р-н Абай   мкр. Пошта Орамы   ул. Тныыш Бағдар   д. 003   кв. 070   г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-003310",
+      "raw_address": "обл. Шымкент   г. Шымкент   р-н Абай   мкр. Пошта Орамы   ул. Тныыш Бағдар   д. 003   кв. 070   г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": "Пошта Орамы",
+      "street_type": "улица",
+      "street_name": "Тныыш Бағдар",
+      "house": "003",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e6f5d0159a98667f",
+    "input": {
+      "id": "synthetic-dev-000384",
+      "raw_address": "обл. Қарағанды, қ. Қарағанды, ш-а Сынақ Жағалау, к-сі Солтүстік Түйін, үй 12А, бағдар бағыттар стендінің қасында, қ. Қарағанды"
+    },
+    "expected": {
+      "id": "synthetic-dev-000384",
+      "raw_address": "обл. Қарағанды, қ. Қарағанды, ш-а Сынақ Жағалау, к-сі Солтүстік Түйін, үй 12А, бағдар бағыттар стендінің қасында, қ. Қарағанды",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": "Сынақ Жағалау",
+      "street_type": "улица",
+      "street_name": "Солтүстік Түйін",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_16b96be39ed9382d",
+    "input": {
+      "id": "synthetic-dev-006484",
+      "raw_address": "обл. Шымкент, г. Шымкент, мkр. Светлый Контур, д. 18/2, кв. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-006484",
+      "raw_address": "обл. Шымкент, г. Шымкент, мkр. Светлый Контур, д. 18/2, кв. 19",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Светлый Контур",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_755970b14619351e",
+    "input": {
+      "id": "synthetic-dev-007296",
+      "raw_address": "мkр. Прбный Берег; 12А д.; обл. Алматы; г. Алматы; подъезд 04; ориентир у стенда маршрутов"
+    },
+    "expected": {
+      "id": "synthetic-dev-007296",
+      "raw_address": "мkр. Прбный Берег; 12А д.; обл. Алматы; г. Алматы; подъезд 04; ориентир у стенда маршрутов",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Прбный Берег",
+      "house": "12А",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_5fb67d8d49719136",
+    "input": {
+      "id": "synthetic-dev-005095",
+      "raw_address": "ауд. Қазыбек би, ш-а Жаңа Белес, обл. Қарағанды, қ. Қарағанды, д-лы Тыныш Багдар, үй18/2, 19 пәт."
+    },
+    "expected": {
+      "id": "synthetic-dev-005095",
+      "raw_address": "ауд. Қазыбек би, ш-а Жаңа Белес, обл. Қарағанды, қ. Қарағанды, д-лы Тыныш Багдар, үй18/2, 19 пәт.",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": "Жаңа Белес",
+      "street_type": "проспект",
+      "street_name": "Тыныш Багдар",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_1c5cbf014445b37a",
+    "input": {
+      "id": "synthetic-dev-006446",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, ул. ПробныйП уть, д. 7, кв. 070, подъезд 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-006446",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, ул. ПробныйП уть, д. 7, кв. 070, подъезд 04",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "ПробныйП уть",
+      "house": "7",
+      "apartment": "070",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_1059d1ada3a76a6b",
+    "input": {
+      "id": "synthetic-dev-007063",
+      "raw_address": "обл. Қарағанды   қ. Қарағанды   ауд. Қазыбек би   к-сі Жаңа Бағыт   үй 18/2   пәт. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-007063",
+      "raw_address": "обл. Қарағанды   қ. Қарағанды   ауд. Қазыбек би   к-сі Жаңа Бағыт   үй 18/2   пәт. 19",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жаңа Бағыт",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_cd3b059feedb11bc",
+    "input": {
+      "id": "synthetic-dev-009279",
+      "raw_address": "обл. Астана; г. Астана; р-н Есіл; пр-т Тыныш Багдар; ориентир бағыттар стендінің қасында; 7; 69"
+    },
+    "expected": {
+      "id": "synthetic-dev-009279",
+      "raw_address": "обл. Астана; г. Астана; р-н Есіл; пр-т Тыныш Багдар; ориентир бағыттар стендінің қасында; 7; 69",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Тыныш Багдар",
+      "house": null,
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "mixed",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_61a0ea613b16f150",
+    "input": {
+      "id": "synthetic-dev-000876",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ш-а Сынақ Жаағлау; үй 18/2; кіреберіс 2; бағдар бағыттар стендінің қасында; участок 776; қ. Өскемен"
+    },
+    "expected": {
+      "id": "synthetic-dev-000876",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ш-а Сынақ Жаағлау; үй 18/2; кіреберіс 2; бағдар бағыттар стендінің қасында; участок 776; қ. Өскемен",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жаағлау",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": "2",
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_534c85c0f4fd5318",
+    "input": {
+      "id": "synthetic-dev-002298",
+      "raw_address": "обл. Ақтөбе   қ. Ақтөбе   ауд. Алматы   ш-а Жарық Сұлба   к-сі АлтынБағыт   пәт. 19   56-1   89"
+    },
+    "expected": {
+      "id": "synthetic-dev-002298",
+      "raw_address": "обл. Ақтөбе   қ. Ақтөбе   ауд. Алматы   ш-а Жарық Сұлба   к-сі АлтынБағыт   пәт. 19   56-1   89",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": "Жарық Сұлба",
+      "street_type": "улица",
+      "street_name": "АлтынБағыт",
+      "house": null,
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0ecf5eafb6733921",
+    "input": {
+      "id": "synthetic-dev-001660",
+      "raw_address": "обл. Шымкент, г. Шымкент, мкр. Новый Рубеж, д. 7, кв. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-001660",
+      "raw_address": "обл. Шымкент, г. Шымкент, мкр. Новый Рубеж, д. 7, кв. 19",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Новый Рубеж",
+      "house": "7",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_4b03663ed1b92515",
+    "input": {
+      "id": "synthetic-dev-004998",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; д-лы Жарык Көпір; пәт. 3/1; 56-1; 89"
+    },
+    "expected": {
+      "id": "synthetic-dev-004998",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; д-лы Жарык Көпір; пәт. 3/1; 56-1; 89",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Жарык Көпір",
+      "house": null,
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "kk",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8738213966d15996",
+    "input": {
+      "id": "synthetic-dev-002600",
+      "raw_address": "обл. Алматы, г. Алматы, ул. Үлгі Жолы, д. 7, кв. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-002600",
+      "raw_address": "обл. Алматы, г. Алматы, ул. Үлгі Жолы, д. 7, кв. 4",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Үлгі Жолы",
+      "house": "7",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_db351998e5888817",
+    "input": {
+      "id": "synthetic-dev-006564",
+      "raw_address": "обл. Алматы, г. Алматы, ул. Золотое Направление, д. 003, ориентир напротив синей арки"
+    },
+    "expected": {
+      "id": "synthetic-dev-006564",
+      "raw_address": "обл. Алматы, г. Алматы, ул. Золотое Направление, д. 003, ориентир напротив синей арки",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Золотое Направление",
+      "house": "003",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "напротив синей арки",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_7d9f10e0d894ba20",
+    "input": {
+      "id": "synthetic-dev-001188",
+      "raw_address": "обл. Қарағанды   қ. Қарағанды   ш-а Пошта Орамы   к-сі Жаңа аБғыт   үй12А   бағдар бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-001188",
+      "raw_address": "обл. Қарағанды   қ. Қарағанды   ш-а Пошта Орамы   к-сі Жаңа аБғыт   үй12А   бағдар бағыттар стендінің қасында",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": "Пошта Орамы",
+      "street_type": "улица",
+      "street_name": "Жаңа аБғыт",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_26e5050abdcf0890",
+    "input": {
+      "id": "synthetic-dev-006080",
+      "raw_address": "обл. Қарағанды, қ. Қарағанды, ш-а Жарық Сұлба, к-сі Ақ Желкен, үй 12А, пәт. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-006080",
+      "raw_address": "обл. Қарағанды, қ. Қарағанды, ш-а Жарық Сұлба, к-сі Ақ Желкен, үй 12А, пәт. 19",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": "Жарық Сұлба",
+      "street_type": "улица",
+      "street_name": "Ақ Желкен",
+      "house": "12А",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e401de558c7bc343",
+    "input": {
+      "id": "synthetic-dev-004133",
+      "raw_address": "обл. Астана, г. Астана, р-н Есіл, ул. Жарық Көпір, д. 003, кв. 070, ориентир мұнара макетінің жанында, участок 833, г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-004133",
+      "raw_address": "обл. Астана, г. Астана, р-н Есіл, ул. Жарық Көпір, д. 003, кв. 070, ориентир мұнара макетінің жанында, участок 833, г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жарық Көпір",
+      "house": "003",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_29c0214c85b9e8e8",
+    "input": {
+      "id": "synthetic-dev-005848",
+      "raw_address": "обл. Шымкент; г. Шымкент; пр-т Почтовая Линия; д. 18/2; кв. 070; ориентир напротив синей арки; участок 748"
+    },
+    "expected": {
+      "id": "synthetic-dev-005848",
+      "raw_address": "обл. Шымкент; г. Шымкент; пр-т Почтовая Линия; д. 18/2; кв. 070; ориентир напротив синей арки; участок 748",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Почтовая Линия",
+      "house": "18/2",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "напротив синей арки",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_789aa019b9cdbde3",
+    "input": {
+      "id": "synthetic-dev-004745",
+      "raw_address": "р-н Есильский, ул. Горизонт Доставки, обл. Астана, г. Астана, д. 41Б, кв. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-004745",
+      "raw_address": "р-н Есильский, ул. Горизонт Доставки, обл. Астана, г. Астана, д. 41Б, кв. 4",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Горизонт Доставки",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_efba876a38472f8a",
+    "input": {
+      "id": "synthetic-dev-008663",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Ноый Рубеж, д. 12А, кв. 112А"
+    },
+    "expected": {
+      "id": "synthetic-dev-008663",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Ноый Рубеж, д. 12А, кв. 112А",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Ноый Рубеж",
+      "house": "12А",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_429f87487ecb79da",
+    "input": {
+      "id": "synthetic-dev-000942",
+      "raw_address": "обл. Карагандинская; г. Караганда; р-н Казыбекбийский; ул. Северный Узел; д. 7; подъезд 2; этаж 3; ориентир напротив синей арки"
+    },
+    "expected": {
+      "id": "synthetic-dev-000942",
+      "raw_address": "обл. Карагандинская; г. Караганда; р-н Казыбекбийский; ул. Северный Узел; д. 7; подъезд 2; этаж 3; ориентир напротив синей арки",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Северный Узел",
+      "house": "7",
+      "apartment": null,
+      "entrance": "2",
+      "floor": "3",
+      "landmark": "напротив синей арки",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_03f709c4443c5c26",
+    "input": {
+      "id": "synthetic-dev-007516",
+      "raw_address": "ш-а Сынақ Жагалау; үй 56-1; обл. Ақтөбе; қ. Ақтөбе; 070 пәт.; кіреберіс 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-007516",
+      "raw_address": "ш-а Сынақ Жагалау; үй 56-1; обл. Ақтөбе; қ. Ақтөбе; 070 пәт.; кіреберіс 04",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жагалау",
+      "house": "56-1",
+      "apartment": "070",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_1610769552dc7e51",
+    "input": {
+      "id": "synthetic-dev-004706",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Новый Рубеж, д. 41Б, кв. 19, подъезд 1, участок 806"
+    },
+    "expected": {
+      "id": "synthetic-dev-004706",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Новый Рубеж, д. 41Б, кв. 19, подъезд 1, участок 806",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Новый Рубеж",
+      "house": "41Б",
+      "apartment": "19",
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_767351e95ccb828f",
+    "input": {
+      "id": "synthetic-dev-005620",
+      "raw_address": "обл. Астана, қ. Астана, ш-а Пошта Орамы, д-лы Пошта Желісі, үй 12А, пәт. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-005620",
+      "raw_address": "обл. Астана, қ. Астана, ш-а Пошта Орамы, д-лы Пошта Желісі, үй 12А, пәт. 19",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": "Пошта Орамы",
+      "street_type": "проспект",
+      "street_name": "Пошта Желісі",
+      "house": "12А",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_318fa4ebe5bed840",
+    "input": {
+      "id": "synthetic-dev-002606",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абай, ул. Жарық Көпір, д. 12А, кв. 112А, подъезд 04, г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-002606",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абай, ул. Жарық Көпір, д. 12А, кв. 112А, подъезд 04, г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жарық Көпір",
+      "house": "12А",
+      "apartment": "112А",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "mixed",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_61a6c74c84c1f0f9",
+    "input": {
+      "id": "synthetic-dev-006118",
+      "raw_address": "ауд. Үлбі, k-сі Жеткізу Кокжиегі, обл. Шығыс Қазақстан, қ. Өскемен, үй003, 19 пәт."
+    },
+    "expected": {
+      "id": "synthetic-dev-006118",
+      "raw_address": "ауд. Үлбі, k-сі Жеткізу Кокжиегі, обл. Шығыс Қазақстан, қ. Өскемен, үй003, 19 пәт.",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жеткізу Кокжиегі",
+      "house": "003",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e6dc4f85c5873802",
+    "input": {
+      "id": "synthetic-dev-004100",
+      "raw_address": "обл. Шығыс Қазақстан, г. Өскемен, мкр. Жарық Сұлба, д. 7, кв. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-004100",
+      "raw_address": "обл. Шығыс Қазақстан, г. Өскемен, мкр. Жарық Сұлба, д. 7, кв. 4",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарық Сұлба",
+      "house": "7",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_dc8f79de7e770dea",
+    "input": {
+      "id": "synthetic-dev-006553",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Новый Рубеж, ул. Белый Парус, д. 12А, кв. 4, ориентир рядом с макетом башни, участок 853, г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-006553",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Новый Рубеж, ул. Белый Парус, д. 12А, кв. 4, ориентир рядом с макетом башни, участок 853, г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": "Новый Рубеж",
+      "street_type": "улица",
+      "street_name": "Белый Парус",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b01672a5879e78f2",
+    "input": {
+      "id": "synthetic-dev-006925",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, р-н Ульбинский, ул. Прбный Путь, д. 18/2, кв. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-006925",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, р-н Ульбинский, ул. Прбный Путь, д. 18/2, кв. 19",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Прбный Путь",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e0f11ee96d695329",
+    "input": {
+      "id": "synthetic-dev-005916",
+      "raw_address": "обл. Алматы   г. Алматы   ул. Злоотое Направление   д.18/2   подъезд 04   ориентир рядом с макетом башни   участок 816   г. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-005916",
+      "raw_address": "обл. Алматы   г. Алматы   ул. Злоотое Направление   д.18/2   подъезд 04   ориентир рядом с макетом башни   участок 816   г. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Злоотое Направление",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_30872be2c163d3d0",
+    "input": {
+      "id": "synthetic-dev-006853",
+      "raw_address": "обл. Алматы   қ. Алматы   ауд. Әуезов   ш-а Пошта Орамы   к-сі АлтынБағыт   үй56-1   пәт. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-006853",
+      "raw_address": "обл. Алматы   қ. Алматы   ауд. Әуезов   ш-а Пошта Орамы   к-сі АлтынБағыт   үй56-1   пәт. 4",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": "Пошта Орамы",
+      "street_type": "улица",
+      "street_name": "АлтынБағыт",
+      "house": "56-1",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b7cc7354d95f836f",
+    "input": {
+      "id": "synthetic-dev-007765",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, мкр. Пробный Берег, д. 41Б, кв. 070, г. Актобе"
+    },
+    "expected": {
+      "id": "synthetic-dev-007765",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, мкр. Пробный Берег, д. 41Б, кв. 070, г. Актобе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пробный Берег",
+      "house": "41Б",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_bb896c674da8f83e",
+    "input": {
+      "id": "synthetic-dev-004619",
+      "raw_address": "обл. Алматы   қ. Алматы   ауд. Әуезов   к-сі ЖаңаБағыт   пәт. 3/1   қ. Алматы   18/2   59"
+    },
+    "expected": {
+      "id": "synthetic-dev-004619",
+      "raw_address": "обл. Алматы   қ. Алматы   ауд. Әуезов   к-сі ЖаңаБағыт   пәт. 3/1   қ. Алматы   18/2   59",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "ЖаңаБағыт",
+      "house": null,
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "kk",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_be958a44c00815d8",
+    "input": {
+      "id": "synthetic-dev-009772",
+      "raw_address": "мкр. Почтовый Квартал, пр-т Потовая Линия, обл. Алматы, г. Алматы, д. 41Б, кв. 3/1, подъезд 04, этаж 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-009772",
+      "raw_address": "мкр. Почтовый Квартал, пр-т Потовая Линия, обл. Алматы, г. Алматы, д. 41Б, кв. 3/1, подъезд 04, этаж 1",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": "Почтовый Квартал",
+      "street_type": "проспект",
+      "street_name": "Потовая Линия",
+      "house": "41Б",
+      "apartment": "3/1",
+      "entrance": "04",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_3e662b7daa249697",
+    "input": {
+      "id": "synthetic-dev-008645",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абайский, ул. Светлый Мост, д. 7, кв. 19, г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-008645",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абайский, ул. Светлый Мост, д. 7, кв. 19, г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Светлый Мост",
+      "house": "7",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_129fd58b1447252a",
+    "input": {
+      "id": "synthetic-dev-000629",
+      "raw_address": "р-н Абайский, ул. Белый Парус, обл. Шымкент, г. Шымкент, д.7, 070 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-000629",
+      "raw_address": "р-н Абайский, ул. Белый Парус, обл. Шымкент, г. Шымкент, д.7, 070 кв.",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Белый Парус",
+      "house": "7",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_32cbcf96d17dc68f",
+    "input": {
+      "id": "synthetic-dev-000159",
+      "raw_address": "обл. Алматы; г. Алматы; р-н Ауэзовский; пр-т Сеерный Узел; 41Б; 49"
+    },
+    "expected": {
+      "id": "synthetic-dev-000159",
+      "raw_address": "обл. Алматы; г. Алматы; р-н Ауэзовский; пр-т Сеерный Узел; 41Б; 49",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Сеерный Узел",
+      "house": null,
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "ru",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e318f27f528398f1",
+    "input": {
+      "id": "synthetic-dev-001685",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Синий След, д.56-1, кв. 112А"
+    },
+    "expected": {
+      "id": "synthetic-dev-001685",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Синий След, д.56-1, кв. 112А",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Синий След",
+      "house": "56-1",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_d99185a2e4efb4c2",
+    "input": {
+      "id": "synthetic-dev-002260",
+      "raw_address": "обл. Алматы, г. Алматы, ул. Верный Шаг, д. 18/2, кв. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-002260",
+      "raw_address": "обл. Алматы, г. Алматы, ул. Верный Шаг, д. 18/2, кв. 19",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Верный Шаг",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_c54a1ef97eb373a9",
+    "input": {
+      "id": "synthetic-dev-009161",
+      "raw_address": "обл. Ақтөбе, г. Ақтөбе, р-н Алматы, ул. Жаңа Бағыт, д. 12А, кв. 112А, подъезд 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-009161",
+      "raw_address": "обл. Ақтөбе, г. Ақтөбе, р-н Алматы, ул. Жаңа Бағыт, д. 12А, кв. 112А, подъезд 1",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жаңа Бағыт",
+      "house": "12А",
+      "apartment": "112А",
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_029c7e75cb9d42b2",
+    "input": {
+      "id": "synthetic-dev-003977",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; мкр. Свтлый Контур; д. 12А; кв. 112А; подъезд 1; этаж 3; ориентир рядом с макетом башни; участок 877; г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-003977",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; мкр. Свтлый Контур; д. 12А; кв. 112А; подъезд 1; этаж 3; ориентир рядом с макетом башни; участок 877; г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Свтлый Контур",
+      "house": "12А",
+      "apartment": "112А",
+      "entrance": "1",
+      "floor": "3",
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_93826b09c49fac3e",
+    "input": {
+      "id": "synthetic-dev-007503",
+      "raw_address": "обл. Актюбинская   г. Актобе   р-н Алматинский   мкр. Светлый Контур   д. 18/2"
+    },
+    "expected": {
+      "id": "synthetic-dev-007503",
+      "raw_address": "обл. Актюбинская   г. Актобе   р-н Алматинский   мкр. Светлый Контур   д. 18/2",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Светлый Контур",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_817874922f365d5f",
+    "input": {
+      "id": "synthetic-dev-007567",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Ауэзовский   ул. Пробный уть   д. 12А   кв. 4   подъезд 1   этаж -1   г. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-007567",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Ауэзовский   ул. Пробный уть   д. 12А   кв. 4   подъезд 1   этаж -1   г. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пробный уть",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": "1",
+      "floor": "-1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_68820ce701e90845",
+    "input": {
+      "id": "synthetic-dev-009726",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, мкр. Почтовый Квартал, ул. Тихий Маршрут, д.7, подъезд 04, ориентир рядом с макетом башни"
+    },
+    "expected": {
+      "id": "synthetic-dev-009726",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, мкр. Почтовый Квартал, ул. Тихий Маршрут, д.7, подъезд 04, ориентир рядом с макетом башни",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": "Почтовый Квартал",
+      "street_type": "улица",
+      "street_name": "Тихий Маршрут",
+      "house": "7",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_ac2d64706e49738a",
+    "input": {
+      "id": "synthetic-dev-004205",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, мкр. Пробный Берег, д. 003, 19 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-004205",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, мкр. Пробный Берег, д. 003, 19 кв.",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пробный Берег",
+      "house": "003",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6c1196b010d76a3c",
+    "input": {
+      "id": "synthetic-dev-007123",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; мкр. Жарық Сұлба; д. 41Б; кв. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-007123",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; мкр. Жарық Сұлба; д. 41Б; кв. 19",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарық Сұлба",
+      "house": "41Б",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "mixed",
+      "operations": [
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b10ea4c00e386f46",
+    "input": {
+      "id": "synthetic-dev-001573",
+      "raw_address": "р-н Абайский   мkр. Новый Рубеж   обл. Шымкент   г. Шымкент   д.12А   4 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-001573",
+      "raw_address": "р-н Абайский   мkр. Новый Рубеж   обл. Шымкент   г. Шымкент   д.12А   4 кв.",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Новый Рубеж",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "spacing",
+        "marker_glue",
+        "marker_suffix",
+        "reorder",
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_21f25d277293346a",
+    "input": {
+      "id": "synthetic-dev-005693",
+      "raw_address": "обл. Қарағанды; қ. Қарағанды; ауд. Қазыбек би; ш-а Сынақ Жағалау; д-лы Улгі Жолы; үй 003; пәт. 4; бағдар мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-005693",
+      "raw_address": "обл. Қарағанды; қ. Қарағанды; ауд. Қазыбек би; ш-а Сынақ Жағалау; д-лы Улгі Жолы; үй 003; пәт. 4; бағдар мұнара макетінің жанында",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": "Сынақ Жағалау",
+      "street_type": "проспект",
+      "street_name": "Улгі Жолы",
+      "house": "003",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_25a364921bb41503",
+    "input": {
+      "id": "synthetic-dev-002912",
+      "raw_address": "обл. Шымкент, г. Шымкент, пр-т Почтовая Линия, д. 12А, кв. 19, подъезд 04, этаж -1, ориентир напротив синей арки, участок 812, г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-002912",
+      "raw_address": "обл. Шымкент, г. Шымкент, пр-т Почтовая Линия, д. 12А, кв. 19, подъезд 04, этаж -1, ориентир напротив синей арки, участок 812, г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Почтовая Линия",
+      "house": "12А",
+      "apartment": "19",
+      "entrance": "04",
+      "floor": "-1",
+      "landmark": "напротив синей арки",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_57b0b43c1b4eadc1",
+    "input": {
+      "id": "synthetic-dev-008398",
+      "raw_address": "обл. Астана; г. Астана; р-н Есильский; ул. Беый Парус; кв. 4; ориентир у стенда маршрутов; 7; 89"
+    },
+    "expected": {
+      "id": "synthetic-dev-008398",
+      "raw_address": "обл. Астана; г. Астана; р-н Есильский; ул. Беый Парус; кв. 4; ориентир у стенда маршрутов; 7; 89",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Беый Парус",
+      "house": null,
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "ru",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8e58b6a95560c47d",
+    "input": {
+      "id": "synthetic-dev-002094",
+      "raw_address": "ауд. Қазыбек би; k-сі Ак Желкен; обл. Қарағанды; қ. Қарағанды; үй 18/2; бағдар оқу павильонының артында"
+    },
+    "expected": {
+      "id": "synthetic-dev-002094",
+      "raw_address": "ауд. Қазыбек би; k-сі Ак Желкен; обл. Қарағанды; қ. Қарағанды; үй 18/2; бағдар оқу павильонының артында",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Ак Желкен",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6de61956094ceb27",
+    "input": {
+      "id": "synthetic-dev-000866",
+      "raw_address": "обл. Карагандинская, г. Караганда, р-н Казыбекбийский, ул. Пробный Путь, д. 003, кв. 070, подъезд 1, ориентир за учебным павильоном"
+    },
+    "expected": {
+      "id": "synthetic-dev-000866",
+      "raw_address": "обл. Карагандинская, г. Караганда, р-н Казыбекбийский, ул. Пробный Путь, д. 003, кв. 070, подъезд 1, ориентир за учебным павильоном",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пробный Путь",
+      "house": "003",
+      "apartment": "070",
+      "entrance": "1",
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_f2c33ec647d8d9d0",
+    "input": {
+      "id": "synthetic-dev-005590",
+      "raw_address": "р-н Абайский, ул. Белый Парус, обл. Шымкент, г. Шымкент, д.003, 4 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-005590",
+      "raw_address": "р-н Абайский, ул. Белый Парус, обл. Шымкент, г. Шымкент, д.003, 4 кв.",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Белый Парус",
+      "house": "003",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_2de438a849387123",
+    "input": {
+      "id": "synthetic-dev-006738",
+      "raw_address": "обл. Қарағанды; г. Қарағанды; р-н Қазыбек би; мкр. Жарык Сұлба; д. 41Б; ориентир мұнара макетінің жанында; участок 838; г. Қарағанды"
+    },
+    "expected": {
+      "id": "synthetic-dev-006738",
+      "raw_address": "обл. Қарағанды; г. Қарағанды; р-н Қазыбек би; мкр. Жарык Сұлба; д. 41Б; ориентир мұнара макетінің жанында; участок 838; г. Қарағанды",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарык Сұлба",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_c0edf74043c65ed9",
+    "input": {
+      "id": "synthetic-dev-003248",
+      "raw_address": "р-н Үлбі, мkр. Жарык Сұлба, обл. Шығыс Қазақстан, г. Өскемен, д. 12А"
+    },
+    "expected": {
+      "id": "synthetic-dev-003248",
+      "raw_address": "р-н Үлбі, мkр. Жарык Сұлба, обл. Шығыс Қазақстан, г. Өскемен, д. 12А",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарык Сұлба",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b6af5c8c5ad5a22b",
+    "input": {
+      "id": "synthetic-dev-007377",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ауд. Үлбі; д-лы Жеткізу Көкжиеі; үй 41Б; кіреберіс 1; қабат 1; бағдар мұнара макетінің жанында; участок 877; қ. Өскемен"
+    },
+    "expected": {
+      "id": "synthetic-dev-007377",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ауд. Үлбі; д-лы Жеткізу Көкжиеі; үй 41Б; кіреберіс 1; қабат 1; бағдар мұнара макетінің жанында; участок 877; қ. Өскемен",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Жеткізу Көкжиеі",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": "1",
+      "floor": "1",
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_f31952c6f10b1abf",
+    "input": {
+      "id": "synthetic-dev-001139",
+      "raw_address": "обл. Астана; г. Астана; р-н Есильский; мкр. Потовый Квартал; кв. 070; ориентир у стенда маршрутов; 003; 79"
+    },
+    "expected": {
+      "id": "synthetic-dev-001139",
+      "raw_address": "обл. Астана; г. Астана; р-н Есильский; мкр. Потовый Квартал; кв. 070; ориентир у стенда маршрутов; 003; 79",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Потовый Квартал",
+      "house": null,
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.25
+    },
+    "check": {
+      "tier": "irrecoverable",
+      "locale": "ru",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "ambiguous_house"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_19f7c49aad8113a8",
+    "input": {
+      "id": "synthetic-dev-003252",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ш-а Сынақ Жағалау; к-сі Оңтүстік Сұлба; үй 12А; кіреберіс 1; қабат 1; бағдар бағыттар стендінің қасында; участок 752"
+    },
+    "expected": {
+      "id": "synthetic-dev-003252",
+      "raw_address": "обл. Шығыс Қазақстан; қ. Өскемен; ш-а Сынақ Жағалау; к-сі Оңтүстік Сұлба; үй 12А; кіреберіс 1; қабат 1; бағдар бағыттар стендінің қасында; участок 752",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": null,
+      "living_area": "Сынақ Жағалау",
+      "street_type": "улица",
+      "street_name": "Оңтүстік Сұлба",
+      "house": "12А",
+      "apartment": null,
+      "entrance": "1",
+      "floor": "1",
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_72cc75262ad3d3b7",
+    "input": {
+      "id": "synthetic-dev-006121",
+      "raw_address": "обл. Қарағанды, г. Қарағанды, р-н Қазыбек би, мкр. Сынақ Жағалау, д. 7, кв. 4, подъезд 2"
+    },
+    "expected": {
+      "id": "synthetic-dev-006121",
+      "raw_address": "обл. Қарағанды, г. Қарағанды, р-н Қазыбек би, мкр. Сынақ Жағалау, д. 7, кв. 4, подъезд 2",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағалау",
+      "house": "7",
+      "apartment": "4",
+      "entrance": "2",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8cc1a53861303379",
+    "input": {
+      "id": "synthetic-dev-008852",
+      "raw_address": "обл. Қарағанды, г. Қарағанды, ул. Жаңа Бағыт, д. 003, кв. 4, подъезд 2, этаж 1, ориентир көк аркаға қарама-қарсы, участок 752, г. Қарағанды"
+    },
+    "expected": {
+      "id": "synthetic-dev-008852",
+      "raw_address": "обл. Қарағанды, г. Қарағанды, ул. Жаңа Бағыт, д. 003, кв. 4, подъезд 2, этаж 1, ориентир көк аркаға қарама-қарсы, участок 752, г. Қарағанды",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жаңа Бағыт",
+      "house": "003",
+      "apartment": "4",
+      "entrance": "2",
+      "floor": "1",
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_58ef8fba3ddd5cda",
+    "input": {
+      "id": "synthetic-dev-004647",
+      "raw_address": "обл. Қарағанды; г. Қарағанды; р-н Қазыбек би; мкр. Жарық Сұлба; yл. Ак Желкен; д. 12А; подъезд 04; этаж -1"
+    },
+    "expected": {
+      "id": "synthetic-dev-004647",
+      "raw_address": "обл. Қарағанды; г. Қарағанды; р-н Қазыбек би; мкр. Жарық Сұлба; yл. Ак Желкен; д. 12А; подъезд 04; этаж -1",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": "Жарық Сұлба",
+      "street_type": "улица",
+      "street_name": "Ак Желкен",
+      "house": "12А",
+      "apartment": null,
+      "entrance": "04",
+      "floor": "-1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_86d7bba1c47d92c6",
+    "input": {
+      "id": "synthetic-dev-008373",
+      "raw_address": "р-н Есильский; yл. Южый Контур; обл. Астана; г. Астана; д. 7; 070 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-008373",
+      "raw_address": "р-н Есильский; yл. Южый Контур; обл. Астана; г. Астана; д. 7; 070 кв.",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Южый Контур",
+      "house": "7",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6798522fa945789b",
+    "input": {
+      "id": "synthetic-dev-003042",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, ш-а Жарык Сұлба, үй 12А, кіреберіс 2, қабат 3, бағдар мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-003042",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, ш-а Жарык Сұлба, үй 12А, кіреберіс 2, қабат 3, бағдар мұнара макетінің жанында",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарык Сұлба",
+      "house": "12А",
+      "apartment": null,
+      "entrance": "2",
+      "floor": "3",
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b7672186e2695099",
+    "input": {
+      "id": "synthetic-dev-008638",
+      "raw_address": "р-н Казыбекбийский; yл. Тиий Маршрут; обл. Карагандинская; г. Караганда; д. 41Б; 4 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-008638",
+      "raw_address": "р-н Казыбекбийский; yл. Тиий Маршрут; обл. Карагандинская; г. Караганда; д. 41Б; 4 кв.",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Тиий Маршрут",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_921fca8d1aa64772",
+    "input": {
+      "id": "synthetic-dev-000038",
+      "raw_address": "обл. Карагандинская; г. Караганда; р-н Казыбекбийский; мкр. Почтовый Квартал; yл. Ноый Вектор; д. 12А; кв. 112А; ориентир за учебным павильоном; участок 738"
+    },
+    "expected": {
+      "id": "synthetic-dev-000038",
+      "raw_address": "обл. Карагандинская; г. Караганда; р-н Казыбекбийский; мкр. Почтовый Квартал; yл. Ноый Вектор; д. 12А; кв. 112А; ориентир за учебным павильоном; участок 738",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": "Почтовый Квартал",
+      "street_type": "улица",
+      "street_name": "Ноый Вектор",
+      "house": "12А",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_aab11e5aeabd40ff",
+    "input": {
+      "id": "synthetic-dev-003723",
+      "raw_address": "обл. Астана, қ. Астана, ауд. Есіл, k-сі Жеткізу Көкжиегі, үй 56-1"
+    },
+    "expected": {
+      "id": "synthetic-dev-003723",
+      "raw_address": "обл. Астана, қ. Астана, ауд. Есіл, k-сі Жеткізу Көкжиегі, үй 56-1",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жеткізу Көкжиегі",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_33e147b1ea2e1e88",
+    "input": {
+      "id": "synthetic-dev-007678",
+      "raw_address": "р-н Үлбі   ул. Пошта Желсіі   обл. Шығыс Қазақстан   г. Өскемен   д.12А   3/1 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-007678",
+      "raw_address": "р-н Үлбі   ул. Пошта Желсіі   обл. Шығыс Қазақстан   г. Өскемен   д.12А   3/1 кв.",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пошта Желсіі",
+      "house": "12А",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_a383e470e07011c1",
+    "input": {
+      "id": "synthetic-dev-000146",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Почтовая Линия, д. 41Б, 19 кв., подъезд 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-000146",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Почтовая Линия, д. 41Б, 19 кв., подъезд 04",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Почтовая Линия",
+      "house": "41Б",
+      "apartment": "19",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_225b10963a0702a4",
+    "input": {
+      "id": "synthetic-dev-006947",
+      "raw_address": "обл. Астана; қ. Астана; ауд. Есіл; к-сі Алтын Багыт; үй 003; пәт. 3/1; кіреберіс 1; қабат 1; бағдар бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-006947",
+      "raw_address": "обл. Астана; қ. Астана; ауд. Есіл; к-сі Алтын Багыт; үй 003; пәт. 3/1; кіреберіс 1; қабат 1; бағдар бағыттар стендінің қасында",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Алтын Багыт",
+      "house": "003",
+      "apartment": "3/1",
+      "entrance": "1",
+      "floor": "1",
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_16e92d85c5f4e406",
+    "input": {
+      "id": "synthetic-dev-001158",
+      "raw_address": "ауд. Үлбі; k-сі Улгі Жолы; обл. Шығыс Қазақстан; қ. Өскемен; 12А үй; бағдар оқу павильонының артында"
+    },
+    "expected": {
+      "id": "synthetic-dev-001158",
+      "raw_address": "ауд. Үлбі; k-сі Улгі Жолы; обл. Шығыс Қазақстан; қ. Өскемен; 12А үй; бағдар оқу павильонының артында",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Улгі Жолы",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_d4bedfecc017e994",
+    "input": {
+      "id": "synthetic-dev-004858",
+      "raw_address": "обл. Актюбинская; г. Актобе; р-н Алматинский; мкр. Пробный еБрег; д. 003; кв. 070; ориентир за учебным павильоном; участок 758; г. Актобе"
+    },
+    "expected": {
+      "id": "synthetic-dev-004858",
+      "raw_address": "обл. Актюбинская; г. Актобе; р-н Алматинский; мкр. Пробный еБрег; д. 003; кв. 070; ориентир за учебным павильоном; участок 758; г. Актобе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пробный еБрег",
+      "house": "003",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_c8759b286a9d4199",
+    "input": {
+      "id": "synthetic-dev-009946",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, р-н Ульбинский, ул. Верный Шаг, д.41Б, кв. 4, подъезд 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-009946",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, р-н Ульбинский, ул. Верный Шаг, д.41Б, кв. 4, подъезд 1",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Верный Шаг",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_4d6bf705f3eaafba",
+    "input": {
+      "id": "synthetic-dev-003418",
+      "raw_address": "обл. Астана   қ. Астана   ауд. Есіл   к-сі Ақ еЖлкен   үй 56-1   пәт. 19   бағдар оқу павильонының артында   участок 718   қ. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-003418",
+      "raw_address": "обл. Астана   қ. Астана   ауд. Есіл   к-сі Ақ еЖлкен   үй 56-1   пәт. 19   бағдар оқу павильонының артында   участок 718   қ. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Ақ еЖлкен",
+      "house": "56-1",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_bf5f8922b446cf43",
+    "input": {
+      "id": "synthetic-dev-007261",
+      "raw_address": "обл. Ақтөбе, г. Ақтөбе, р-н Алматы, ул. Көк Із, д. 18/2, кв. 4, подъезд 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-007261",
+      "raw_address": "обл. Ақтөбе, г. Ақтөбе, р-н Алматы, ул. Көк Із, д. 18/2, кв. 4, подъезд 04",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Көк Із",
+      "house": "18/2",
+      "apartment": "4",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_29688a87001b4ae9",
+    "input": {
+      "id": "synthetic-dev-009072",
+      "raw_address": "обл. Астана, қ. Астана, к-сі Ақ Желкен, үй 003, кіреберіс 1, қабат 1, бағдар көк аркаға қарама-қарсы, участок 772, қ. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-009072",
+      "raw_address": "обл. Астана, қ. Астана, к-сі Ақ Желкен, үй 003, кіреберіс 1, қабат 1, бағдар көк аркаға қарама-қарсы, участок 772, қ. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Ақ Желкен",
+      "house": "003",
+      "apartment": null,
+      "entrance": "1",
+      "floor": "1",
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8ae321ef4702187f",
+    "input": {
+      "id": "synthetic-dev-004831",
+      "raw_address": "ауд. Әуезов, к-сі Үлгі Жолы, обл. Алматы, қ. Алматы, үй12А, 4 пәт., кіреберіс 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-004831",
+      "raw_address": "ауд. Әуезов, к-сі Үлгі Жолы, обл. Алматы, қ. Алматы, үй12А, 4 пәт., кіреберіс 04",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Үлгі Жолы",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0fdb97f65a601edc",
+    "input": {
+      "id": "synthetic-dev-000846",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, к-сі Жарық Көпір, үй 56-1, кіреберіс 2, бағдар көк аркаға қарама-қарсы, қ. Өскемен"
+    },
+    "expected": {
+      "id": "synthetic-dev-000846",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, к-сі Жарық Көпір, үй 56-1, кіреберіс 2, бағдар көк аркаға қарама-қарсы, қ. Өскемен",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жарық Көпір",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": "2",
+      "floor": null,
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_d226f8146b69e228",
+    "input": {
+      "id": "synthetic-dev-008738",
+      "raw_address": "ауд. Есіл; k-сі Кұтты Қадам; обл. Астана; қ. Астана; үй 56-1; пәт. 4; бағдар оқу павильонының артында"
+    },
+    "expected": {
+      "id": "synthetic-dev-008738",
+      "raw_address": "ауд. Есіл; k-сі Кұтты Қадам; обл. Астана; қ. Астана; үй 56-1; пәт. 4; бағдар оқу павильонының артында",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Кұтты Қадам",
+      "house": "56-1",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_2c9412d4f892fcce",
+    "input": {
+      "id": "synthetic-dev-001542",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, пр-т Тихий Маршрут, д.12А, подъезд 2, этаж 3, ориентир у стенда маршрутов"
+    },
+    "expected": {
+      "id": "synthetic-dev-001542",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, пр-т Тихий Маршрут, д.12А, подъезд 2, этаж 3, ориентир у стенда маршрутов",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Тихий Маршрут",
+      "house": "12А",
+      "apartment": null,
+      "entrance": "2",
+      "floor": "3",
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_3ca00da33f4351d2",
+    "input": {
+      "id": "synthetic-dev-008573",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; р-н Алматы; мkр. Жана Белес; д. 003; ориентир мұнара макетінің жанында; участок 874"
+    },
+    "expected": {
+      "id": "synthetic-dev-008573",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; р-н Алматы; мkр. Жана Белес; д. 003; ориентир мұнара макетінің жанында; участок 874",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жана Белес",
+      "house": "003",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_9f776924c1a82430",
+    "input": {
+      "id": "synthetic-dev-002441",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абай, ул. Алтын Бағыт, д. 56-1, кв. 19, подъезд 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-002441",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абай, ул. Алтын Бағыт, д. 56-1, кв. 19, подъезд 04",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Алтын Бағыт",
+      "house": "56-1",
+      "apartment": "19",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "mixed",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_388647abf08b7eda",
+    "input": {
+      "id": "synthetic-dev-005451",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; р-н Алматы; ул. Жеткізу Кокжиегі; д. 003; подъезд 1; ориентир бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-005451",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; р-н Алматы; ул. Жеткізу Кокжиегі; д. 003; подъезд 1; ориентир бағыттар стендінің қасында",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жеткізу Кокжиегі",
+      "house": "003",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_4cb02c2e9f222468",
+    "input": {
+      "id": "synthetic-dev-001417",
+      "raw_address": "обл. Шымкент   г. Шымкент   р-н Абайский   мкр. Свтлый Контур   д.7   кв. 112А   подъезд 1   этаж -1   участок 717   г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-001417",
+      "raw_address": "обл. Шымкент   г. Шымкент   р-н Абайский   мкр. Свтлый Контур   д.7   кв. 112А   подъезд 1   этаж -1   участок 717   г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Свтлый Контур",
+      "house": "7",
+      "apartment": "112А",
+      "entrance": "1",
+      "floor": "-1",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_64fab3dace482fe1",
+    "input": {
+      "id": "synthetic-dev-000302",
+      "raw_address": "обл. Астана, қ. Астана, ауд. Есіл, ш-а Пошта Орамы, үй 12А, пәт. 3/1, кіреберіс 1, қабат 07"
+    },
+    "expected": {
+      "id": "synthetic-dev-000302",
+      "raw_address": "обл. Астана, қ. Астана, ауд. Есіл, ш-а Пошта Орамы, үй 12А, пәт. 3/1, кіреберіс 1, қабат 07",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пошта Орамы",
+      "house": "12А",
+      "apartment": "3/1",
+      "entrance": "1",
+      "floor": "07",
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_51d1be1ebcdd90f7",
+    "input": {
+      "id": "synthetic-dev-001888",
+      "raw_address": "обл. Актюбинская; г. Актобе; мкр. Пробный Берег; д. 003; кв. 070; ориентир напротив синей арки; участок 788"
+    },
+    "expected": {
+      "id": "synthetic-dev-001888",
+      "raw_address": "обл. Актюбинская; г. Актобе; мкр. Пробный Берег; д. 003; кв. 070; ориентир напротив синей арки; участок 788",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пробный Берег",
+      "house": "003",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "напротив синей арки",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_3c127d75e16c08ae",
+    "input": {
+      "id": "synthetic-dev-005531",
+      "raw_address": "обл. Ақтөбе, қ. Ақтөбе, ауд. Алматы, ш-а Жарық Сұлба, к-сі ЖаңаБағыт, үй 7, пәт. 4, кіреберіс 04, участок 831, қ. Ақтөбе"
+    },
+    "expected": {
+      "id": "synthetic-dev-005531",
+      "raw_address": "обл. Ақтөбе, қ. Ақтөбе, ауд. Алматы, ш-а Жарық Сұлба, к-сі ЖаңаБағыт, үй 7, пәт. 4, кіреберіс 04, участок 831, қ. Ақтөбе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": "Жарық Сұлба",
+      "street_type": "улица",
+      "street_name": "ЖаңаБағыт",
+      "house": "7",
+      "apartment": "4",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6b7f772fe0de0212",
+    "input": {
+      "id": "synthetic-dev-009844",
+      "raw_address": "обл. Астана, қ. Астана, д-лы Тыныш Бағдар, үй 003, пәт. 3/1, қ. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-009844",
+      "raw_address": "обл. Астана, қ. Астана, д-лы Тыныш Бағдар, үй 003, пәт. 3/1, қ. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Тыныш Бағдар",
+      "house": "003",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_a1a7a130d90fae0f",
+    "input": {
+      "id": "synthetic-dev-005027",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Ауэзовский   мкр. Побный Берег   д.7   кв. 4   подъезд 2   этаж 3"
+    },
+    "expected": {
+      "id": "synthetic-dev-005027",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Ауэзовский   мкр. Побный Берег   д.7   кв. 4   подъезд 2   этаж 3",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Побный Берег",
+      "house": "7",
+      "apartment": "4",
+      "entrance": "2",
+      "floor": "3",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_a4f8bf7855ef43d3",
+    "input": {
+      "id": "synthetic-dev-002183",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, пр-т Почтовая Линия, д. 003, кв. 070"
+    },
+    "expected": {
+      "id": "synthetic-dev-002183",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, пр-т Почтовая Линия, д. 003, кв. 070",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Почтовая Линия",
+      "house": "003",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_94839e82c41c4fd2",
+    "input": {
+      "id": "synthetic-dev-004903",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, р-н Ульбинский, ул. Южный Контур, д. 41Б, кв. 4, ориентир у стенда маршрутов"
+    },
+    "expected": {
+      "id": "synthetic-dev-004903",
+      "raw_address": "обл. Восточно-Казахстанская, г. Усть-Каменогорск, р-н Ульбинский, ул. Южный Контур, д. 41Б, кв. 4, ориентир у стенда маршрутов",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Южный Контур",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_5a05b346be331d8a",
+    "input": {
+      "id": "synthetic-dev-002415",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; мкр. Свтлый Контур; д. 12А; ориентир у стенда маршрутов; участок 715; г. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-002415",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; мкр. Свтлый Контур; д. 12А; ориентир у стенда маршрутов; участок 715; г. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Свтлый Контур",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e6637b45a24c9d57",
+    "input": {
+      "id": "synthetic-dev-007847",
+      "raw_address": "р-н Абайский, yл. Прбный Путь, обл. Шымкент, г. Шымкент, д. 18/2, кв. 070, подъезд 04, этаж 07"
+    },
+    "expected": {
+      "id": "synthetic-dev-007847",
+      "raw_address": "р-н Абайский, yл. Прбный Путь, обл. Шымкент, г. Шымкент, д. 18/2, кв. 070, подъезд 04, этаж 07",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Прбный Путь",
+      "house": "18/2",
+      "apartment": "070",
+      "entrance": "04",
+      "floor": "07",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_caf6cbb381a58dda",
+    "input": {
+      "id": "synthetic-dev-006308",
+      "raw_address": "обл. Карагандинская; г. Караганда; мkр. Ноый Рубеж; д. 003; кв. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-006308",
+      "raw_address": "обл. Карагандинская; г. Караганда; мkр. Ноый Рубеж; д. 003; кв. 19",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Ноый Рубеж",
+      "house": "003",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_5262491a59fa5d26",
+    "input": {
+      "id": "synthetic-dev-005301",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абайский, ул. Новый Вектор, д. 41Б, подъезд 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-005301",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абайский, ул. Новый Вектор, д. 41Б, подъезд 1",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Новый Вектор",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_65074a4f5934c6cb",
+    "input": {
+      "id": "synthetic-dev-009272",
+      "raw_address": "обл. Астана   қ. Астана   д-лы Пошат Желісі   үй 56-1   пәт. 19   кіреберіс 1   қабат 1   қ. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-009272",
+      "raw_address": "обл. Астана   қ. Астана   д-лы Пошат Желісі   үй 56-1   пәт. 19   кіреберіс 1   қабат 1   қ. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Пошат Желісі",
+      "house": "56-1",
+      "apartment": "19",
+      "entrance": "1",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_3de6550b084520e6",
+    "input": {
+      "id": "synthetic-dev-005453",
+      "raw_address": "обл. Астана, г. Астана, р-н Есіл, ул. Ақ Желкен, д. 12А, кв. 4, ориентир мұнара макетінің жанында, участок 753, г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-005453",
+      "raw_address": "обл. Астана, г. Астана, р-н Есіл, ул. Ақ Желкен, д. 12А, кв. 4, ориентир мұнара макетінің жанында, участок 753, г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Ақ Желкен",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_9ba74fb1f1d896de",
+    "input": {
+      "id": "synthetic-dev-008815",
+      "raw_address": "р-н Есильский; yл. Южый Контур; обл. Астана; г. Астана; д. 7; кв. 4; ориентир у стенда маршрутов"
+    },
+    "expected": {
+      "id": "synthetic-dev-008815",
+      "raw_address": "р-н Есильский; yл. Южый Контур; обл. Астана; г. Астана; д. 7; кв. 4; ориентир у стенда маршрутов",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Южый Контур",
+      "house": "7",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_ad26ed86bf386a2d",
+    "input": {
+      "id": "synthetic-dev-002093",
+      "raw_address": "ауд. Қазыбек би, д-лы Алтын Бағыт, обл. Қарағанды, қ. Қарағанды, үй 56-1, 070 пәт."
+    },
+    "expected": {
+      "id": "synthetic-dev-002093",
+      "raw_address": "ауд. Қазыбек би, д-лы Алтын Бағыт, обл. Қарағанды, қ. Қарағанды, үй 56-1, 070 пәт.",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Алтын Бағыт",
+      "house": "56-1",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6f73ad4937fa24a0",
+    "input": {
+      "id": "synthetic-dev-001730",
+      "raw_address": "ауд. Әуезов, k-сі Жарық Көпір, обл. Алматы, қ. Алматы, үй 12А, 4 пәт."
+    },
+    "expected": {
+      "id": "synthetic-dev-001730",
+      "raw_address": "ауд. Әуезов, k-сі Жарық Көпір, обл. Алматы, қ. Алматы, үй 12А, 4 пәт.",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жарық Көпір",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_02018e2d404f3de9",
+    "input": {
+      "id": "synthetic-dev-001307",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, ш-а ЖаңаБелес, үй 7, пәт. 070, кіреберіс 2, қабат 1, участок 807, қ. Шымкент"
+    },
+    "expected": {
+      "id": "synthetic-dev-001307",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, ш-а ЖаңаБелес, үй 7, пәт. 070, кіреберіс 2, қабат 1, участок 807, қ. Шымкент",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "ЖаңаБелес",
+      "house": "7",
+      "apartment": "070",
+      "entrance": "2",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_f87ae967e8359b49",
+    "input": {
+      "id": "synthetic-dev-000452",
+      "raw_address": "обл. Шымкент   г. Шымкент   ул. Новый Вектор   д.18/2   19 кв.   подъезд 04   этаж 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-000452",
+      "raw_address": "обл. Шымкент   г. Шымкент   ул. Новый Вектор   д.18/2   19 кв.   подъезд 04   этаж 1",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Новый Вектор",
+      "house": "18/2",
+      "apartment": "19",
+      "entrance": "04",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "spacing",
+        "marker_glue",
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_ecae2516c0cf1200",
+    "input": {
+      "id": "synthetic-dev-007933",
+      "raw_address": "р-н Алматинский, ул. Горизонт Доставки, обл. Актюбинская, г. Актобе, д.7, 112А кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-007933",
+      "raw_address": "р-н Алматинский, ул. Горизонт Доставки, обл. Актюбинская, г. Актобе, д.7, 112А кв.",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Горизонт Доставки",
+      "house": "7",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_17784fa9b9ec0a12",
+    "input": {
+      "id": "synthetic-dev-009720",
+      "raw_address": "обл. Астана, қ. Астана, д-лы Алтын Бағыт, үй 7, бағдар бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-009720",
+      "raw_address": "обл. Астана, қ. Астана, д-лы Алтын Бағыт, үй 7, бағдар бағыттар стендінің қасында",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Алтын Бағыт",
+      "house": "7",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b40ef2a818819ce4",
+    "input": {
+      "id": "synthetic-dev-005631",
+      "raw_address": "обл. Қарағанды   г. Қарағанды   р-н Қазыбек би   пр-т Солүстік Түйін   д. 12А   подъезд 1   г. Қарағанды"
+    },
+    "expected": {
+      "id": "synthetic-dev-005631",
+      "raw_address": "обл. Қарағанды   г. Қарағанды   р-н Қазыбек би   пр-т Солүстік Түйін   д. 12А   подъезд 1   г. Қарағанды",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Солүстік Түйін",
+      "house": "12А",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_609e52142132b546",
+    "input": {
+      "id": "synthetic-dev-006951",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Әуезов   мкр. Сынақ Жағалау   ул. Жаңа Бағт   д. 18/2   подъезд 1   г. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-006951",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Әуезов   мкр. Сынақ Жағалау   ул. Жаңа Бағт   д. 18/2   подъезд 1   г. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": "Сынақ Жағалау",
+      "street_type": "улица",
+      "street_name": "Жаңа Бағт",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_db2460220c5c683e",
+    "input": {
+      "id": "synthetic-dev-001427",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, ш-а Сынақ Жағалау, үй 56-1, пәт. 070, кіреберіс 04, қабат 3, бағдар бағыттар стендінің қасында, участок 727, қ. Өскемен"
+    },
+    "expected": {
+      "id": "synthetic-dev-001427",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, ш-а Сынақ Жағалау, үй 56-1, пәт. 070, кіреберіс 04, қабат 3, бағдар бағыттар стендінің қасында, участок 727, қ. Өскемен",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағалау",
+      "house": "56-1",
+      "apartment": "070",
+      "entrance": "04",
+      "floor": "3",
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_130e7570a9b219ee",
+    "input": {
+      "id": "synthetic-dev-007560",
+      "raw_address": "обл. Карагандинская, г. Караганда, пр-т Южный Контур, д. 7, ориентир за учебным павильоном"
+    },
+    "expected": {
+      "id": "synthetic-dev-007560",
+      "raw_address": "обл. Карагандинская, г. Караганда, пр-т Южный Контур, д. 7, ориентир за учебным павильоном",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Южный Контур",
+      "house": "7",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_f59d818ff54d665a",
+    "input": {
+      "id": "synthetic-dev-009000",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, к-сі Оңтүстік Сұлба, үй 12А, бағдар бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-009000",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, к-сі Оңтүстік Сұлба, үй 12А, бағдар бағыттар стендінің қасында",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Оңтүстік Сұлба",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_18baac4c6989e9f2",
+    "input": {
+      "id": "synthetic-dev-009156",
+      "raw_address": "мкр. Сынақ Жағалау; yл. Ак Желкен; обл. Ақтөбе; г. Ақтөбе; д. 18/2; подъезд 1; ориентир оқу павильонының артында"
+    },
+    "expected": {
+      "id": "synthetic-dev-009156",
+      "raw_address": "мкр. Сынақ Жағалау; yл. Ак Желкен; обл. Ақтөбе; г. Ақтөбе; д. 18/2; подъезд 1; ориентир оқу павильонының артында",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": "Сынақ Жағалау",
+      "street_type": "улица",
+      "street_name": "Ак Желкен",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_39824178de6a71d0",
+    "input": {
+      "id": "synthetic-dev-006120",
+      "raw_address": "обл. Алматы, г. Алматы, мкр. Почтовый Квартал, ул. Верный Шаг, д. 003, ориентир рядом с макетом башни"
+    },
+    "expected": {
+      "id": "synthetic-dev-006120",
+      "raw_address": "обл. Алматы, г. Алматы, мкр. Почтовый Квартал, ул. Верный Шаг, д. 003, ориентир рядом с макетом башни",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": null,
+      "living_area": "Почтовый Квартал",
+      "street_type": "улица",
+      "street_name": "Верный Шаг",
+      "house": "003",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_cacee2eb641a0a51",
+    "input": {
+      "id": "synthetic-dev-004854",
+      "raw_address": "р-н Абайский; мkр. Ноый Рубеж; обл. Шымкент; г. Шымкент; 18/2 д.; ориентир рядом с макетом башни"
+    },
+    "expected": {
+      "id": "synthetic-dev-004854",
+      "raw_address": "р-н Абайский; мkр. Ноый Рубеж; обл. Шымкент; г. Шымкент; 18/2 д.; ориентир рядом с макетом башни",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Ноый Рубеж",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0313a37e99ac68b6",
+    "input": {
+      "id": "synthetic-dev-006429",
+      "raw_address": "обл. Шымкент; қ. Шымкент; ауд. Абай; ш-а Жаңа Белес; k-сі Жеткізу Кокжиегі; үй 003"
+    },
+    "expected": {
+      "id": "synthetic-dev-006429",
+      "raw_address": "обл. Шымкент; қ. Шымкент; ауд. Абай; ш-а Жаңа Белес; k-сі Жеткізу Кокжиегі; үй 003",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": "Жаңа Белес",
+      "street_type": "улица",
+      "street_name": "Жеткізу Кокжиегі",
+      "house": "003",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_22d68da8168ca477",
+    "input": {
+      "id": "synthetic-dev-000282",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; ул. Белый Парус; д. 003; подъезд 04; этаж -1; ориентир за учебным павильоном"
+    },
+    "expected": {
+      "id": "synthetic-dev-000282",
+      "raw_address": "обл. Шымкент; г. Шымкент; р-н Абайский; ул. Белый Парус; д. 003; подъезд 04; этаж -1; ориентир за учебным павильоном",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Белый Парус",
+      "house": "003",
+      "apartment": null,
+      "entrance": "04",
+      "floor": "-1",
+      "landmark": "за учебным павильоном",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e1e756d3058d4196",
+    "input": {
+      "id": "synthetic-dev-004410",
+      "raw_address": "обл. Алматы   қ. Алматы   ауд. Әуезов   к-сі Жаң аБағыт   үй 56-1   бағдар бағыттар стендінің қасында   қ. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-004410",
+      "raw_address": "обл. Алматы   қ. Алматы   ауд. Әуезов   к-сі Жаң аБағыт   үй 56-1   бағдар бағыттар стендінің қасында   қ. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жаң аБағыт",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_83308f6357e433d3",
+    "input": {
+      "id": "synthetic-dev-004561",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, ш-а Жаңа Белес, үй 003, пәт. 070, кіреберіс 2"
+    },
+    "expected": {
+      "id": "synthetic-dev-004561",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, ш-а Жаңа Белес, үй 003, пәт. 070, кіреберіс 2",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жаңа Белес",
+      "house": "003",
+      "apartment": "070",
+      "entrance": "2",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_cc0b6fe7748a4bcb",
+    "input": {
+      "id": "synthetic-dev-009621",
+      "raw_address": "обл. Карагандинская, г. Караганда, р-н Казыбекбийский, ул. Белый Парус, д. 7, подъезд 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-009621",
+      "raw_address": "обл. Карагандинская, г. Караганда, р-н Казыбекбийский, ул. Белый Парус, д. 7, подъезд 1",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Белый Парус",
+      "house": "7",
+      "apartment": null,
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_715241bb8b418dff",
+    "input": {
+      "id": "synthetic-dev-000501",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, к-сі Оңтүстік Сұлба, үй 18/2, кіреберіс 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-000501",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, к-сі Оңтүстік Сұлба, үй 18/2, кіреберіс 04",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Оңтүстік Сұлба",
+      "house": "18/2",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_a1d4ac02ce2534a7",
+    "input": {
+      "id": "synthetic-dev-004103",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, ул. Сверный Узел, д. 56-1, кв. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-004103",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, ул. Сверный Узел, д. 56-1, кв. 4",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Сверный Узел",
+      "house": "56-1",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_f0b45acb9cd3abc3",
+    "input": {
+      "id": "synthetic-dev-009565",
+      "raw_address": "обл. Ақтөбе, қ. Ақтөбе, ауд. Алматы, к-сі Пошта Желисі, үй 41Б, пәт. 112А"
+    },
+    "expected": {
+      "id": "synthetic-dev-009565",
+      "raw_address": "обл. Ақтөбе, қ. Ақтөбе, ауд. Алматы, к-сі Пошта Желисі, үй 41Б, пәт. 112А",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пошта Желисі",
+      "house": "41Б",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_65d8a0e6cd5a19d6",
+    "input": {
+      "id": "synthetic-dev-002571",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Синий След, д. 003, подъезд 04, ориентир у стенда маршрутов, участок 871, г. Актобе"
+    },
+    "expected": {
+      "id": "synthetic-dev-002571",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Синий След, д. 003, подъезд 04, ориентир у стенда маршрутов, участок 871, г. Актобе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Синий След",
+      "house": "003",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_d07bfe7badcb37ba",
+    "input": {
+      "id": "synthetic-dev-005847",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; к-сі Онтүстік Сұлба; үй 003; кіреберіс 2; қабат -1; бағдар бағыттар стендінің қасында"
+    },
+    "expected": {
+      "id": "synthetic-dev-005847",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; к-сі Онтүстік Сұлба; үй 003; кіреберіс 2; қабат -1; бағдар бағыттар стендінің қасында",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Онтүстік Сұлба",
+      "house": "003",
+      "apartment": null,
+      "entrance": "2",
+      "floor": "-1",
+      "landmark": "бағыттар стендінің қасында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_cbf9094b8f1425c8",
+    "input": {
+      "id": "synthetic-dev-006373",
+      "raw_address": "р-н Есіл, yл. Пошта Желисі, обл. Астана, г. Астана, д. 56-1, кв. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-006373",
+      "raw_address": "р-н Есіл, yл. Пошта Желисі, обл. Астана, г. Астана, д. 56-1, кв. 4",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пошта Желисі",
+      "house": "56-1",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_feae561351e793d4",
+    "input": {
+      "id": "synthetic-dev-004931",
+      "raw_address": "ауд. Үлбі, k-сі Пошта Желісі, обл. Шығыс Қазақстан, қ. Өскемен, үй 003, 112А пәт., кіреберіс 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-004931",
+      "raw_address": "ауд. Үлбі, k-сі Пошта Желісі, обл. Шығыс Қазақстан, қ. Өскемен, үй 003, 112А пәт., кіреберіс 04",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пошта Желісі",
+      "house": "003",
+      "apartment": "112А",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_4e2f0ef4feb43dd2",
+    "input": {
+      "id": "synthetic-dev-002970",
+      "raw_address": "обл. Астана   қ. Астана   ауд. Есіл   ш-а Пошта Орамы   д-лы Солтүсткі Түйін   үй41Б   бағдар мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-002970",
+      "raw_address": "обл. Астана   қ. Астана   ауд. Есіл   ш-а Пошта Орамы   д-лы Солтүсткі Түйін   үй41Б   бағдар мұнара макетінің жанында",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": "Пошта Орамы",
+      "street_type": "проспект",
+      "street_name": "Солтүсткі Түйін",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_20cec4da052254b1",
+    "input": {
+      "id": "synthetic-dev-005000",
+      "raw_address": "обл. Қарағанды, қ. Қарағанды, д-лы Жарық Көпір, үй 003, пәт. 19"
+    },
+    "expected": {
+      "id": "synthetic-dev-005000",
+      "raw_address": "обл. Қарағанды, қ. Қарағанды, д-лы Жарық Көпір, үй 003, пәт. 19",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Жарық Көпір",
+      "house": "003",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "kk",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_26a5059369ff85ee",
+    "input": {
+      "id": "synthetic-dev-009503",
+      "raw_address": "обл. Ақтөбе, қ. Ақтөбе, ауд. Алматы, к-сі Жеткізу Көкжиегі, үй 003, пәт. 4, қ. Ақтөбе"
+    },
+    "expected": {
+      "id": "synthetic-dev-009503",
+      "raw_address": "обл. Ақтөбе, қ. Ақтөбе, ауд. Алматы, к-сі Жеткізу Көкжиегі, үй 003, пәт. 4, қ. Ақтөбе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жеткізу Көкжиегі",
+      "house": "003",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_17429bc81fc6fcf8",
+    "input": {
+      "id": "synthetic-dev-004557",
+      "raw_address": "р-н Есильский; мкр. Светлый Контур; обл. Астана; г. Астана; yл. Ноый Вектор; 56-1 д.; подъезд 2; этаж 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-004557",
+      "raw_address": "р-н Есильский; мкр. Светлый Контур; обл. Астана; г. Астана; yл. Ноый Вектор; 56-1 д.; подъезд 2; этаж 1",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": "Светлый Контур",
+      "street_type": "улица",
+      "street_name": "Ноый Вектор",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": "2",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_96d5283fe9ac3deb",
+    "input": {
+      "id": "synthetic-dev-008752",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ш-а Сынақ Жағалау; үй 12А; пәт. 4; кіреберіс 04; қабат 1; бағдар көк аркаға қарама-қарсы; участок 852"
+    },
+    "expected": {
+      "id": "synthetic-dev-008752",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ш-а Сынақ Жағалау; үй 12А; пәт. 4; кіреберіс 04; қабат 1; бағдар көк аркаға қарама-қарсы; участок 852",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағалау",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": "04",
+      "floor": "1",
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_df5aaabf5b87bf1e",
+    "input": {
+      "id": "synthetic-dev-009295",
+      "raw_address": "ауд. Алматы   ш-а Жарық Сұба   обл. Ақтөбе   қ. Ақтөбе   үй7   112А пәт."
+    },
+    "expected": {
+      "id": "synthetic-dev-009295",
+      "raw_address": "ауд. Алматы   ш-а Жарық Сұба   обл. Ақтөбе   қ. Ақтөбе   үй7   112А пәт.",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарық Сұба",
+      "house": "7",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_4c61342daddb4bfb",
+    "input": {
+      "id": "synthetic-dev-009253",
+      "raw_address": "р-н Алматинский, ул. Почтовая Линия, обл. Актюбинская, г. Актобе, д.12А, 070 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-009253",
+      "raw_address": "р-н Алматинский, ул. Почтовая Линия, обл. Актюбинская, г. Актобе, д.12А, 070 кв.",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Почтовая Линия",
+      "house": "12А",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_145733bdfe490ac9",
+    "input": {
+      "id": "synthetic-dev-005850",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, ш-а Жаңа Белес, к-сі Атлын Бағыт, үй 41Б, бағдар көк аркаға қарама-қарсы, участок 750, қ. Өскемен"
+    },
+    "expected": {
+      "id": "synthetic-dev-005850",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, ш-а Жаңа Белес, к-сі Атлын Бағыт, үй 41Б, бағдар көк аркаға қарама-қарсы, участок 750, қ. Өскемен",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": "Жаңа Белес",
+      "street_type": "улица",
+      "street_name": "Атлын Бағыт",
+      "house": "41Б",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b8b6bb0aa0b50a6f",
+    "input": {
+      "id": "synthetic-dev-009421",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Северный Узел, д. 56-1, кв. 19, подъезд 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-009421",
+      "raw_address": "обл. Актюбинская, г. Актобе, р-н Алматинский, ул. Северный Узел, д. 56-1, кв. 19, подъезд 04",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Северный Узел",
+      "house": "56-1",
+      "apartment": "19",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_30bfe4176b7ec53d",
+    "input": {
+      "id": "synthetic-dev-006015",
+      "raw_address": "обл. Қарағанды   г. Қарағанды   р-н Қазыбек би   ул. Жары Көпір   д.003   участок 715   г. Қарағанды"
+    },
+    "expected": {
+      "id": "synthetic-dev-006015",
+      "raw_address": "обл. Қарағанды   г. Қарағанды   р-н Қазыбек би   ул. Жары Көпір   д.003   участок 715   г. Қарағанды",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жары Көпір",
+      "house": "003",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_ca233371d7e87e8b",
+    "input": {
+      "id": "synthetic-dev-003126",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абай, ул. Жаңа Бағыт, д.7, подъезд 04, ориентир көк аркаға қарама-қарсы"
+    },
+    "expected": {
+      "id": "synthetic-dev-003126",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абай, ул. Жаңа Бағыт, д.7, подъезд 04, ориентир көк аркаға қарама-қарсы",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жаңа Бағыт",
+      "house": "7",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "көк аркаға қарама-қарсы",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "mixed",
+      "operations": [
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e5c30c4897adbb68",
+    "input": {
+      "id": "synthetic-dev-007062",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, к-сі Жарық Кпөір, үй 56-1, кіреберіс 04, қабат 1, бағдар мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-007062",
+      "raw_address": "обл. Шығыс Қазақстан, қ. Өскемен, ауд. Үлбі, к-сі Жарық Кпөір, үй 56-1, кіреберіс 04, қабат 1, бағдар мұнара макетінің жанында",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жарық Кпөір",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": "04",
+      "floor": "1",
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_7e4c6dfafca9dcc9",
+    "input": {
+      "id": "synthetic-dev-005698",
+      "raw_address": "р-н Абайский   пр-т Почтовая Лииня   обл. Шымкент   г. Шымкент   д.56-1   112А кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-005698",
+      "raw_address": "р-н Абайский   пр-т Почтовая Лииня   обл. Шымкент   г. Шымкент   д.56-1   112А кв.",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Почтовая Лииня",
+      "house": "56-1",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_54ca180d8f03440d",
+    "input": {
+      "id": "synthetic-dev-005654",
+      "raw_address": "ауд. Алматы   д-лы Солтүстік Түйні   обл. Ақтөбе   қ. Ақтөбе   үй12А   19 пәт."
+    },
+    "expected": {
+      "id": "synthetic-dev-005654",
+      "raw_address": "ауд. Алматы   д-лы Солтүстік Түйні   обл. Ақтөбе   қ. Ақтөбе   үй12А   19 пәт.",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Солтүстік Түйні",
+      "house": "12А",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_90545ff0a9e8e676",
+    "input": {
+      "id": "synthetic-dev-009304",
+      "raw_address": "обл. Шымкент, г. Шымкент, ул. Южный Контур, д. 7, кв. 112А, участок 804"
+    },
+    "expected": {
+      "id": "synthetic-dev-009304",
+      "raw_address": "обл. Шымкент, г. Шымкент, ул. Южный Контур, д. 7, кв. 112А, участок 804",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Южный Контур",
+      "house": "7",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6d9e79d224915636",
+    "input": {
+      "id": "synthetic-dev-000582",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Пробный Берег, д. 56-1, подъезд 04, этаж 3, ориентир у стенда маршрутов, г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-000582",
+      "raw_address": "обл. Астана, г. Астана, р-н Есильский, мкр. Пробный Берег, д. 56-1, подъезд 04, этаж 3, ориентир у стенда маршрутов, г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пробный Берег",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": "04",
+      "floor": "3",
+      "landmark": "у стенда маршрутов",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_30322b5506be228b",
+    "input": {
+      "id": "synthetic-dev-001573",
+      "raw_address": "обл. Восточно-Казахстанская   г. Усть-Каменогорск   р-н Ульбинский   мкр. Новый Рубеж   пр-т Тхий Маршрут   д.12А   кв. 070"
+    },
+    "expected": {
+      "id": "synthetic-dev-001573",
+      "raw_address": "обл. Восточно-Казахстанская   г. Усть-Каменогорск   р-н Ульбинский   мкр. Новый Рубеж   пр-т Тхий Маршрут   д.12А   кв. 070",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": "Новый Рубеж",
+      "street_type": "проспект",
+      "street_name": "Тхий Маршрут",
+      "house": "12А",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "street_typo",
+        "spacing",
+        "marker_glue"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_cba7e682e7fee288",
+    "input": {
+      "id": "synthetic-dev-006406",
+      "raw_address": "р-н Алматинский, мкр. Пробный Берег, обл. Актюбинская, г. Актобе, д. 41Б, кв. 19, подъезд 2"
+    },
+    "expected": {
+      "id": "synthetic-dev-006406",
+      "raw_address": "р-н Алматинский, мкр. Пробный Берег, обл. Актюбинская, г. Актобе, д. 41Б, кв. 19, подъезд 2",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пробный Берег",
+      "house": "41Б",
+      "apartment": "19",
+      "entrance": "2",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_2433328a2fb5595f",
+    "input": {
+      "id": "synthetic-dev-004162",
+      "raw_address": "р-н Абайский, пр-т Белый Парус, обл. Шымкент, г. Шымкент, д. 41Б, кв. 112А, подъезд 04, этаж 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-004162",
+      "raw_address": "р-н Абайский, пр-т Белый Парус, обл. Шымкент, г. Шымкент, д. 41Б, кв. 112А, подъезд 04, этаж 1",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Белый Парус",
+      "house": "41Б",
+      "apartment": "112А",
+      "entrance": "04",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_04ab6a83d2635994",
+    "input": {
+      "id": "synthetic-dev-009869",
+      "raw_address": "р-н Ауэзовский, мкр. Светлый Контур, обл. Алматы, г. Алматы, ул. Горизонт Доставки, д.7, 112А кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-009869",
+      "raw_address": "р-н Ауэзовский, мкр. Светлый Контур, обл. Алматы, г. Алматы, ул. Горизонт Доставки, д.7, 112А кв.",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": "Светлый Контур",
+      "street_type": "улица",
+      "street_name": "Горизонт Доставки",
+      "house": "7",
+      "apartment": "112А",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b15331f1e8cc7763",
+    "input": {
+      "id": "synthetic-dev-008723",
+      "raw_address": "обл. Қарағанды   г. Қарағанды   мкр. Сынақ Жағалау   д. 12А   ориентир мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-008723",
+      "raw_address": "обл. Қарағанды   г. Қарағанды   мкр. Сынақ Жағалау   д. 12А   ориентир мұнара макетінің жанында",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағалау",
+      "house": "12А",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "mixed",
+      "operations": [
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_f2704cca32072615",
+    "input": {
+      "id": "synthetic-dev-001026",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, ул. Северный Узел, 7 д., подъезд 04, ориентир за учебным павильоном"
+    },
+    "expected": {
+      "id": "synthetic-dev-001026",
+      "raw_address": "обл. Алматы, г. Алматы, р-н Ауэзовский, ул. Северный Узел, 7 д., подъезд 04, ориентир за учебным павильоном",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Северный Узел",
+      "house": "7",
+      "apartment": null,
+      "entrance": "04",
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_b755f4ebce2be4d2",
+    "input": {
+      "id": "synthetic-dev-004778",
+      "raw_address": "р-н Казыбекбийский; мkр. Ноый Рубеж; обл. Карагандинская; г. Караганда; д. 41Б; кв. 4; ориентир за учебным павильоном"
+    },
+    "expected": {
+      "id": "synthetic-dev-004778",
+      "raw_address": "р-н Казыбекбийский; мkр. Ноый Рубеж; обл. Карагандинская; г. Караганда; д. 41Б; кв. 4; ориентир за учебным павильоном",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Ноый Рубеж",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0f8a8325dedc8984",
+    "input": {
+      "id": "synthetic-dev-001787",
+      "raw_address": "обл. Алматы; қ. Алматы; ауд. Әуезов; ш-а Пошта Орамы; д-лы Ак Желкен; үй 56-1; пәт. 112А; кіреберіс 2; қабат 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-001787",
+      "raw_address": "обл. Алматы; қ. Алматы; ауд. Әуезов; ш-а Пошта Орамы; д-лы Ак Желкен; үй 56-1; пәт. 112А; кіреберіс 2; қабат 1",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": "Пошта Орамы",
+      "street_type": "проспект",
+      "street_name": "Ак Желкен",
+      "house": "56-1",
+      "apartment": "112А",
+      "entrance": "2",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6accda1b00429c1e",
+    "input": {
+      "id": "synthetic-dev-002180",
+      "raw_address": "обл. Актюбинская, г. Актобе, мкр. Новый Рубеж, д. 41Б, кв. 4"
+    },
+    "expected": {
+      "id": "synthetic-dev-002180",
+      "raw_address": "обл. Актюбинская, г. Актобе, мкр. Новый Рубеж, д. 41Б, кв. 4",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Новый Рубеж",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_89c2c5dd7cf6940f",
+    "input": {
+      "id": "synthetic-dev-004173",
+      "raw_address": "обл. Шымкент; қ. Шымкент; ауд. Абай; ш-а Сынақ Жағалау; k-сі Ак Желкен; үй 56-1; пәт. 3/1; бағдар оқу павильонының артында; участок 874"
+    },
+    "expected": {
+      "id": "synthetic-dev-004173",
+      "raw_address": "обл. Шымкент; қ. Шымкент; ауд. Абай; ш-а Сынақ Жағалау; k-сі Ак Желкен; үй 56-1; пәт. 3/1; бағдар оқу павильонының артында; участок 874",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": "Сынақ Жағалау",
+      "street_type": "улица",
+      "street_name": "Ак Желкен",
+      "house": "56-1",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6940bffc1ee66e7d",
+    "input": {
+      "id": "synthetic-dev-003766",
+      "raw_address": "ауд. Есіл, к-сі Жеткізу Көкжиегі, обл. Астана, қ. Астана, үй 18/2, пәт. 112А, кіреберіс 04"
+    },
+    "expected": {
+      "id": "synthetic-dev-003766",
+      "raw_address": "ауд. Есіл, к-сі Жеткізу Көкжиегі, обл. Астана, қ. Астана, үй 18/2, пәт. 112А, кіреберіс 04",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жеткізу Көкжиегі",
+      "house": "18/2",
+      "apartment": "112А",
+      "entrance": "04",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_825841abb8522d90",
+    "input": {
+      "id": "synthetic-dev-007705",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абайский, мkр. Новый Рубеж, д. 003, кв. 3/1"
+    },
+    "expected": {
+      "id": "synthetic-dev-007705",
+      "raw_address": "обл. Шымкент, г. Шымкент, р-н Абайский, мkр. Новый Рубеж, д. 003, кв. 3/1",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Новый Рубеж",
+      "house": "003",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_bdf80e251c45cfc1",
+    "input": {
+      "id": "synthetic-dev-003493",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; р-н Алматы; мкр. Жарык Сұлба; д. 18/2; кв. 3/1; ориентир мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-003493",
+      "raw_address": "обл. Ақтөбе; г. Ақтөбе; р-н Алматы; мкр. Жарык Сұлба; д. 18/2; кв. 3/1; ориентир мұнара макетінің жанында",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарык Сұлба",
+      "house": "18/2",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_8fec4221f09a6b23",
+    "input": {
+      "id": "synthetic-dev-006014",
+      "raw_address": "обл. Ақтөбе   қ. Ақтөбе   ауд. Алматы   д-лы АқЖ елкен   үй 18/2   пәт. 070   бағдар оқу павильонының артында   участок 714   қ. Ақтөбе"
+    },
+    "expected": {
+      "id": "synthetic-dev-006014",
+      "raw_address": "обл. Ақтөбе   қ. Ақтөбе   ауд. Алматы   д-лы АқЖ елкен   үй 18/2   пәт. 070   бағдар оқу павильонының артында   участок 714   қ. Ақтөбе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "АқЖ елкен",
+      "house": "18/2",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_52407d829aedf1e5",
+    "input": {
+      "id": "synthetic-dev-009177",
+      "raw_address": "р-н Әуезов; пр-т Пошта Желисі; обл. Алматы; г. Алматы; 7 д.; подъезд 1; этаж -1"
+    },
+    "expected": {
+      "id": "synthetic-dev-009177",
+      "raw_address": "р-н Әуезов; пр-т Пошта Желисі; обл. Алматы; г. Алматы; 7 д.; подъезд 1; этаж -1",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "Пошта Желисі",
+      "house": "7",
+      "apartment": null,
+      "entrance": "1",
+      "floor": "-1",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_765aa77ec39e7c26",
+    "input": {
+      "id": "synthetic-dev-007629",
+      "raw_address": "обл. Актюбинская; г. Актобе; р-н Алматинский; мкр. Светлый Контур; ул. Тиий Маршрут; д. 7; ориентир рядом с макетом башни"
+    },
+    "expected": {
+      "id": "synthetic-dev-007629",
+      "raw_address": "обл. Актюбинская; г. Актобе; р-н Алматинский; мкр. Светлый Контур; ул. Тиий Маршрут; д. 7; ориентир рядом с макетом башни",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": "Светлый Контур",
+      "street_type": "улица",
+      "street_name": "Тиий Маршрут",
+      "house": "7",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "рядом с макетом башни",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e30fe44303b6b25d",
+    "input": {
+      "id": "synthetic-dev-004157",
+      "raw_address": "обл. Астана   г. Астана   р-н Есильский   мкр. Почтовый Квартал   ул. Почтовя Линия   д.12А   4 кв.   подъезд 2   этаж 07   г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-004157",
+      "raw_address": "обл. Астана   г. Астана   р-н Есильский   мкр. Почтовый Квартал   ул. Почтовя Линия   д.12А   4 кв.   подъезд 2   этаж 07   г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": "Почтовый Квартал",
+      "street_type": "улица",
+      "street_name": "Почтовя Линия",
+      "house": "12А",
+      "apartment": "4",
+      "entrance": "2",
+      "floor": "07",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing",
+        "marker_glue",
+        "marker_suffix"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_657df595b2e1ef1c",
+    "input": {
+      "id": "synthetic-dev-007372",
+      "raw_address": "мкр. Новый Рубеж, д.41Б, обл. Астана, г. Астана, 4 кв., подъезд 2, этаж -1"
+    },
+    "expected": {
+      "id": "synthetic-dev-007372",
+      "raw_address": "мкр. Новый Рубеж, д.41Б, обл. Астана, г. Астана, 4 кв., подъезд 2, этаж -1",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Новый Рубеж",
+      "house": "41Б",
+      "apartment": "4",
+      "entrance": "2",
+      "floor": "-1",
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_cfb731ef0d327d5e",
+    "input": {
+      "id": "synthetic-dev-008473",
+      "raw_address": "р-н Ауэзовский, yл. Почтовая Линия, обл. Алматы, г. Алматы, д. 56-1, 3/1 кв."
+    },
+    "expected": {
+      "id": "synthetic-dev-008473",
+      "raw_address": "р-н Ауэзовский, yл. Почтовая Линия, обл. Алматы, г. Алматы, д. 56-1, 3/1 кв.",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Почтовая Линия",
+      "house": "56-1",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_167a8f39e1eb1af0",
+    "input": {
+      "id": "synthetic-dev-003309",
+      "raw_address": "обл. Астана, қ. Астана, ауд. Есіл, к-сі Үлгі Жлы, үй 003, участок 809, қ. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-003309",
+      "raw_address": "обл. Астана, қ. Астана, ауд. Есіл, к-сі Үлгі Жлы, үй 003, участок 809, қ. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Үлгі Жлы",
+      "house": "003",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_0058ef17518e0f5a",
+    "input": {
+      "id": "synthetic-dev-006638",
+      "raw_address": "обл. Актюбинская; г. Актобе; р-н Алматинский; мkр. Потовый Квартал; д. 18/2; кв. 3/1; ориентир за учебным павильоном; участок 738"
+    },
+    "expected": {
+      "id": "synthetic-dev-006638",
+      "raw_address": "обл. Актюбинская; г. Актобе; р-н Алматинский; мkр. Потовый Квартал; д. 18/2; кв. 3/1; ориентир за учебным павильоном; участок 738",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Потовый Квартал",
+      "house": "18/2",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": "за учебным павильоном",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise",
+        "number_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6a45a4003883b260",
+    "input": {
+      "id": "synthetic-dev-006433",
+      "raw_address": "обл. Ақтөбе, г. Ақтөбе, р-н Алматы, мкр. Сынақ Жағалау, пр-т Пошт Желісі, д. 18/2, кв. 070, участок 733, г. Ақтөбе"
+    },
+    "expected": {
+      "id": "synthetic-dev-006433",
+      "raw_address": "обл. Ақтөбе, г. Ақтөбе, р-н Алматы, мкр. Сынақ Жағалау, пр-т Пошт Желісі, д. 18/2, кв. 070, участок 733, г. Ақтөбе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": "Сынақ Жағалау",
+      "street_type": "проспект",
+      "street_name": "Пошт Желісі",
+      "house": "18/2",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_e8650c0bc453d440",
+    "input": {
+      "id": "synthetic-dev-008689",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Әуезов   пр-т АлтынБағыт   д. 18/2   кв. 3/1   г. Алматы"
+    },
+    "expected": {
+      "id": "synthetic-dev-008689",
+      "raw_address": "обл. Алматы   г. Алматы   р-н Әуезов   пр-т АлтынБағыт   д. 18/2   кв. 3/1   г. Алматы",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "проспект",
+      "street_name": "АлтынБағыт",
+      "house": "18/2",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_db5ccb4e77d83ad6",
+    "input": {
+      "id": "synthetic-dev-005936",
+      "raw_address": "обл. Астана; г. Астана; ул. Тихий Машррут; д. 12А; кв. 19; подъезд 2; ориентир напротив синей арки; участок 836; г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-005936",
+      "raw_address": "обл. Астана; г. Астана; ул. Тихий Машррут; д. 12А; кв. 19; подъезд 2; ориентир напротив синей арки; участок 836; г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Тихий Машррут",
+      "house": "12А",
+      "apartment": "19",
+      "entrance": "2",
+      "floor": null,
+      "landmark": "напротив синей арки",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_90da5aa6d0336d71",
+    "input": {
+      "id": "synthetic-dev-002063",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, к-сі Алтын Багыт, үй 12А, пәт. 3/1"
+    },
+    "expected": {
+      "id": "synthetic-dev-002063",
+      "raw_address": "обл. Шымкент, қ. Шымкент, ауд. Абай, к-сі Алтын Багыт, үй 12А, пәт. 3/1",
+      "province": "Шымкент",
+      "city": "Шымкент",
+      "district": "Абайский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Алтын Багыт",
+      "house": "12А",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_4db92d9774fdffe9",
+    "input": {
+      "id": "synthetic-dev-001448",
+      "raw_address": "обл. Астана, г. Астана, р-н Есіл, мкр. Пошта Орамы, д. 7, ориентир мұнара макетінің жанында, участок 749, г. Астана"
+    },
+    "expected": {
+      "id": "synthetic-dev-001448",
+      "raw_address": "обл. Астана, г. Астана, р-н Есіл, мкр. Пошта Орамы, д. 7, ориентир мұнара макетінің жанында, участок 749, г. Астана",
+      "province": "Астана",
+      "city": "Астана",
+      "district": "Есильский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Пошта Орамы",
+      "house": "7",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "mixed",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_22f27f13cb057560",
+    "input": {
+      "id": "synthetic-dev-005354",
+      "raw_address": "обл. Қарағанды   қ. Қарағанды   ауд. Қазыбек би   ш-а Жарық Сұлаб   үй 003   пәт. 19   бағдар оқу павильонының артында   участок 854   қ. Қарағанды"
+    },
+    "expected": {
+      "id": "synthetic-dev-005354",
+      "raw_address": "обл. Қарағанды   қ. Қарағанды   ауд. Қазыбек би   ш-а Жарық Сұлаб   үй 003   пәт. 19   бағдар оқу павильонының артында   участок 854   қ. Қарағанды",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарық Сұлаб",
+      "house": "003",
+      "apartment": "19",
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_1c1d31b79cf123da",
+    "input": {
+      "id": "synthetic-dev-007417",
+      "raw_address": "ауд. Алматы; ш-а Жарык Сұлба; обл. Ақтөбе; қ. Ақтөбе; үй 41Б; 070 пәт.; кіреберіс 1; қабат 3"
+    },
+    "expected": {
+      "id": "synthetic-dev-007417",
+      "raw_address": "ауд. Алматы; ш-а Жарык Сұлба; обл. Ақтөбе; қ. Ақтөбе; үй 41Б; 070 пәт.; кіреберіс 1; қабат 3",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Жарык Сұлба",
+      "house": "41Б",
+      "apartment": "070",
+      "entrance": "1",
+      "floor": "3",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_be0c3f825bb0b1c0",
+    "input": {
+      "id": "synthetic-dev-002917",
+      "raw_address": "р-н Әуезов, yл. Пошта Желисі, обл. Алматы, г. Алматы, д.41Б, 3/1 кв., подъезд 2, этаж 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-002917",
+      "raw_address": "р-н Әуезов, yл. Пошта Желисі, обл. Алматы, г. Алматы, д.41Б, 3/1 кв., подъезд 2, этаж 1",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Пошта Желисі",
+      "house": "41Б",
+      "apartment": "3/1",
+      "entrance": "2",
+      "floor": "1",
+      "landmark": null,
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "mixed",
+      "operations": [
+        "marker_glue",
+        "marker_suffix",
+        "reorder",
+        "mixed_script",
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_23d5db359c3c90b4",
+    "input": {
+      "id": "synthetic-dev-005606",
+      "raw_address": "обл. Карагандинская; г. Караганда; р-н Казыбекбийский; ул. Золотое Направление; д. 41Б; кв. 112А; подъезд 1"
+    },
+    "expected": {
+      "id": "synthetic-dev-005606",
+      "raw_address": "обл. Карагандинская; г. Караганда; р-н Казыбекбийский; ул. Золотое Направление; д. 41Б; кв. 112А; подъезд 1",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Золотое Направление",
+      "house": "41Б",
+      "apartment": "112А",
+      "entrance": "1",
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "ru",
+      "operations": [
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_14be03ce81434921",
+    "input": {
+      "id": "synthetic-dev-007058",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; ш-а Сынақ Жағалау; к-сі Тыныш Бағадр; үй 7; пәт. 4; бағдар оқу павильонының артында; участок 758; қ. Ақтөбе"
+    },
+    "expected": {
+      "id": "synthetic-dev-007058",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; ауд. Алматы; ш-а Сынақ Жағалау; к-сі Тыныш Бағадр; үй 7; пәт. 4; бағдар оқу павильонының артында; участок 758; қ. Ақтөбе",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": "Алматинский",
+      "living_area": "Сынақ Жағалау",
+      "street_type": "улица",
+      "street_name": "Тыныш Бағадр",
+      "house": "7",
+      "apartment": "4",
+      "entrance": null,
+      "floor": null,
+      "landmark": "оқу павильонының артында",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "kk",
+      "operations": [
+        "punctuation",
+        "landmark_noise",
+        "number_noise",
+        "city_repeat",
+        "street_typo"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_c4d788a6ccbf6267",
+    "input": {
+      "id": "synthetic-dev-005428",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; k-сі Жаңа Багыт; үй 12А; пәт. 3/1"
+    },
+    "expected": {
+      "id": "synthetic-dev-005428",
+      "raw_address": "обл. Ақтөбе; қ. Ақтөбе; k-сі Жаңа Багыт; үй 12А; пәт. 3/1",
+      "province": "Актюбинская",
+      "city": "Актобе",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Жаңа Багыт",
+      "house": "12А",
+      "apartment": "3/1",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "kk",
+      "operations": [
+        "mixed_script",
+        "kk_letter",
+        "punctuation"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_6a824a4f66bc0872",
+    "input": {
+      "id": "synthetic-dev-003425",
+      "raw_address": "р-н Қазыбек би, ул. Оңтүстік Сұлба, обл. Қарағанды, г. Қарағанды, д. 12А, кв. 070"
+    },
+    "expected": {
+      "id": "synthetic-dev-003425",
+      "raw_address": "р-н Қазыбек би, ул. Оңтүстік Сұлба, обл. Қарағанды, г. Қарағанды, д. 12А, кв. 070",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": "Казыбекбийский",
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Оңтүстік Сұлба",
+      "house": "12А",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "mixed",
+      "operations": [
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_d2c2a1334a87ed6b",
+    "input": {
+      "id": "synthetic-dev-008123",
+      "raw_address": "обл. Астана, г. Астана, мкр. Сынақ Жағалау, пр-т Жеткізу Кокжиегі, д. 56-1, ориентир мұнара макетінің жанында"
+    },
+    "expected": {
+      "id": "synthetic-dev-008123",
+      "raw_address": "обл. Астана, г. Астана, мкр. Сынақ Жағалау, пр-т Жеткізу Кокжиегі, д. 56-1, ориентир мұнара макетінің жанында",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": "Сынақ Жағалау",
+      "street_type": "проспект",
+      "street_name": "Жеткізу Кокжиегі",
+      "house": "56-1",
+      "apartment": null,
+      "entrance": null,
+      "floor": null,
+      "landmark": "мұнара макетінің жанында",
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "mixed",
+      "operations": [
+        "kk_letter"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_c97fd714794d4312",
+    "input": {
+      "id": "synthetic-dev-008485",
+      "raw_address": "ауд. Әуезов, ш-а Сынақ Жағалау, обл. Алматы, қ. Алматы, үй 7, пәт. 070"
+    },
+    "expected": {
+      "id": "synthetic-dev-008485",
+      "raw_address": "ауд. Әуезов, ш-а Сынақ Жағалау, обл. Алматы, қ. Алматы, үй 7, пәт. 070",
+      "province": "Алматы",
+      "city": "Алматы",
+      "district": "Ауэзовский",
+      "living_area": null,
+      "street_type": "микрорайон",
+      "street_name": "Сынақ Жағалау",
+      "house": "7",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.94
+    },
+    "check": {
+      "tier": "easy",
+      "locale": "kk",
+      "operations": [
+        "reorder"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_5d7c9f3c1ae7cb26",
+    "input": {
+      "id": "synthetic-dev-009596",
+      "raw_address": "yл. Зоотое Направление; д. 12А; обл. Карагандинская; г. Караганда; кв. 19; подъезд 1; ориентир напротив синей арки"
+    },
+    "expected": {
+      "id": "synthetic-dev-009596",
+      "raw_address": "yл. Зоотое Направление; д. 12А; обл. Карагандинская; г. Караганда; кв. 19; подъезд 1; ориентир напротив синей арки",
+      "province": "Карагандинская",
+      "city": "Караганда",
+      "district": null,
+      "living_area": null,
+      "street_type": "улица",
+      "street_name": "Зоотое Направление",
+      "house": "12А",
+      "apartment": "19",
+      "entrance": "1",
+      "floor": null,
+      "landmark": "напротив синей арки",
+      "confidence": 0.7
+    },
+    "check": {
+      "tier": "hard",
+      "locale": "ru",
+      "operations": [
+        "reorder",
+        "mixed_script",
+        "kk_letter",
+        "punctuation",
+        "landmark_noise"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_247b5c21bf7fbc2a",
+    "input": {
+      "id": "synthetic-dev-007760",
+      "raw_address": "обл. Астана, г. Астана, мкр. Новый Рубеж, ул. Южный Контур, д. 003, кв. 070"
+    },
+    "expected": {
+      "id": "synthetic-dev-007760",
+      "raw_address": "обл. Астана, г. Астана, мкр. Новый Рубеж, ул. Южный Контур, д. 003, кв. 070",
+      "province": "Астана",
+      "city": "Астана",
+      "district": null,
+      "living_area": "Новый Рубеж",
+      "street_type": "улица",
+      "street_name": "Южный Контур",
+      "house": "003",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.99
+    },
+    "check": {
+      "tier": "clean",
+      "locale": "ru",
+      "operations": [],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  },
+  {
+    "case_uid": "case_78ab8b07d8d5c3c8",
+    "input": {
+      "id": "synthetic-dev-004069",
+      "raw_address": "обл. Восточно-Казахстанская   г. Усть-Каменогорск   р-н Ульбинский   мкр. Новый Рубеж   ул. Светлый Мот   д. 56-1   кв. 070   г. Усть-Каменогорск"
+    },
+    "expected": {
+      "id": "synthetic-dev-004069",
+      "raw_address": "обл. Восточно-Казахстанская   г. Усть-Каменогорск   р-н Ульбинский   мкр. Новый Рубеж   ул. Светлый Мот   д. 56-1   кв. 070   г. Усть-Каменогорск",
+      "province": "Восточно-Казахстанская",
+      "city": "Усть-Каменогорск",
+      "district": "Ульбинский",
+      "living_area": "Новый Рубеж",
+      "street_type": "улица",
+      "street_name": "Светлый Мот",
+      "house": "56-1",
+      "apartment": "070",
+      "entrance": null,
+      "floor": null,
+      "landmark": null,
+      "confidence": 0.85
+    },
+    "check": {
+      "tier": "medium",
+      "locale": "ru",
+      "operations": [
+        "city_repeat",
+        "street_typo",
+        "spacing"
+      ],
+      "status": "UNREVIEWED",
+      "notes": ""
+    }
+  }
+]
